@@ -2,7 +2,7 @@
 title: Flowback API
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - python
+  - shell
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -30,18 +30,14 @@ We have language bindings in Shell, Ruby, Python, and JavaScript! You can view c
 
 > To authorize, use this code:
 
-```python
-import requests
-
-headers = dict(Authorization='your_token_here')
-
-# For this demonstration, we'll use a get request.
-api = requests.get('api_endpoint_here', headers=headers)
+```shell
+curl "api_endpoint_here" \
+-H "Authorization: your_token_here"
 ``` 
 
 > Make sure to replace `your_token_here` with your API key.
 
-Flowback uses API keys to allow access to the API. You can get an API key using the [Login API endpoint](#get-a-specific-kitten).
+Flowback uses API keys to allow access to the API. You can get an API key using the [Login API endpoint](#register).
 
 Flowback expects for the API key to be included in all API requests to the server (aside from registration) 
 in a header that looks like the following:
@@ -52,17 +48,40 @@ in a header that looks like the following:
 You must replace <code>your_token_here</code> with your personal API key.
 </aside>
 
+# Pagination
+
+All of the list API endpoints offer pagination support. This feature can be accessed using the query params
+of the associated API endpoint.
+
+### Query Parameters
+
+| Parameter                | Default | Description                                                                                     |
+|--------------------------|---------|-------------------------------------------------------------------------------------------------|
+| `page` *int, optional*   | 1       | The page of the paginator.                                                                      |
+| `limit` *int, optional*  | Varies  | The maximum amount of entries allowed per page.                                                 |
+| `offset` *int, optional* | 0       | The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page. |
+
+> Every List API will have these parameters in its outermost json object:
+
+```json
+{
+  "count": 19,
+  "next": "https://example.com/api_endpoint?page=2&limit=1&offset=0",
+  "previous": false,
+  "total_page": 2,
+  ...
+}
+```
+
 # User
 
 ## Register
 
-```python
-import requests
-
-headers = dict(Authorization='your_token_here')
-data = dict(username='flowback', email='flowback@example.com')
-
-api = requests.post('/register', headers=headers, data=data)
+```shell
+curl "https://flowback.org/register" \
+-H "Authorization: your_token_here" \
+-d "username=flowback" \
+-d "email=flowback@example.com"
 ```
 
 This endpoint registers an user to the site. An activation email will be sent to the user containing the 
@@ -74,30 +93,23 @@ This endpoint registers an user to the site. An activation email will be sent to
 
 ### Body Parameters
 
-| Parameter | Description                                        |
-|-----------|----------------------------------------------------|
-| username  | The username of the new user. This must be unique. |
-| email     | The email of the new user. This must be unique.    |
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+| Parameter           | Notes |
+|---------------------|-------|
+| `username` *string* |       |
+| `email` *string*    |       |
 
 ## Verify Register
 
-```python
-import requests
-
-headers = dict(Authorization='your_token_here')
-data = dict(verification_code='<UUID4 code>', password='<secret>')
-
-api = requests.post('/register/verify', headers=headers, data=data)
+```shell
+curl "https://flowback.org/register/verify" \
+-H "Authorization: your_token_here" \
+-d "verification_code=your_verification_code" \
+-d "password=your_password"
 ```
 
 This endpoint completes an user registration, and creates a password associated to the user.
 
-<aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
-requiring the user to type their password twice.</aside>
+
 
 ### HTTP Request
 
@@ -105,36 +117,32 @@ requiring the user to type their password twice.</aside>
 
 ### Body Parameters
 
-| Parameter                            | Description                                       |
-|--------------------------------------|---------------------------------------------------|
-| `verification_code` *string (UUID4)* | Can be obtained trough the `/registrer` endpoint. |
-| `password` *string*                  | The password of the new user.                     |
+| Parameter                    | Notes                                             |
+|------------------------------|---------------------------------------------------|
+| `verification_code` *string* | Can be obtained trough the `/registrer` endpoint. |
+| `password` *string*          |                                                   |
+
+<aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
+requiring the user to type their password twice.</aside>
 
 ## List Users
 
-```python
-import requests
-
-headers = dict(Authorization='your_token_here')
-data = dict(page=1, limit=1, offset=0)
-
-api = requests.get('/users', headers=headers, params=data)
+```shell
+curl "https://flowback.org/users" \
+-H "Authorization: your_token_here"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "count": 19,
-  "next": "https://example.com/users?page=2&limit=1&offset=0",
-  "previous": false,
-  "total_page": 2,
   "data": [
     {
       "id": 1,
       "username": "flowback",
       "profile_image": "https://example.com/media/image.png"
-    }
+    },
+    ...
   ]
 }
 ```
@@ -147,32 +155,21 @@ This endpoint gets a list of users.
 
 ### URL Parameters
 
-| Parameter                     | Description                                                           |
-|-------------------------------|-----------------------------------------------------------------------|
-| `id` *int, optional*          | The ID of the user.                                                   |
-| `username` *string, optional* | The username of the user.                                             |
-| `page` *int, optional*        | The page of the paginator.                                            |
-| `limit` *int, optional*       | The content limit per page of the paginator. Can't be higher than 50. |
-| `offset` *int, optional*      | The content offset of the paginator.                                  |
+| Parameter                     | Notes |
+|-------------------------------|-------|
+| `username` *string, optional* |       |
 
 ## Get User
 
-```python
-import requests
-
-headers = dict(Authorization='your_token_here') 
-
-api = requests.get('/users', headers=headers)
+```shell
+curl "https://flowback.org/user/<id>" \
+-H "Authorization: your_token_here"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "count": 19,
-  "next": "https://example.com/users?page=2&limit=1&offset=0",
-  "previous": false,
-  "total_page": 2,
   "data": [
     {
       "id": 1,
@@ -195,6 +192,36 @@ This endpoint gets an user.
 
 ### URL Parameters
 
-| Parameter                     | Description                                                 |
-|-------------------------------|-------------------------------------------------------------|
-| `id` *int, optional*          | The ID of the user. Leave it blank to get the current user. |
+| Parameter            | Notes                                   |
+|----------------------|-----------------------------------------|
+| `id` *int, optional* | Leave it blank to get the current user. |
+
+
+
+## Update User
+
+```shell
+curl "https://flowback.org/user/update" \
+-H "Authorization: your_token_here" \
+-d "username=flowback" \
+-F "profile_image=@profile_image.png" \
+-F "banner_image=@banner_image.png" \
+-d "bio=Welcome to my profile!"
+-d "website=https://example.com/"
+```
+
+This endpoint updates an user.
+
+### HTTP Request
+
+`GET /user`
+
+### URL Parameters
+
+| Parameter                        | Notes |
+|----------------------------------|-------|
+| `username` *string, optional*    |       |
+| `profile_image` *file, optional* |       |
+| `banner_image` *file, optional*  |       |
+| `bio` *int, optional*            |       |
+| `website` *int, optional*        |       |
