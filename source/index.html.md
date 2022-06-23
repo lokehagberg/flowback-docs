@@ -53,14 +53,6 @@ You must replace <code>your_token_here</code> with your personal API key.
 All of the list API endpoints offer pagination support. This feature can be accessed using the query params
 of the associated API endpoint.
 
-### Query Parameters
-
-| Parameter                | Default | Description                                                                                     |
-|--------------------------|---------|-------------------------------------------------------------------------------------------------|
-| `page` *int, optional*   | 1       | The page of the paginator.                                                                      |
-| `limit` *int, optional*  | Varies  | The maximum amount of entries allowed per page.                                                 |
-| `offset` *int, optional* | 0       | The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page. |
-
 > Every List API will have these parameters in its outermost json object:
 
 ```json
@@ -72,6 +64,16 @@ of the associated API endpoint.
   ...
 }
 ```
+
+### Query Parameters
+
+| Parameter                | Default | Description                                                                                     |
+|--------------------------|---------|-------------------------------------------------------------------------------------------------|
+| `page` *int, optional*   | 1       | The page of the paginator.                                                                      |
+| `limit` *int, optional*  | Varies  | The maximum amount of entries allowed per page.                                                 |
+| `offset` *int, optional* | 0       | The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page. |
+
+
 
 # User
 
@@ -117,10 +119,10 @@ This endpoint completes an user registration, and creates a password associated 
 
 ### Body Parameters
 
-| Parameter                    | Notes                                             |
-|------------------------------|---------------------------------------------------|
-| `verification_code` *string* | Can be obtained trough the `/registrer` endpoint. |
-| `password` *string*          |                                                   |
+| Parameter                    | Notes                                            |
+|------------------------------|--------------------------------------------------|
+| `verification_code` *string* | Can be obtained trough the `/register` endpoint. |
+| `password` *string*          |                                                  |
 
 <aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
 requiring the user to type their password twice.</aside>
@@ -214,9 +216,9 @@ This endpoint updates an user.
 
 ### HTTP Request
 
-`GET /user`
+`POST /user`
 
-### URL Parameters
+### Body Parameters
 
 | Parameter                        | Notes |
 |----------------------------------|-------|
