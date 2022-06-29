@@ -1,0 +1,75 @@
+---
+title: Flowback API
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
+
+toc_footers:
+  - <a href='https://github.com/gofven/flowback'>Download Flowback at Github</a>
+  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+
+includes:
+  - users
+
+search: true
+
+code_clipboard: true
+
+meta:
+  - name: description
+    content: Documentation for Flowback
+---
+
+# Introduction
+
+Welcome to the Flowback API! You can see all the available endpoints to the API.
+
+We currently only have language bindings in Shell. You can view code examples in the dark area to the right,
+and you can switch the programming language of the examples with the tabs in the top right.
+
+# Authentication
+
+> To authorize, use this code:
+
+```shell
+curl "api_endpoint_here" \
+-H "Authorization: your_token_here"
+```
+
+> Make sure to replace `your_token_here` with your API key.
+
+Flowback uses API keys to allow access to the API. You can get an API key using the [Login API endpoint](#register).
+
+Flowback expects for the API key to be included in all API requests to the server (aside from registration)
+in a header that looks like the following:
+
+`Authorization: your_token_here`
+
+<aside class="notice">
+You must replace <code>your_token_here</code> with your personal API key.
+</aside>
+
+# Pagination
+
+All of the list API endpoints offer pagination support. This feature can be accessed using the query params
+of the associated API endpoint.
+
+> Every List API will have these parameters in its outermost json object:
+
+```json
+{
+  "count": 19,
+  "next": "<%= config[:endpoint] %>/api_endpoint?page=2&limit=1&offset=0",
+  "previous": false,
+  "total_page": 2,
+  ...
+}
+```
+
+### Query Parameters
+
+| Parameter                | Default | Description                                                                                     |
+|--------------------------|---------|-------------------------------------------------------------------------------------------------|
+| `page` *int, optional*   | 1       | The page of the paginator.                                                                      |
+| `limit` *int, optional*  | Varies  | The maximum amount of entries allowed per page.                                                 |
+| `offset` *int, optional* | 0       | The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page. |

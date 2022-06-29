@@ -1,6 +1,10 @@
 # Unique header generation
 require './lib/unique_head.rb'
 
+# Global Variables
+set :endpoint, 'https://v2.flowback.org'
+config[:endpoint]
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
