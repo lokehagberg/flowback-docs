@@ -336,6 +336,12 @@
                     <a href="#verify-register" class="toc-h2 toc-link" data-title="Verify Register">Verify Register</a>
                   </li>
                   <li>
+                    <a href="#forgot-password" class="toc-h2 toc-link" data-title="Forgot Password">Forgot Password</a>
+                  </li>
+                  <li>
+                    <a href="#verify-forgot-password" class="toc-h2 toc-link" data-title="Verify Forgot Password">Verify Forgot Password</a>
+                  </li>
+                  <li>
                     <a href="#list-users" class="toc-h2 toc-link" data-title="List Users">List Users</a>
                   </li>
                   <li>
@@ -419,15 +425,20 @@ of the associated API endpoint.</p>
 <td>The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page.</td>
 </tr>
 </tbody></table>
-<h1 id='user'>User</h1><h2 id='register'>Register</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register"</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<h1 id='user'>User</h1><h2 id='register'>Register</h2>
+<p>This endpoint registers an user to the site. An activation email will be sent to the user containing the
+<code>verification_code</code>. If FLOWBACK_URL is specified in the backend .env, a link containing the <code>verification_code</code>
+as a query parameter will be sent instead.
+The code will be needed for the <a href="#verify-register">next step of the registration.</a></p>
+
+<p>Example of the link: <code>https://v2.flowback.org/register/</code></p>
+
+<p>If FLOWBACK_URL is specified in the backend&#39;s .env file, the user will instead receive a link:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"username=flowback"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"email=flowback@example.com"</span>
-</code></pre></div>
-<p>This endpoint registers an user to the site. An activation email will be sent to the user containing the
-<code>verification_code</code>, which will be needed for the <a href="#verify-register">next step of the registration.</a></p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /register</code></p>
+</code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/register</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -444,14 +455,13 @@ of the associated API endpoint.</p>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='verify-register'>Verify Register</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register/verify"</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<h2 id='verify-register'>Verify Register</h2>
+<p>This endpoint completes an user registration, and creates a password associated to the user.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register/verify"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"verification_code=your_verification_code"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"password=your_password"</span>
-</code></pre></div>
-<p>This endpoint completes an user registration, and creates a password associated to the user.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST /register/verify</code></p>
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/register/verify</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -461,7 +471,7 @@ of the associated API endpoint.</p>
 </thead><tbody>
 <tr>
 <td><code>verification_code</code> <em>string</em></td>
-<td>Can be obtained trough the <code>/register</code> endpoint.</td>
+<td>Can be obtained <a href="#register">here</a>.</td>
 </tr>
 <tr>
 <td><code>password</code> <em>string</em></td>
@@ -471,7 +481,60 @@ of the associated API endpoint.</p>
 
 <aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
 requiring the user to type their password twice.</aside>
-<h2 id='list-users'>List Users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/users"</span> <span class="se">\</span>
+<h2 id='forgot-password'>Forgot Password</h2>
+<p>This endpoint resets the user&#39;s password. An activation email will be sent to the user containing the
+<code>verification_code</code>. If FLOWBACK_URL is specified in the backend .env, a link containing the <code>verification_code</code>
+as a query parameter will be sent instead.
+The code will be needed for the <a href="#verify-forgot-password">next step of the password reset.</a></p>
+
+<p>Example of the link: <code>https://v2.flowback.org/forgot_password/</code></p>
+
+<p>If FLOWBACK_URL is specified in the backend&#39;s .env file, the user will instead receive a link:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/forgot_password"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"email=flowback@example.com"</span>
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/forgot_password</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code> <em>string</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='verify-forgot-password'>Verify Forgot Password</h2>
+<p>This endpoint resets the user&#39;s password.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/forgot_password/verify"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"verification_code=verification_code"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"password=password"</span>
+</code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/forgot_password/verify</code></p>
+<h3 id='body-parameters-4'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>verification_code</code> <em>string</em></td>
+<td>Can be obtained <a href="#forgot-password">here</a>.</td>
+</tr>
+<tr>
+<td><code>password</code> <em>string</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
+requiring the user to type their password twice.</aside>
+<h2 id='list-users'>List Users</h2>
+<p>This endpoint gets a list of users.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/users"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -487,10 +550,8 @@ requiring the user to type their password twice.</aside>
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint gets a list of users.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET /users</code></p>
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/users</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -503,7 +564,9 @@ requiring the user to type their password twice.</aside>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='get-user'>Get User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/user/&lt;id&gt;"</span> <span class="se">\</span>
+<h2 id='get-user'>Get User</h2>
+<p>This endpoint gets an user.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/user/&lt;id&gt;"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -522,10 +585,8 @@ requiring the user to type their password twice.</aside>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint gets an user.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET /user</code></p>
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/user</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -538,18 +599,18 @@ requiring the user to type their password twice.</aside>
 <td>Leave it blank to get the current user.</td>
 </tr>
 </tbody></table>
-<h2 id='update-user'>Update User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/user/update"</span> <span class="se">\</span>
+<h2 id='update-user'>Update User</h2>
+<p>This endpoint updates an user.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/user/update"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"username=flowback"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"profile_image=@profile_image.png"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"banner_image=@banner_image.png"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"bio=Welcome to my profile!"</span>
 <span class="nt">-d</span> <span class="s2">"website=https://example.com/"</span>
-</code></pre></div>
-<p>This endpoint updates an user.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST /user</code></p>
-<h3 id='body-parameters-3'>Body Parameters</h3>
+</code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user</code></p>
+<h3 id='body-parameters-5'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
