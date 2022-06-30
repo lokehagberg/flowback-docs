@@ -2,19 +2,25 @@
 
 ## Register
 
+
+This endpoint registers an user to the site. An activation email will be sent to the user containing the
+`verification_code`. If FLOWBACK_URL is specified in the backend .env, a link containing the `verification_code`
+as a query parameter will be sent instead.
+The code will be needed for the [next step of the registration.](#verify-register)
+
+Example of the link: `<%= config[:endpoint] %>/register/`
+
+If FLOWBACK_URL is specified in the backend's .env file, the user will instead receive a link:
+
 ```shell
 curl "<%= config[:endpoint] %>/register" \
--H "Authorization: your_token_here" \
 -d "username=flowback" \
 -d "email=flowback@example.com"
 ```
 
-This endpoint registers an user to the site. An activation email will be sent to the user containing the
-`verification_code`, which will be needed for the [next step of the registration.](#verify-register)
-
 ### HTTP Request
 
-`POST /register`
+`POST <%= config[:endpoint] %>/register`
 
 ### Body Parameters
 
@@ -25,32 +31,83 @@ This endpoint registers an user to the site. An activation email will be sent to
 
 ## Verify Register
 
+This endpoint completes an user registration, and creates a password associated to the user.
+
 ```shell
 curl "<%= config[:endpoint] %>/register/verify" \
--H "Authorization: your_token_here" \
 -d "verification_code=your_verification_code" \
 -d "password=your_password"
 ```
 
-This endpoint completes an user registration, and creates a password associated to the user.
-
-
-
 ### HTTP Request
 
-`POST /register/verify`
+`POST <%= config[:endpoint] %>/register/verify`
 
 ### Body Parameters
 
-| Parameter                    | Notes                                            |
-|------------------------------|--------------------------------------------------|
-| `verification_code` *string* | Can be obtained trough the `/register` endpoint. |
-| `password` *string*          |                                                  |
+| Parameter                    | Notes                              |
+|------------------------------|------------------------------------|
+| `verification_code` *string* | Can be obtained [here](#register). |
+| `password` *string*          |                                    |
+
+<aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
+requiring the user to type their password twice.</aside>
+
+
+## Forgot Password
+
+This endpoint resets the user's password. An activation email will be sent to the user containing the
+`verification_code`. If FLOWBACK_URL is specified in the backend .env, a link containing the `verification_code`
+as a query parameter will be sent instead.
+The code will be needed for the [next step of the password reset.](#verify-forgot-password)
+
+Example of the link: `<%= config[:endpoint] %>/forgot_password/`
+
+If FLOWBACK_URL is specified in the backend's .env file, the user will instead receive a link:
+
+```shell
+curl "<%= config[:endpoint] %>/forgot_password" \
+-d "email=flowback@example.com"
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/forgot_password`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `email` *string*    |       |
+
+
+## Verify Forgot Password
+
+This endpoint resets the user's password.
+
+```shell
+curl "<%= config[:endpoint] %>/forgot_password/verify" \
+-d "verification_code=verification_code" \
+-d "password=password"
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/forgot_password/verify`
+
+### Body Parameters
+
+| Parameter                    | Notes                                     |
+|------------------------------|-------------------------------------------|
+| `verification_code` *string* | Can be obtained [here](#forgot-password). |
+| `password` *string*          |                                           |
 
 <aside class="warning">Make sure that the user doesn't do any typing mistakes with the password by e.g.
 requiring the user to type their password twice.</aside>
 
 ## List Users
+
+This endpoint gets a list of users.
 
 ```shell
 curl "<%= config[:endpoint] %>/users" \
@@ -72,11 +129,9 @@ curl "<%= config[:endpoint] %>/users" \
 }
 ```
 
-This endpoint gets a list of users.
-
 ### HTTP Request
 
-`GET /users`
+`GET <%= config[:endpoint] %>/users`
 
 ### URL Parameters
 
@@ -85,6 +140,8 @@ This endpoint gets a list of users.
 | `username` *string, optional* |       |
 
 ## Get User
+
+This endpoint gets an user.
 
 ```shell
 curl "<%= config[:endpoint] %>/user/<id>" \
@@ -109,11 +166,9 @@ curl "<%= config[:endpoint] %>/user/<id>" \
 }
 ```
 
-This endpoint gets an user.
-
 ### HTTP Request
 
-`GET /user`
+`GET <%= config[:endpoint] %>/user`
 
 ### URL Parameters
 
@@ -125,6 +180,8 @@ This endpoint gets an user.
 
 ## Update User
 
+This endpoint updates an user.
+
 ```shell
 curl "<%= config[:endpoint] %>/user/update" \
 -H "Authorization: your_token_here" \
@@ -135,11 +192,9 @@ curl "<%= config[:endpoint] %>/user/update" \
 -d "website=https://example.com/"
 ```
 
-This endpoint updates an user.
-
 ### HTTP Request
 
-`POST /user`
+`POST <%= config[:endpoint] %>/user`
 
 ### Body Parameters
 
