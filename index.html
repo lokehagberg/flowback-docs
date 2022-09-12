@@ -352,6 +352,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#group" class="toc-h1 toc-link" data-title="Group">Group</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-groups" class="toc-h2 toc-link" data-title="List Groups">List Groups</a>
+                  </li>
+                  <li>
+                    <a href="#detail-group" class="toc-h2 toc-link" data-title="Detail Group">Detail Group</a>
+                  </li>
+                  <li>
+                    <a href="#create-group" class="toc-h2 toc-link" data-title="Create group">Create group</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/gofven/flowback'>Download Flowback at Github</a></li>
@@ -636,6 +650,127 @@ requiring the user to type their password twice.</aside>
 <tr>
 <td><code>website</code> <em>int, optional</em></td>
 <td></td>
+</tr>
+</tbody></table>
+<h1 id='group'>Group</h1><h2 id='list-groups'>List Groups</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/list"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"direct_join"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flowback"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flowing seamlessly"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"joined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all available groups to join or request invite for</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/list</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code> <em>str, optional</em></td>
+<td>Must be exact</td>
+</tr>
+<tr>
+<td><code>name__icontains</code> <em>str, optional</em></td>
+<td><code>name</code> contains, case-insensitive</td>
+</tr>
+<tr>
+<td><code>direct_join</code> <em>bool, optional</em></td>
+<td>Determines if users can join directly or require invite</td>
+</tr>
+<tr>
+<td><code>joined</code> <em>bool, optional</em></td>
+<td>User joined the group or not</td>
+</tr>
+</tbody></table>
+<h2 id='detail-group'>Detail Group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/detail"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direct_join"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default_permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flowback"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flowing seamlessly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"jitsi_room"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://meet.example.com/ABC123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all available groups to join or request invite for</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/detail</code></p>
+<h2 id='create-group'>Create group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/create"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"description=Flowing seamlessly"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"image=@image.png"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"cover_image=@banner_image.png"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"public=true"</span>
+</code></pre></div>
+<p>Creates a group</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/create</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code> <em>int, optional</em></td>
+<td>Name of the group</td>
+</tr>
+<tr>
+<td><code>description</code> <em>str, optional</em></td>
+<td>Description of the group</td>
+</tr>
+<tr>
+<td><code>image</code> <em>str, optional</em></td>
+<td>Image of the group</td>
+</tr>
+<tr>
+<td><code>cover_image</code> <em>bool, optional</em></td>
+<td>Banner image of the group</td>
+</tr>
+<tr>
+<td><code>direct_join</code> <em>bool, optional</em></td>
+<td>Determines if users can join directly or require invite</td>
+</tr>
+<tr>
+<td></td>
+<td><code>public</code> <em>bool, optional</em></td>
 </tr>
 </tbody></table>
 
