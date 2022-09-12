@@ -1,0 +1,103 @@
+# Group
+
+## List Groups
+
+```shell
+curl "<%= config[:endpoint] %>/group/list" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "created_by": 1,
+      "active": true,
+      "direct_join": false,
+      "name": "Flowback",
+      "description": "Flowing seamlessly",
+      "image": "https://example.com/media/image.png",
+      "cover_image": "https://example.com/media/banner.png",
+      "joined": true
+    },
+    ...
+  ]
+}
+```
+
+Lists all available groups to join or request invite for
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/list`
+
+### Query Parameters
+| Parameter                         | Notes                                                   |
+|-----------------------------------|---------------------------------------------------------|
+| `id` *int, optional*              |                                                         |
+| `name` *str, optional*            | Must be exact                                           |
+| `name__icontains` *str, optional* | `name` contains, case-insensitive                       |
+| `direct_join` *bool, optional*    | Determines if users can join directly or require invite |
+| `joined` *bool, optional*         | User joined the group or not                            |
+
+
+## Detail Group
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/detail" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 1,
+    "created_by": 1,
+    "active": true,
+    "direct_join": false,
+    "public": true,
+    "default_permission": 3,
+    "name": "Flowback",
+    "description": "Flowing seamlessly",
+    "image": "https://example.com/media/image.png",
+    "cover_image": "https://example.com/media/banner.png",
+    "jitsi_room": "https://meet.example.com/ABC123"
+}
+```
+
+Lists all available groups to join or request invite for
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/detail`
+
+
+## Create group
+
+```shell
+curl "<%= config[:endpoint] %>/group/create" \
+-H "Authorization: your_token_here" \
+-d "name=Flowback" \
+-F "description=Flowing seamlessly" \
+-F "image=@image.png" \
+-F "cover_image=@banner_image.png" \
+-d "direct_join=true" \
+-d "public=true"
+```
+
+Creates a group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/create`
+
+### Query Parameters
+| Parameter                      | Notes                                                   |
+|--------------------------------|---------------------------------------------------------|
+| `name` *int, optional*         | Name of the group                                       |
+| `description` *str, optional*  | Description of the group                                |
+| `image` *str, optional*        | Image of the group                                      |
+| `cover_image` *bool, optional* | Banner image of the group                               |
+| `direct_join` *bool, optional* | Determines if users can join directly or require invite |
+ | `public` *bool, optional*      | Determines the visibility of the group                  |
