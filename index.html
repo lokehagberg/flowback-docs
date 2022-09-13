@@ -356,10 +356,10 @@
             <a href="#group" class="toc-h1 toc-link" data-title="Group">Group</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-groups" class="toc-h2 toc-link" data-title="List Groups">List Groups</a>
+                    <a href="#list-groups" class="toc-h2 toc-link" data-title="List groups">List groups</a>
                   </li>
                   <li>
-                    <a href="#detail-group" class="toc-h2 toc-link" data-title="Detail Group">Detail Group</a>
+                    <a href="#detail-group" class="toc-h2 toc-link" data-title="Detail group">Detail group</a>
                   </li>
                   <li>
                     <a href="#create-group" class="toc-h2 toc-link" data-title="Create group">Create group</a>
@@ -371,7 +371,7 @@
                     <a href="#delete-group" class="toc-h2 toc-link" data-title="Delete group">Delete group</a>
                   </li>
                   <li>
-                    <a href="#list-users" class="toc-h2 toc-link" data-title="List users">List users</a>
+                    <a href="#list-group-users" class="toc-h2 toc-link" data-title="List group users">List group users</a>
                   </li>
                   <li>
                     <a href="#join-group" class="toc-h2 toc-link" data-title="Join group">Join group</a>
@@ -665,7 +665,7 @@ requiring the user to type their password twice.</aside>
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='group'>Group</h1><h2 id='list-groups'>List Groups</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/list"</span> <span class="se">\</span>
+<h1 id='group'>Group</h1><h2 id='list-groups'>List groups</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/list"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -719,7 +719,7 @@ requiring the user to type their password twice.</aside>
 <td>User joined the group or not</td>
 </tr>
 </tbody></table>
-<h2 id='detail-group'>Detail Group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/detail"</span> <span class="se">\</span>
+<h2 id='detail-group'>Detail group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/detail"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -843,7 +843,7 @@ requiring the user to type their password twice.</aside>
 <p>Deletes a group</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/delete</code></p>
-<h2 id='list-users'>List users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/users"</span> <span class="se">\</span>
+<h2 id='list-group-users'>List group users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/users"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
