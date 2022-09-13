@@ -370,6 +370,15 @@
                   <li>
                     <a href="#delete-group" class="toc-h2 toc-link" data-title="Delete group">Delete group</a>
                   </li>
+                  <li>
+                    <a href="#list-users" class="toc-h2 toc-link" data-title="List users">List users</a>
+                  </li>
+                  <li>
+                    <a href="#join-group" class="toc-h2 toc-link" data-title="Join group">Join group</a>
+                  </li>
+                  <li>
+                    <a href="#leave-group" class="toc-h2 toc-link" data-title="Leave group">Leave group</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -593,17 +602,15 @@ requiring the user to type their password twice.</aside>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flowback@example.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flowback"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"banner_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello world!"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flowback@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flowback"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"banner_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello world!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/user</code></p>
@@ -719,6 +726,7 @@ requiring the user to type their password twice.</aside>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -730,6 +738,7 @@ requiring the user to type their password twice.</aside>
     </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"jitsi_room"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://meet.example.com/ABC123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all available groups to join or request invite for</p>
@@ -834,6 +843,81 @@ requiring the user to type their password twice.</aside>
 <p>Deletes a group</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/delete</code></p>
+<h2 id='list-users'>List users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/users"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"banner_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegate"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"permission_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"permission_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bakery"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all users in the group</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/users</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>group_user_id</code> <em>int, optional</em></td>
+<td>Unique identifier for the group user</td>
+</tr>
+<tr>
+<td><code>user_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>username__icontains</code> <em>str, optional</em></td>
+<td>Username contains (incase-sensitive)</td>
+</tr>
+<tr>
+<td><code>delegate</code> <em>bool, optional</em></td>
+<td>Whether user is a delegate or not</td>
+</tr>
+<tr>
+<td><code>is_admin</code> <em>bool, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>permission</code> <em>int, optional</em></td>
+<td>The permission ID of the user</td>
+</tr>
+</tbody></table>
+<h2 id='join-group'>Join group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/join"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"join"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Join a group, this will return either &quot;join&quot;, or &quot;invite&quot; depending on the group settings</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/join</code></p>
+<h2 id='leave-group'>Leave group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/leave"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<p>Leaves a group</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/leave</code></p>
 
       </div>
       <div class="dark-box">
