@@ -152,17 +152,15 @@ curl "<%= config[:endpoint] %>/user/<id>" \
 
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "email": "flowback@example.com",
-      "username": "flowback",
-      "profile_image": "https://example.com/media/image.png",
-      "banner_image": "https://example.com/media/banner.png",
-      "bio": "Hello world!",
-      "website": "https://example.com/"
-    }
-  ]
+  "data": {
+    "id": 1,
+    "email": "flowback@example.com",
+    "username": "flowback",
+    "profile_image": "https://example.com/media/image.png",
+    "banner_image": "https://example.com/media/banner.png",
+    "bio": "Hello world!",
+    "website": "https://example.com/"
+  }
 }
 ```
 

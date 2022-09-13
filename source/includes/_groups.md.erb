@@ -54,6 +54,7 @@ curl "<%= config[:endpoint] %>/group/1/detail" \
 
 ```json
 {
+  "data": {
     "id": 1,
     "created_by": 1,
     "active": true,
@@ -65,6 +66,7 @@ curl "<%= config[:endpoint] %>/group/1/detail" \
     "image": "https://example.com/media/image.png",
     "cover_image": "https://example.com/media/banner.png",
     "jitsi_room": "https://meet.example.com/ABC123"
+  }
 }
 ```
 
@@ -145,3 +147,79 @@ Deletes a group
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/delete`
+
+
+## List users
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/users" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "user_id": 1,
+      "username": "User",
+      "profile_image": "https://example.com/media/image.png",
+      "banner_image": "https://example.com/media/banner.png",
+      "delegate": 2,
+      "permission_id": 1,
+      "permission_name": "Bakery"
+    }
+  ],
+  ...
+}
+```
+
+Lists all users in the group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/users`
+
+### Query Parameters
+| Parameter                             | Notes                                |
+|---------------------------------------|--------------------------------------|
+| `group_user_id` *int, optional*       | Unique identifier for the group user |
+| `user_id` *int, optional*             |                                      |
+| `username__icontains` *str, optional* | Username contains (incase-sensitive) |
+| `delegate` *bool, optional*           | Whether user is a delegate or not    |
+| `is_admin` *bool, optional*           |                                      |
+| `permission` *int, optional*          | The permission ID of the user        |
+
+
+## Join group
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/join" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": "join"
+}
+```
+
+Join a group, this will return either "join", or "invite" depending on the group settings
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/join`
+
+
+## Leave group
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/leave" \
+-H "Authorization: your_token_here"
+```
+
+Leaves a group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/leave`
