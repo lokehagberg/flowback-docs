@@ -364,6 +364,12 @@
                   <li>
                     <a href="#create-group" class="toc-h2 toc-link" data-title="Create group">Create group</a>
                   </li>
+                  <li>
+                    <a href="#update-group" class="toc-h2 toc-link" data-title="Update group">Update group</a>
+                  </li>
+                  <li>
+                    <a href="#delete-group" class="toc-h2 toc-link" data-title="Delete group">Delete group</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -740,8 +746,53 @@ requiring the user to type their password twice.</aside>
 </code></pre></div>
 <p>Creates a group</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://v2.flowback.org/group/create</code></p>
+<p><code>POST https://v2.flowback.org/group/create</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code> <em>int</em></td>
+<td>Name of the group</td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td>Description of the group</td>
+</tr>
+<tr>
+<td><code>image</code> <em>img</em></td>
+<td>Image of the group</td>
+</tr>
+<tr>
+<td><code>cover_image</code> <em>img</em></td>
+<td>Banner image of the group</td>
+</tr>
+<tr>
+<td><code>direct_join</code> <em>bool</em></td>
+<td>Determines if users can join directly or require invite</td>
+</tr>
+<tr>
+<td><code>public</code> <em>bool</em></td>
+<td>Determines the visibility of the group</td>
+</tr>
+</tbody></table>
+<h2 id='update-group'>Update group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/update"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"description=Flowing seamlessly"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"image=@image.png"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"cover_image=@banner_image.png"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"public=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"default_permission=1"</span>
+</code></pre></div>
+<p>Updates a group</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/update</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -757,11 +808,11 @@ requiring the user to type their password twice.</aside>
 <td>Description of the group</td>
 </tr>
 <tr>
-<td><code>image</code> <em>str, optional</em></td>
+<td><code>image</code> <em>img, optional</em></td>
 <td>Image of the group</td>
 </tr>
 <tr>
-<td><code>cover_image</code> <em>bool, optional</em></td>
+<td><code>cover_image</code> <em>img, optional</em></td>
 <td>Banner image of the group</td>
 </tr>
 <tr>
@@ -769,10 +820,20 @@ requiring the user to type their password twice.</aside>
 <td>Determines if users can join directly or require invite</td>
 </tr>
 <tr>
-<td></td>
 <td><code>public</code> <em>bool, optional</em></td>
+<td>Determines the visibility of the group</td>
+</tr>
+<tr>
+<td><code>default_permission</code> <em>int, optional</em></td>
+<td>Sets the default permissions for users, allows null value for basic permissions</td>
 </tr>
 </tbody></table>
+<h2 id='delete-group'>Delete group</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<p>Deletes a group</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/delete</code></p>
 
       </div>
       <div class="dark-box">
