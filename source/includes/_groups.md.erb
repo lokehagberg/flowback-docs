@@ -1,6 +1,6 @@
 # Group
 
-## List groups
+## Group list
 
 ```shell
 curl "<%= config[:endpoint] %>/group/list" \
@@ -43,7 +43,7 @@ Lists all available groups to join or request invite for
 | `joined` *bool, optional*         | User joined the group or not                            |
 
 
-## Detail group
+## Group detail
 
 ```shell
 curl "<%= config[:endpoint] %>/group/1/detail" \
@@ -76,7 +76,7 @@ Lists all available groups to join or request invite for
 `GET <%= config[:endpoint] %>/group/<id>/detail`
 
 
-## Create group
+## Group create
 
 ```shell
 curl "<%= config[:endpoint] %>/group/create" \
@@ -105,7 +105,7 @@ Creates a group
 | `public` *bool*       | Determines the visibility of the group                  |
 
 
-## Update group
+## Group update
 
 ```shell
 curl "<%= config[:endpoint] %>/group/update" \
@@ -136,7 +136,7 @@ Updates a group
 | `default_permission` *int, optional* | Sets the default permissions for users, allows null value for basic permissions |
 
 
-## Delete group
+## Group delete
 
 ```shell
 curl "<%= config[:endpoint] %>/group/delete" \
@@ -149,7 +149,7 @@ Deletes a group
 `POST <%= config[:endpoint] %>/group/delete`
 
 
-## List group users
+## Group users list
 
 ```shell
 curl "<%= config[:endpoint] %>/group/1/users" \
@@ -185,13 +185,13 @@ Lists all users in the group
 |---------------------------------------|--------------------------------------|
 | `group_user_id` *int, optional*       | Unique identifier for the group user |
 | `user_id` *int, optional*             |                                      |
-| `username__icontains` *str, optional* | Username contains (incase-sensitive) |
+| `username__icontains` *str, optional* | Username contains (case-insensitive) |
 | `delegate` *bool, optional*           | Whether user is a delegate or not    |
 | `is_admin` *bool, optional*           |                                      |
 | `permission` *int, optional*          | The permission ID of the user        |
 
 
-## Join group
+## Group join
 
 ```shell
 curl "<%= config[:endpoint] %>/group/<id>/join" \
@@ -212,7 +212,7 @@ Join a group, this will return either "join", or "invite" depending on the group
 `POST <%= config[:endpoint] %>/group/<id>/join`
 
 
-## Leave group
+## Group leave
 
 ```shell
 curl "<%= config[:endpoint] %>/group/<id>/leave" \
@@ -223,3 +223,47 @@ Leaves a group
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/leave`
+
+
+## Group user invite
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/invite" \
+-H "Authorization: your_token_here"
+```
+
+Invites a user
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/leave`
+
+### Query Parameters
+| Parameter  | Notes                  |
+|------------|------------------------|
+| `to` *int* | The user to be invited |
+
+
+## Group invite accept
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/invite/accept" \
+-H "Authorization: your_token_here"
+```
+
+User accepts a group invite
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/invite/accept`
+
+
+## Group invite reject
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/invite/reject" \
+-H "Authorization: your_token_here"
+```
+
+User rejects a group invite
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/invite/reject`
