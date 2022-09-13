@@ -90,14 +90,58 @@ curl "<%= config[:endpoint] %>/group/create" \
 Creates a group
 
 ### HTTP Request
-`GET <%= config[:endpoint] %>/group/create`
+`POST <%= config[:endpoint] %>/group/create`
 
 ### Query Parameters
-| Parameter                      | Notes                                                   |
-|--------------------------------|---------------------------------------------------------|
-| `name` *int, optional*         | Name of the group                                       |
-| `description` *str, optional*  | Description of the group                                |
-| `image` *str, optional*        | Image of the group                                      |
-| `cover_image` *bool, optional* | Banner image of the group                               |
-| `direct_join` *bool, optional* | Determines if users can join directly or require invite |
- | `public` *bool, optional*      | Determines the visibility of the group                  |
+| Parameter             | Notes                                                   |
+|-----------------------|---------------------------------------------------------|
+| `name` *int*          | Name of the group                                       |
+| `description` *str*   | Description of the group                                |
+| `image` *img*         | Image of the group                                      |
+| `cover_image` *img*   | Banner image of the group                               |
+| `direct_join` *bool*  | Determines if users can join directly or require invite |
+| `public` *bool*       | Determines the visibility of the group                  |
+
+
+## Update group
+
+```shell
+curl "<%= config[:endpoint] %>/group/update" \
+-H "Authorization: your_token_here" \
+-d "name=Flowback" \
+-F "description=Flowing seamlessly" \
+-F "image=@image.png" \
+-F "cover_image=@banner_image.png" \
+-d "direct_join=true" \
+-d "public=true" \
+-d "default_permission=1"
+```
+
+Updates a group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/update`
+
+### Query Parameters
+| Parameter                            | Notes                                                                           |
+|--------------------------------------|---------------------------------------------------------------------------------|
+| `name` *int, optional*               | Name of the group                                                               |
+| `description` *str, optional*        | Description of the group                                                        |
+| `image` *img, optional*              | Image of the group                                                              |
+| `cover_image` *img, optional*        | Banner image of the group                                                       |
+| `direct_join` *bool, optional*       | Determines if users can join directly or require invite                         |
+| `public` *bool, optional*            | Determines the visibility of the group                                          |
+| `default_permission` *int, optional* | Sets the default permissions for users, allows null value for basic permissions |
+
+
+## Delete group
+
+```shell
+curl "<%= config[:endpoint] %>/group/delete" \
+-H "Authorization: your_token_here"
+```
+
+Deletes a group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/delete`
