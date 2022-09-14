@@ -81,12 +81,12 @@ Lists all available groups to join or request invite for
 ```shell
 curl "<%= config[:endpoint] %>/group/create" \
 -H "Authorization: your_token_here" \
--d "name=Flowback" \
+-F "name=Flowback" \
 -F "description=Flowing seamlessly" \
 -F "image=@image.png" \
 -F "cover_image=@banner_image.png" \
--d "direct_join=true" \
--d "public=true"
+-F "direct_join=true" \
+-F "public=true"
 ```
 
 Creates a group
@@ -110,13 +110,13 @@ Creates a group
 ```shell
 curl "<%= config[:endpoint] %>/group/update" \
 -H "Authorization: your_token_here" \
--d "name=Flowback" \
+-F "name=Flowback" \
 -F "description=Flowing seamlessly" \
 -F "image=@image.png" \
 -F "cover_image=@banner_image.png" \
--d "direct_join=true" \
--d "public=true" \
--d "default_permission=1"
+-F "direct_join=true" \
+-F "public=true" \
+-F "default_permission=1"
 ```
 
 Updates a group
@@ -267,3 +267,123 @@ User rejects a group invite
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/invite/reject`
+
+
+## Group permission list
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/permissions" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "role_name": "Neko",
+      "invite_user": true,
+      "create_poll": true,
+      "allow_vote": false,
+      "kick_members": false,
+      "ban_members": true
+    }
+  ],
+  ...
+}
+```
+
+Lists all permissions for the group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/permissions`
+
+### Query Parameters
+| Parameter                              | Notes                                          |
+|----------------------------------------|------------------------------------------------|
+| `id` *int, optional*                   |                                                |
+| `role_name` *str, optional*            | The name of the role, must be exact            |
+| `role_name__icontains` *str, optional* | role name contains contains (case-insensitive) |
+
+
+## Group permission create
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/permission/create" \
+-H "Authorization: your_token_here" \
+-d "role_name=Neko" \
+-d "invite_user=true" \
+-d "create_poll=true" \
+-d "allow_vote=false" \
+-d "kick_members=false" \
+-d "ban_members=true"
+```
+
+Creates a permission for the group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/permission/create`
+
+### Query Parameters
+| Parameter             | Notes                      |
+|-----------------------|----------------------------|
+| `role_name` *str*     |                            |
+| `invite_user` *bool*  | Allow role to invite users |
+| `create_poll` *bool*  | Allow role to create polls |
+| `allow_vote` *bool*   | Allow role to vote         |
+| `kick_members` *bool* | Allow role to kick members |
+| `ban_members` *bool*  | Allow role to ban members  |
+
+
+## Group permission update
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/permission/update" \
+-H "Authorization: your_token_here" \
+-d "permission_id=1" \
+-d "role_name=Neko" \
+-d "invite_user=true" \
+-d "create_poll=true" \
+-d "allow_vote=false" \
+-d "kick_members=false" \
+-d "ban_members=true"
+```
+
+Updates a permission for the group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/permission/update`
+
+### Query Parameters
+| Parameter                       | Notes                        |
+|---------------------------------|------------------------------|
+| `permission_id` *int*           | The permission to be updated |
+| `role_name` *str, optional*     |                              |
+| `invite_user` *bool, optional*  | Allow role to invite users   |
+| `create_poll` *bool, optional*  | Allow role to create polls   |
+| `allow_vote` *bool, optional*   | Allow role to vote           |
+| `kick_members` *bool, optional* | Allow role to kick members   |
+| `ban_members` *bool, optional*  | Allow role to ban members    |
+
+
+## Group permission delete
+
+```shell
+curl "<%= config[:endpoint] %>/group/<id>/permission/delete" \
+-H "Authorization: your_token_here"
+```
+
+Deletes a permission for the group, this will set all users associated with the permission to group default
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/permission/delete`
+
+### Query Parameters
+| Parameter                       | Notes                        |
+|---------------------------------|------------------------------|
+| `permission_id` *int*           | The permission to be deleted |
+
+
+
