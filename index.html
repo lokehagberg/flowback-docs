@@ -388,6 +388,18 @@
                   <li>
                     <a href="#group-invite-reject" class="toc-h2 toc-link" data-title="Group invite reject">Group invite reject</a>
                   </li>
+                  <li>
+                    <a href="#group-permission-list" class="toc-h2 toc-link" data-title="Group permission list">Group permission list</a>
+                  </li>
+                  <li>
+                    <a href="#group-permission-create" class="toc-h2 toc-link" data-title="Group permission create">Group permission create</a>
+                  </li>
+                  <li>
+                    <a href="#group-permission-update" class="toc-h2 toc-link" data-title="Group permission update">Group permission update</a>
+                  </li>
+                  <li>
+                    <a href="#group-permission-delete" class="toc-h2 toc-link" data-title="Group permission delete">Group permission delete</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -755,12 +767,12 @@ requiring the user to type their password twice.</aside>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/detail</code></p>
 <h2 id='group-create'>Group create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/create"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"description=Flowing seamlessly"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"image=@image.png"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"cover_image=@banner_image.png"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"public=true"</span>
+<span class="nt">-F</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"public=true"</span>
 </code></pre></div>
 <p>Creates a group</p>
 <h3 id='http-request-3'>HTTP Request</h3>
@@ -799,13 +811,13 @@ requiring the user to type their password twice.</aside>
 </tbody></table>
 <h2 id='group-update'>Group update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/update"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"description=Flowing seamlessly"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"image=@image.png"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"cover_image=@banner_image.png"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"public=true"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s2">"default_permission=1"</span>
+<span class="nt">-F</span> <span class="s2">"direct_join=true"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"public=true"</span> <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"default_permission=1"</span>
 </code></pre></div>
 <p>Updates a group</p>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -957,6 +969,161 @@ requiring the user to type their password twice.</aside>
 <p>User rejects a group invite</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/reject</code></p>
+<h2 id='group-permission-list'>Group permission list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permissions"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"role_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neko"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invite_user"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"create_poll"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"allow_vote"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kick_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ban_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all permissions for the group</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/permissions</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>role_name</code> <em>str, optional</em></td>
+<td>The name of the role, must be exact</td>
+</tr>
+<tr>
+<td><code>role_name__icontains</code> <em>str, optional</em></td>
+<td>role name contains contains (case-insensitive)</td>
+</tr>
+</tbody></table>
+<h2 id='group-permission-create'>Group permission create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/create"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"role_name=Neko"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"invite_user=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"create_poll=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"allow_vote=false"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"kick_members=false"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
+</code></pre></div>
+<p>Creates a permission for the group</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/create</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>role_name</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invite_user</code> <em>bool</em></td>
+<td>Allow role to invite users</td>
+</tr>
+<tr>
+<td><code>create_poll</code> <em>bool</em></td>
+<td>Allow role to create polls</td>
+</tr>
+<tr>
+<td><code>allow_vote</code> <em>bool</em></td>
+<td>Allow role to vote</td>
+</tr>
+<tr>
+<td><code>kick_members</code> <em>bool</em></td>
+<td>Allow role to kick members</td>
+</tr>
+<tr>
+<td><code>ban_members</code> <em>bool</em></td>
+<td>Allow role to ban members</td>
+</tr>
+</tbody></table>
+<h2 id='group-permission-update'>Group permission update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/update"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"permission_id=1"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"role_name=Neko"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"invite_user=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"create_poll=true"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"allow_vote=false"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"kick_members=false"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
+</code></pre></div>
+<p>Updates a permission for the group</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/update</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>permission_id</code> <em>int</em></td>
+<td>The permission to be updated</td>
+</tr>
+<tr>
+<td><code>role_name</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invite_user</code> <em>bool, optional</em></td>
+<td>Allow role to invite users</td>
+</tr>
+<tr>
+<td><code>create_poll</code> <em>bool, optional</em></td>
+<td>Allow role to create polls</td>
+</tr>
+<tr>
+<td><code>allow_vote</code> <em>bool, optional</em></td>
+<td>Allow role to vote</td>
+</tr>
+<tr>
+<td><code>kick_members</code> <em>bool, optional</em></td>
+<td>Allow role to kick members</td>
+</tr>
+<tr>
+<td><code>ban_members</code> <em>bool, optional</em></td>
+<td>Allow role to ban members</td>
+</tr>
+</tbody></table>
+<h2 id='group-permission-delete'>Group permission delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<p>Deletes a permission for the group, this will set all users associated with the permission to group default</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/delete</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>permission_id</code> <em>int</em></td>
+<td>The permission to be deleted</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
