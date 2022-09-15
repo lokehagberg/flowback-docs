@@ -400,6 +400,30 @@
                   <li>
                     <a href="#group-permission-delete" class="toc-h2 toc-link" data-title="Group permission delete">Group permission delete</a>
                   </li>
+                  <li>
+                    <a href="#group-tags-list" class="toc-h2 toc-link" data-title="Group tags list">Group tags list</a>
+                  </li>
+                  <li>
+                    <a href="#group-tag-create" class="toc-h2 toc-link" data-title="Group tag create">Group tag create</a>
+                  </li>
+                  <li>
+                    <a href="#group-tag-update" class="toc-h2 toc-link" data-title="Group tag update">Group tag update</a>
+                  </li>
+                  <li>
+                    <a href="#group-tag-delete" class="toc-h2 toc-link" data-title="Group tag delete">Group tag delete</a>
+                  </li>
+                  <li>
+                    <a href="#group-user-delegate-list" class="toc-h2 toc-link" data-title="Group user delegate list">Group user delegate list</a>
+                  </li>
+                  <li>
+                    <a href="#group-user-delegate-create" class="toc-h2 toc-link" data-title="Group user delegate create">Group user delegate create</a>
+                  </li>
+                  <li>
+                    <a href="#group-user-delegate-update" class="toc-h2 toc-link" data-title="Group user delegate update">Group user delegate update</a>
+                  </li>
+                  <li>
+                    <a href="#group-user-delegate-delete" class="toc-h2 toc-link" data-title="Group user delegate delete">Group user delegate delete</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -704,8 +728,7 @@ requiring the user to type their password twice.</aside>
       </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"joined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -809,7 +832,7 @@ requiring the user to type their password twice.</aside>
 <td>Determines the visibility of the group</td>
 </tr>
 </tbody></table>
-<h2 id='group-update'>Group update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/update"</span> <span class="se">\</span>
+<h2 id='group-update'>Group update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/update"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"name=Flowback"</span> <span class="se">\</span>
 <span class="nt">-F</span> <span class="s2">"description=Flowing seamlessly"</span> <span class="se">\</span>
@@ -821,7 +844,7 @@ requiring the user to type their password twice.</aside>
 </code></pre></div>
 <p>Updates a group</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/update</code></p>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/update</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -858,12 +881,12 @@ requiring the user to type their password twice.</aside>
 <td>Sets the default permissions for users, allows null value for basic permissions</td>
 </tr>
 </tbody></table>
-<h2 id='group-delete'>Group delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/delete"</span> <span class="se">\</span>
+<h2 id='group-delete'>Group delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delete"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Deletes a group</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/delete</code></p>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delete</code></p>
 <h2 id='group-users-list'>Group users list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/users"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
@@ -881,8 +904,7 @@ requiring the user to type their password twice.</aside>
       </span><span class="nl">"permission_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"permission_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bakery"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all users in the group</p>
@@ -920,7 +942,7 @@ requiring the user to type their password twice.</aside>
 <td>The permission ID of the user</td>
 </tr>
 </tbody></table>
-<h2 id='group-join'>Group join</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/join"</span> <span class="se">\</span>
+<h2 id='group-join'>Group join</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/join"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -933,13 +955,13 @@ requiring the user to type their password twice.</aside>
 <p>Join a group, this will return either &quot;join&quot;, or &quot;invite&quot; depending on the group settings</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/join</code></p>
-<h2 id='group-leave'>Group leave</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/leave"</span> <span class="se">\</span>
+<h2 id='group-leave'>Group leave</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/leave"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Leaves a group</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/leave</code></p>
-<h2 id='group-user-invite'>Group user invite</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/invite"</span> <span class="se">\</span>
+<h2 id='group-user-invite'>Group user invite</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Invites a user</p>
@@ -957,13 +979,13 @@ requiring the user to type their password twice.</aside>
 <td>The user to be invited</td>
 </tr>
 </tbody></table>
-<h2 id='group-invite-accept'>Group invite accept</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/invite/accept"</span> <span class="se">\</span>
+<h2 id='group-invite-accept'>Group invite accept</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite/accept"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User accepts a group invite</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/accept</code></p>
-<h2 id='group-invite-reject'>Group invite reject</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/invite/reject"</span> <span class="se">\</span>
+<h2 id='group-invite-reject'>Group invite reject</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite/reject"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User rejects a group invite</p>
@@ -986,8 +1008,7 @@ requiring the user to type their password twice.</aside>
       </span><span class="nl">"kick_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ban_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all permissions for the group</p>
@@ -1013,7 +1034,7 @@ requiring the user to type their password twice.</aside>
 <td>role name contains contains (case-insensitive)</td>
 </tr>
 </tbody></table>
-<h2 id='group-permission-create'>Group permission create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/create"</span> <span class="se">\</span>
+<h2 id='group-permission-create'>Group permission create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permission/create"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"role_name=Neko"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"invite_user=true"</span> <span class="se">\</span>
@@ -1057,7 +1078,7 @@ requiring the user to type their password twice.</aside>
 <td>Allow role to ban members</td>
 </tr>
 </tbody></table>
-<h2 id='group-permission-update'>Group permission update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/update"</span> <span class="se">\</span>
+<h2 id='group-permission-update'>Group permission update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permission/update"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"permission_id=1"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"role_name=Neko"</span> <span class="se">\</span>
@@ -1106,7 +1127,7 @@ requiring the user to type their password twice.</aside>
 <td>Allow role to ban members</td>
 </tr>
 </tbody></table>
-<h2 id='group-permission-delete'>Group permission delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/&lt;id&gt;/permission/delete"</span> <span class="se">\</span>
+<h2 id='group-permission-delete'>Group permission delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permission/delete"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Deletes a permission for the group, this will set all users associated with the permission to group default</p>
@@ -1122,6 +1143,229 @@ requiring the user to type their password twice.</aside>
 <tr>
 <td><code>permission_id</code> <em>int</em></td>
 <td>The permission to be deleted</td>
+</tr>
+</tbody></table>
+<h2 id='group-tags-list'>Group tags list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/tags"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neko"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all tags for the group</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/tags</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_name</code> <em>str, optional</em></td>
+<td>The name of the tag, must be exact</td>
+</tr>
+<tr>
+<td><code>tag_name__icontains</code> <em>str, optional</em></td>
+<td>Tag name contains (case-insensitive)</td>
+</tr>
+<tr>
+<td><code>active</code> <em>bool, optional</em></td>
+<td>Whether the tag is available or not</td>
+</tr>
+</tbody></table>
+<h2 id='group-tag-create'>Group tag create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/tag/create"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
+</code></pre></div>
+<p>Creates a tag for the group</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/create</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tag_name</code> <em>str</em></td>
+<td>The name of the tag</td>
+</tr>
+</tbody></table>
+<h2 id='group-tag-update'>Group tag update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/tag/update"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"id=1"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"active=false"</span>
+</code></pre></div>
+<p>Updates a tag for the group</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/update</code></p>
+<h3 id='query-parameters-12'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tag_id</code> <em>int</em></td>
+<td>The tag to be updated</td>
+</tr>
+<tr>
+<td><code>active</code> <em>bool</em></td>
+<td>Whether the tag is active or not</td>
+</tr>
+</tbody></table>
+<h2 id='group-tag-delete'>Group tag delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/tag/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+<span class="nt">-d</span> <span class="s2">"id=1"</span>
+</code></pre></div>
+<p>Deletes a tag for the group, it is recommended to use the update function to disable active status for the tag,
+because deleting the tag will affect delegate relations, use this only when nessesary.</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/delete</code></p>
+<h3 id='query-parameters-13'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td>The tag to be deleted</td>
+</tr>
+</tbody></table>
+<h2 id='group-user-delegate-list'>Group user delegate list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegates"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Neko"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Worker"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"delegate"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all delegate relations for the current user within the group</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegates</code></p>
+<h3 id='query-parameters-14'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>delegate_id</code> <em>int, optional</em></td>
+<td>The delegate id</td>
+</tr>
+<tr>
+<td><code>delegate_user_id</code> <em>int, optional</em></td>
+<td>The delegate user id</td>
+</tr>
+<tr>
+<td><code>delegate_name__iconains</code> <em>str, optional</em></td>
+<td>Delegate username contains (case-insensitive)</td>
+</tr>
+<tr>
+<td><code>tag_id</code> <em>int, optional</em></td>
+<td>The tag id</td>
+</tr>
+<tr>
+<td><code>tag_name</code> <em>str, optional</em></td>
+<td>The name of the tag, must be exact</td>
+</tr>
+<tr>
+<td><code>tag_name__icontains</code> <em>str, optional</em></td>
+<td>Tag name contains (case-insensitive)</td>
+</tr>
+</tbody></table>
+<h2 id='group-user-delegate-create'>Group user delegate create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/create"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
+</code></pre></div>
+<p>Creates a delegate relation for the current user in group</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/create</code></p>
+<h3 id='query-parameters-15'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>delegate_id</code> <em>int</em></td>
+<td>The id of the delegate relation, not to be confused with user id. Accessible through the <a href="#group-users-list">group users list</a> <code>delegate</code> parameter</td>
+</tr>
+<tr>
+<td><code>tags</code> <em>array(int)</em></td>
+<td>List of tag id&#39;s that&#39;ll be bound to the delegate relation, available tags are accessible through <a href="#group-tags-list">group tags list</a>, make sure to mark <code>active=false</code> upon search.</td>
+</tr>
+</tbody></table>
+<h2 id='group-user-delegate-update'>Group user delegate update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/update"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"id=1"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s2">"active=false"</span>
+</code></pre></div>
+<p>Updates a Delegate relation for the current user in group</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/update</code></p>
+<h3 id='query-parameters-16'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>delegate_id</code> <em>int</em></td>
+<td>The delegate id</td>
+</tr>
+<tr>
+<td><code>tags</code> <em>array(int)</em></td>
+<td>List of tag id&#39;s, this will override the previous values</td>
+</tr>
+</tbody></table>
+<h2 id='group-user-delegate-delete'>Group user delegate delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+<span class="nt">-d</span> <span class="s2">"id=1"</span>
+</code></pre></div>
+<p>Deletes a delegate id for the current user in group</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/delete</code></p>
+<h3 id='query-parameters-17'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td>The delegate id to be deleted</td>
 </tr>
 </tbody></table>
 
