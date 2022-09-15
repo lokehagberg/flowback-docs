@@ -22,8 +22,7 @@ curl "<%= config[:endpoint] %>/group/list" \
       "image": "https://example.com/media/image.png",
       "cover_image": "https://example.com/media/banner.png",
       "joined": true
-    },
-    ...
+    }
   ]
 }
 ```
@@ -108,7 +107,7 @@ Creates a group
 ## Group update
 
 ```shell
-curl "<%= config[:endpoint] %>/group/update" \
+curl "<%= config[:endpoint] %>/group/1/update" \
 -H "Authorization: your_token_here" \
 -F "name=Flowback" \
 -F "description=Flowing seamlessly" \
@@ -122,7 +121,7 @@ curl "<%= config[:endpoint] %>/group/update" \
 Updates a group
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/group/update`
+`POST <%= config[:endpoint] %>/group/<id>/update`
 
 ### Query Parameters
 | Parameter                            | Notes                                                                           |
@@ -139,14 +138,14 @@ Updates a group
 ## Group delete
 
 ```shell
-curl "<%= config[:endpoint] %>/group/delete" \
+curl "<%= config[:endpoint] %>/group/1/delete" \
 -H "Authorization: your_token_here"
 ```
 
 Deletes a group
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/group/delete`
+`POST <%= config[:endpoint] %>/group/<id>/delete`
 
 
 ## Group users list
@@ -170,8 +169,7 @@ curl "<%= config[:endpoint] %>/group/1/users" \
       "permission_id": 1,
       "permission_name": "Bakery"
     }
-  ],
-  ...
+  ]
 }
 ```
 
@@ -194,7 +192,7 @@ Lists all users in the group
 ## Group join
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/join" \
+curl "<%= config[:endpoint] %>/group/1/join" \
 -H "Authorization: your_token_here"
 ```
 
@@ -215,7 +213,7 @@ Join a group, this will return either "join", or "invite" depending on the group
 ## Group leave
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/leave" \
+curl "<%= config[:endpoint] %>/group/1/leave" \
 -H "Authorization: your_token_here"
 ```
 
@@ -228,7 +226,7 @@ Leaves a group
 ## Group user invite
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/invite" \
+curl "<%= config[:endpoint] %>/group/1/invite" \
 -H "Authorization: your_token_here"
 ```
 
@@ -246,7 +244,7 @@ Invites a user
 ## Group invite accept
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/invite/accept" \
+curl "<%= config[:endpoint] %>/group/1/invite/accept" \
 -H "Authorization: your_token_here"
 ```
 
@@ -259,7 +257,7 @@ User accepts a group invite
 ## Group invite reject
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/invite/reject" \
+curl "<%= config[:endpoint] %>/group/1/invite/reject" \
 -H "Authorization: your_token_here"
 ```
 
@@ -290,8 +288,7 @@ curl "<%= config[:endpoint] %>/group/1/permissions" \
       "kick_members": false,
       "ban_members": true
     }
-  ],
-  ...
+  ]
 }
 ```
 
@@ -311,7 +308,7 @@ Lists all permissions for the group
 ## Group permission create
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/permission/create" \
+curl "<%= config[:endpoint] %>/group/1/permission/create" \
 -H "Authorization: your_token_here" \
 -d "role_name=Neko" \
 -d "invite_user=true" \
@@ -340,7 +337,7 @@ Creates a permission for the group
 ## Group permission update
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/permission/update" \
+curl "<%= config[:endpoint] %>/group/1/permission/update" \
 -H "Authorization: your_token_here" \
 -d "permission_id=1" \
 -d "role_name=Neko" \
@@ -371,7 +368,7 @@ Updates a permission for the group
 ## Group permission delete
 
 ```shell
-curl "<%= config[:endpoint] %>/group/<id>/permission/delete" \
+curl "<%= config[:endpoint] %>/group/1/permission/delete" \
 -H "Authorization: your_token_here"
 ```
 
@@ -386,4 +383,194 @@ Deletes a permission for the group, this will set all users associated with the 
 | `permission_id` *int*           | The permission to be deleted |
 
 
+## Group tags list
 
+```shell
+curl "<%= config[:endpoint] %>/group/1/tags" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "tag_name": "Neko",
+      "active": true
+    }
+  ]
+}
+```
+
+Lists all tags for the group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/tags`
+
+### Query Parameters
+| Parameter                             | Notes                                |
+|---------------------------------------|--------------------------------------|
+| `id` *int, optional*                  |                                      |
+| `tag_name` *str, optional*            | The name of the tag, must be exact   |
+| `tag_name__icontains` *str, optional* | Tag name contains (case-insensitive) |
+| `active` *bool, optional*             | Whether the tag is available or not  |
+
+
+## Group tag create
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/tag/create" \
+-H "Authorization: your_token_here" \
+-d "tag_name=Neko"
+```
+
+Creates a tag for the group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/tag/create`
+
+### Query Parameters
+| Parameter        | Notes               |
+|------------------|---------------------|
+| `tag_name` *str* | The name of the tag |
+
+
+## Group tag update
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/tag/update" \
+-H "Authorization: your_token_here" \
+-d "id=1" \
+-d "active=false"
+```
+
+Updates a tag for the group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/tag/update`
+
+### Query Parameters
+| Parameter       | Notes                            |
+|-----------------|----------------------------------|
+| `tag_id` *int*  | The tag to be updated            |
+| `active` *bool* | Whether the tag is active or not |
+
+
+## Group tag delete
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/tag/delete" \
+-H "Authorization: your_token_here"
+-d "id=1"
+```
+
+Deletes a tag for the group, it is recommended to use the update function to disable active status for the tag,
+because deleting the tag will affect delegate relations, use this only when nessesary.
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/tag/delete`
+
+### Query Parameters
+| Parameter  | Notes                 |
+|------------|-----------------------|
+| `id` *int* | The tag to be deleted |
+
+
+## Group user delegate list
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegates" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "tags": ["Neko", "Worker"],
+      "delegate": 4
+    }
+  ]
+}
+```
+
+Lists all delegate relations for the current user within the group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/delegates`
+
+### Query Parameters
+| Parameter                                 | Notes                                         |
+|-------------------------------------------|-----------------------------------------------|
+| `delegate_id` *int, optional*             | The delegate id                               |
+| `delegate_user_id` *int, optional*        | The delegate user id                          |
+| `delegate_name__iconains` *str, optional* | Delegate username contains (case-insensitive) |
+| `tag_id` *int, optional*                  | The tag id                                    |
+| `tag_name` *str, optional*                | The name of the tag, must be exact            |
+| `tag_name__icontains` *str, optional*     | Tag name contains (case-insensitive)          |
+
+
+## Group user delegate create
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/create" \
+-H "Authorization: your_token_here" \
+-d "tag_name=Neko"
+```
+
+Creates a delegate relation for the current user in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/delegate/create`
+
+### Query Parameters
+| Parameter           | Notes                                                                                                                                                                                |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `delegate_id` *int* | The id of the delegate relation, not to be confused with user id. Accessible through the [group users list](#group-users-list) `delegate` parameter                                  |
+| `tags` *array(int)* | List of tag id's that'll be bound to the delegate relation, available tags are accessible through [group tags list](#group-tags-list), make sure to mark `active=false` upon search. |
+
+
+
+## Group user delegate update
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/update" \
+-H "Authorization: your_token_here" \
+-d "id=1" \
+-d "active=false"
+```
+
+Updates a Delegate relation for the current user in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/delegate/update`
+
+### Query Parameters
+| Parameter           | Notes                                                    |
+|---------------------|----------------------------------------------------------|
+| `delegate_id` *int* | The delegate id                                          |
+| `tags` *array(int)* | List of tag id's, this will override the previous values |
+
+
+## Group user delegate delete
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/delete" \
+-H "Authorization: your_token_here"
+-d "id=1"
+```
+
+Deletes a delegate id for the current user in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/delegate/delete`
+
+### Query Parameters
+| Parameter  | Notes                         |
+|------------|-------------------------------|
+| `id` *int* | The delegate id to be deleted |
