@@ -478,7 +478,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 | `id` *int* | The tag to be deleted |
 
 
-## Group user delegate pool list
+## Group delegate pool list
 
 ```shell
 curl "<%= config[:endpoint] %>/group/1/delegate/pools" \
@@ -517,7 +517,7 @@ Lists all delegate pools within the group
 | `user_id` *int, optional*       | The user id       |
 
 
-## Group user delegate pool create
+## Group delegate pool create
 
 ```shell
 curl "<%= config[:endpoint] %>/group/1/delegate/pool/create" \
@@ -530,7 +530,7 @@ Creates a delegate pool for the current user in group
 `POST <%= config[:endpoint] %>/group/<id>/delegate/pool/create`
 
 
-## Group user delegate pool delete
+## Group delegate pool delete
 
 ```shell
 curl "<%= config[:endpoint] %>/group/1/delegate/pool/delete" \
@@ -596,7 +596,7 @@ Creates a delegate relation for the current user in group
 ### Query Parameters
 | Parameter           | Notes                                                                                                                                                                                |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `delegate_id` *int* | The id of the delegate relation, not to be confused with user id. Accessible through the [group users list](#group-users-list) `delegate` parameter                                  |
+| `delegate_id` *int* | The id of the delegate pool Accessible through the [group delegate pool list](#group-delegate-pool-list) `id` parameter                                                              |
 | `tags` *array(int)* | List of tag id's that'll be bound to the delegate relation, available tags are accessible through [group tags list](#group-tags-list), make sure to mark `active=false` upon search. |
 
 
@@ -616,10 +616,10 @@ Updates a Delegate relation for the current user in group
 `POST <%= config[:endpoint] %>/group/<id>/delegate/update`
 
 ### Query Parameters
-| Parameter           | Notes                                                    |
-|---------------------|----------------------------------------------------------|
-| `delegate_id` *int* | The delegate id                                          |
-| `tags` *array(int)* | List of tag id's, this will override the previous values |
+| Parameter           | Notes                                             |
+|---------------------|---------------------------------------------------|
+| `id` *int*          | The delegate pool id                              |
+| `tags` *array(int)* | List of tag id's, this will reset previous values |
 
 
 ## Group user delegate delete
@@ -636,6 +636,6 @@ Deletes a delegate id for the current user in group
 `POST <%= config[:endpoint] %>/group/<id>/delegate/delete`
 
 ### Query Parameters
-| Parameter  | Notes                         |
-|------------|-------------------------------|
-| `id` *int* | The delegate id to be deleted |
+| Parameter  | Notes                              |
+|------------|------------------------------------|
+| `id` *int* | The delegate pool id to be deleted |
