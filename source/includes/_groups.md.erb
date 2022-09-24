@@ -165,7 +165,7 @@ curl "<%= config[:endpoint] %>/group/1/users" \
       "username": "User",
       "profile_image": "https://example.com/media/image.png",
       "banner_image": "https://example.com/media/banner.png",
-      "delegate": 2,
+      "delegate": true,
       "permission_id": 1,
       "permission_name": "Bakery"
     }
@@ -233,7 +233,7 @@ curl "<%= config[:endpoint] %>/group/1/invite" \
 Invites a user
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/group/<id>/leave`
+`POST <%= config[:endpoint] %>/group/<id>/invite`
 
 ### Query Parameters
 | Parameter  | Notes                  |
@@ -476,6 +476,71 @@ because deleting the tag will affect delegate relations, use this only when ness
 | Parameter  | Notes                 |
 |------------|-----------------------|
 | `id` *int* | The tag to be deleted |
+
+
+## Group user delegate pool list
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/pools" \
+-H "Authorization: your_token_here"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "delegates": {
+        "delegate_id": 1,
+        "group_user_id": 1,
+        "user_id": 1
+      },
+      ...
+    }
+    ...
+  ]
+}
+```
+
+Lists all delegate pools within the group
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/group/<id>/delegate/pools`
+
+### Query Parameters
+| Parameter                       | Notes             |
+|---------------------------------|-------------------|
+| `id` *int, optional*            | The delegate id   |
+| `group_user_id` *int, optional* | The group user id |
+| `user_id` *int, optional*       | The user id       |
+
+
+## Group user delegate pool create
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/pool/create" \
+-H "Authorization: your_token_here"
+```
+
+Creates a delegate pool for the current user in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/delegate/pool/create`
+
+
+## Group user delegate pool delete
+
+```shell
+curl "<%= config[:endpoint] %>/group/1/delegate/pool/delete" \
+-H "Authorization: your_token_here"
+```
+
+Delete a delegate pool for the current user in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/delegate/pool/delete`
 
 
 ## Group user delegate list
