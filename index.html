@@ -413,6 +413,15 @@
                     <a href="#group-tag-delete" class="toc-h2 toc-link" data-title="Group tag delete">Group tag delete</a>
                   </li>
                   <li>
+                    <a href="#group-delegate-pool-list" class="toc-h2 toc-link" data-title="Group delegate pool list">Group delegate pool list</a>
+                  </li>
+                  <li>
+                    <a href="#group-delegate-pool-create" class="toc-h2 toc-link" data-title="Group delegate pool create">Group delegate pool create</a>
+                  </li>
+                  <li>
+                    <a href="#group-delegate-pool-delete" class="toc-h2 toc-link" data-title="Group delegate pool delete">Group delegate pool delete</a>
+                  </li>
+                  <li>
                     <a href="#group-user-delegate-list" class="toc-h2 toc-link" data-title="Group user delegate list">Group user delegate list</a>
                   </li>
                   <li>
@@ -900,7 +909,7 @@ requiring the user to type their password twice.</aside>
       </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"banner_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/banner.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"delegate"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"permission_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"permission_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bakery"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -966,7 +975,7 @@ requiring the user to type their password twice.</aside>
 </code></pre></div>
 <p>Invites a user</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/leave</code></p>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1251,6 +1260,62 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td>The tag to be deleted</td>
 </tr>
 </tbody></table>
+<h2 id='group-delegate-pool-list'>Group delegate pool list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/pools"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"group_user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Lists all delegate pools within the group</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegate/pools</code></p>
+<h3 id='query-parameters-14'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td>The delegate id</td>
+</tr>
+<tr>
+<td><code>group_user_id</code> <em>int, optional</em></td>
+<td>The group user id</td>
+</tr>
+<tr>
+<td><code>user_id</code> <em>int, optional</em></td>
+<td>The user id</td>
+</tr>
+</tbody></table>
+<h2 id='group-delegate-pool-create'>Group delegate pool create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/pool/create"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<p>Creates a delegate pool for the current user in group</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/create</code></p>
+<h2 id='group-delegate-pool-delete'>Group delegate pool delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/pool/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+</code></pre></div>
+<p>Delete a delegate pool for the current user in group</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/delete</code></p>
 <h2 id='group-user-delegate-list'>Group user delegate list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegates"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
@@ -1268,9 +1333,9 @@ because deleting the tag will affect delegate relations, use this only when ness
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all delegate relations for the current user within the group</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegates</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1307,9 +1372,9 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
 </code></pre></div>
 <p>Creates a delegate relation for the current user in group</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/create</code></p>
-<h3 id='query-parameters-15'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1318,7 +1383,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </thead><tbody>
 <tr>
 <td><code>delegate_id</code> <em>int</em></td>
-<td>The id of the delegate relation, not to be confused with user id. Accessible through the <a href="#group-users-list">group users list</a> <code>delegate</code> parameter</td>
+<td>The id of the delegate pool Accessible through the <a href="#group-delegate-pool-list">group delegate pool list</a> <code>id</code> parameter</td>
 </tr>
 <tr>
 <td><code>tags</code> <em>array(int)</em></td>
@@ -1331,31 +1396,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"active=false"</span>
 </code></pre></div>
 <p>Updates a Delegate relation for the current user in group</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/update</code></p>
-<h3 id='query-parameters-16'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Notes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>delegate_id</code> <em>int</em></td>
-<td>The delegate id</td>
-</tr>
-<tr>
-<td><code>tags</code> <em>array(int)</em></td>
-<td>List of tag id&#39;s, this will override the previous values</td>
-</tr>
-</tbody></table>
-<h2 id='group-user-delegate-delete'>Group user delegate delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/delete"</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
-<span class="nt">-d</span> <span class="s2">"id=1"</span>
-</code></pre></div>
-<p>Deletes a delegate id for the current user in group</p>
-<h3 id='http-request-23'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/delete</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1365,7 +1407,30 @@ because deleting the tag will affect delegate relations, use this only when ness
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>int</em></td>
-<td>The delegate id to be deleted</td>
+<td>The delegate pool id</td>
+</tr>
+<tr>
+<td><code>tags</code> <em>array(int)</em></td>
+<td>List of tag id&#39;s, this will reset previous values</td>
+</tr>
+</tbody></table>
+<h2 id='group-user-delegate-delete'>Group user delegate delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/delete"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+<span class="nt">-d</span> <span class="s2">"id=1"</span>
+</code></pre></div>
+<p>Deletes a delegate id for the current user in group</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/delete</code></p>
+<h3 id='query-parameters-18'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td>The delegate pool id to be deleted</td>
 </tr>
 </tbody></table>
 
