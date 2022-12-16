@@ -444,6 +444,12 @@
                   <li>
                     <a href="#poll-create" class="toc-h2 toc-link" data-title="Poll Create">Poll Create</a>
                   </li>
+                  <li>
+                    <a href="#poll-update" class="toc-h2 toc-link" data-title="Poll Update">Poll Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-delete" class="toc-h2 toc-link" data-title="Poll Delete">Poll Delete</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1465,11 +1471,11 @@ because deleting the tag will affect delegate relations, use this only when ness
       </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"defaulttag"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"proposal_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"prediction_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"delegate_vote_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 12:00 GMT+1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proposal_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 13:00 GMT+1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"prediction_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 14:00 GMT+1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegate_vote_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 15:00 GMT+1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 16:00 GMT+1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"participants"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -1487,35 +1493,35 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code> <em>int</em></td>
+<td><code>id</code> <em>int, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>title</code> <em>str</em></td>
+<td><code>title</code> <em>str, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>title__icontains</code> <em>str</em></td>
+<td><code>title__icontains</code> <em>str, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>poll_type</code> <em>int</em></td>
+<td><code>poll_type</code> <em>int, optional</em></td>
 <td>Polls can be either 0 ranking or 1 for-against</td>
 </tr>
 <tr>
-<td><code>tag</code> <em>int</em></td>
+<td><code>tag</code> <em>int, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>tag_name</code> <em>str</em></td>
+<td><code>tag_name</code> <em>str, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>tag_name__icontains</code> <em>str</em></td>
+<td><code>tag_name__icontains</code> <em>str, optional</em></td>
 <td></td>
 </tr>
 <tr>
-<td><code>finished</code> <em>bool</em></td>
+<td><code>finished</code> <em>bool, optional</em></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -1537,7 +1543,71 @@ because deleting the tag will affect delegate relations, use this only when ness
 <th>Notes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>proposal_end_date</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delegate_vote_end_date</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_type</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code> <em>bool</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dynamic</code> <em>bool</em></td>
+<td></td>
+</tr>
 </tbody></table>
+<h2 id='poll-update'>Poll Update</h2>
+<p>This endpoint updates a poll. </p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/update</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-delete'>Poll Delete</h2>
+<p>This endpoint deletes a poll. </p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delete</code></p>
 
       </div>
       <div class="dark-box">
