@@ -1,0 +1,114 @@
+# Kanban
+
+## Kanban Entry List
+
+This endpoint displays the Kanban board.
+
+> The API returns JSON structured like this for the user part:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "profile_image": "https://example.com/media/image.png",
+      "username": "LokeHagberg",
+      "group": 1,
+      "created_by": 1, 
+      "assignee": 1,
+      "title": "tasktitle", 
+      "description": "taskdescription", 
+      "tag": 1
+    }, ...
+  ]
+}
+```
+
+> The API returns JSON structured like this for the group part:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "LokeHagbergGroup"
+      "image": "https://example.com/media/image.png",
+      "group": 1,
+      "created_by": 1, 
+      "assignee": 1,
+      "title": "tasktitle", 
+      "description": "taskdescription", 
+      "tag": 1
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/kanban/`
+
+### Query Parameters 
+
+| Parameter                                 | Notes                                                               |
+|-------------------------------------------|---------------------------------------------------------------------|
+| `group_id` *int, optional*                |                                                                     |
+| `created_by` *int, optional*              |                                                                     |
+| `assignee` *int, optional*                |                                                                     |
+| `title__icontains` *str, optional*        |                                                                     |
+| `description__icontains` *str, optional*  |                                                                     |
+| `tag` *int, optional*                     | An integer between 1 and 5 for the five columns in the Kanban board |
+
+
+## Kanban Entry Create
+
+This endpoint creates an entry in a Kanban board.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": 1
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/kanban/create`
+
+### Body Parameters 
+
+| Parameter                     | Notes |
+|-------------------------------|-------|
+| `assignee` *str, optional*    |       |
+| `assignee` *int, optional*    |       |
+| `title` *str, optional*       |       |
+| `description` *str, optional* |       |
+| `tag` *int, optional*         |       |
+
+
+## Kanban Entry Update
+
+This endpoint updates a Kanban entry.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/kanban/<kanban_entry_id>/update`
+
+### Body Parameters 
+
+| Parameter                          | Notes                                                               |
+|------------------------------------|---------------------------------------------------------------------|
+| `assignee` *int, optional*         |                                                                     |
+| `title` *str, optional*            |                                                                     |
+| `description` *str, optional*      |                                                                     |
+| `tag` *int, optional*              | An integer between 1 and 5 for the five columns in the Kanban board |
+
+
+## Kanban Entry Delete
+
+This endpoint deletes a Kanban entry.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/kanban/<kanban_entry_id>/delete`

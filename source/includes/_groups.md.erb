@@ -154,7 +154,7 @@ This endpoint sends a mail to the members in the group.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/mail`
+`POST <%= config[:endpoint] %>/group/<id>/mail`
 
 ### Body Parameters 
 
@@ -211,7 +211,7 @@ This endpoint updates group user information.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/user/update`
+`POST <%= config[:endpoint] %>/group/<id>/user/update`
 
 ### Body Parameters 
 
@@ -279,7 +279,7 @@ This endpoint lists the invites from a group.
 
 ### HTTP Request
 
-`GET <%= config[:endpoint] %>/group/<group_id>/invites`
+`GET <%= config[:endpoint] %>/group/<id>/invites`
 
 ### Query Parameters 
 
