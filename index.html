@@ -517,6 +517,15 @@
                   <li>
                     <a href="#direct-message-preview" class="toc-h2 toc-link" data-title="Direct Message Preview">Direct Message Preview</a>
                   </li>
+                  <li>
+                    <a href="#group-chat-consumer" class="toc-h2 toc-link" data-title="Group Chat Consumer">Group Chat Consumer</a>
+                  </li>
+                  <li>
+                    <a href="#chat-consumer" class="toc-h2 toc-link" data-title="Chat Consumer">Chat Consumer</a>
+                  </li>
+                  <li>
+                    <a href="#direct-chat-consumer" class="toc-h2 toc-link" data-title="Direct Chat Consumer">Direct Chat Consumer</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -2146,10 +2155,6 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </thead><tbody>
 <tr>
-<td><code>assignee</code> <em>str, optional</em></td>
-<td></td>
-</tr>
-<tr>
 <td><code>assignee</code> <em>int, optional</em></td>
 <td></td>
 </tr>
@@ -2396,6 +2401,87 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 <tr>
 <td><code>created_at__gt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='group-chat-consumer'>Group Chat Consumer</h2>
+<p>This endpoint is a websocket endpoint, the group chat consumer.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"***"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>*** https://v2.flowback.org/chat/ws/group/&lt;group_id&gt;</code></p>
+<h3 id='parameters'>*** Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>***</code> <em>type, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='chat-consumer'>Chat Consumer</h2>
+<p>This endpoint is a websocket endpoint, the chat consumer.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"***"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>*** https://v2.flowback.org/chat/ws</code></p>
+<h3 id='parameters-2'>*** Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>***</code> <em>type, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='direct-chat-consumer'>Direct Chat Consumer</h2>
+<p>This endpoint is a websocket endpoint, the direct chat consumer.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"***"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>*** https://v2.flowback.org/chat/ws/direct</code></p>
+<h3 id='parameters-3'>*** Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>***</code> <em>type, optional</em></td>
 <td></td>
 </tr>
 </tbody></table>
