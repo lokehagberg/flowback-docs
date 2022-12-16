@@ -148,6 +148,22 @@ Deletes a group
 `POST <%= config[:endpoint] %>/group/<id>/delete`
 
 
+## Group Mail
+
+This endpoint sends a mail to the members in the group.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/mail`
+
+### Body Parameters 
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `title` *str, optional*            |       |
+| `message` *str, optional*          |       |
+
+
 ## Group users list
 
 ```shell
@@ -187,6 +203,24 @@ Lists all users in the group
 | `delegate` *bool, optional*           | Whether user is a delegate or not    |
 | `is_admin` *bool, optional*           |                                      |
 | `permission` *int, optional*          | The permission ID of the user        |
+
+
+## Group User Update
+
+This endpoint updates group user information.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/user/update`
+
+### Body Parameters 
+
+| Parameter                    | Notes |
+|------------------------------|-------|
+| `user` *int, optional*       |       |
+| `delegate` *bool, optional*  |       |
+| `permission` *int, optional* |       |
+| `is_admin` *int, optional*   |       |
 
 
 ## Group join
