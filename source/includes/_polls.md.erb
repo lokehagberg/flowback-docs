@@ -1,0 +1,85 @@
+# Poll
+
+## Poll List
+
+This endpoint generates a list of polls. 
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "group_id": 1,
+      "group_name": "Management",
+      "group_image": "https://example.com/media/image.png",
+      "created_by": 1,
+      "hide_poll_users": true,
+      "title": "Question",
+      "description": "Informationaboutthequestion",
+      "poll_type": 0,
+      "public": false,
+      "tag": 1,
+      "tag_name": "defaulttag",
+      "start_date": ***,
+      "proposal_end_date": ***,
+      "prediction_end_date": ***,
+      "delegate_vote_end_date": ***,
+      "end_date": ***,
+      "finished": false,
+      "result": false,
+      "participants": 2,
+      "dynamic": false
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/list`
+
+### Query Parameters
+
+| Parameter                   | Notes                                          |
+|-----------------------------|------------------------------------------------|
+| `id` *int*                  |                                                |
+| `title` *str*               |                                                |
+| `title__icontains` *str*    |                                                |
+| `poll_type` *int*           | Polls can be either 0 ranking or 1 for-against |
+| `tag` *int*                 |                                                |
+| `tag_name` *str*            |                                                |
+| `tag_name__icontains` *str* |                                                |
+| `finished` *bool*           |                                                |
+
+
+## Poll Create
+
+This endpoint creates a poll. 
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": 1
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/create`
+
+### Body Parameters
+
+| Parameter                   | Notes                                          |
+|-----------------------------|------------------------------------------------|
+| `id` *int*                  |                                                |
+| `title` *str*               |                                                |
+| `title__icontains` *str*    |                                                |
+| `poll_type` *int*           | Polls can be either 0 ranking or 1 for-against |
+| `tag` *int*                 |                                                |
+| `tag_name` *str*            |                                                |
+| `tag_name__icontains` *str* |                                                |
+| `finished` *bool*           |                                                |
+
