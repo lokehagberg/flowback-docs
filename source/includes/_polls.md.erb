@@ -218,7 +218,7 @@ This endpoint deletes a proposal.
 
 ## Poll Proposal Vote List
 
-This endpoint gets the votes on proposals.
+This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively. 
 
 > The API returns JSON structured like this for ranked voting:
 
@@ -226,8 +226,8 @@ This endpoint gets the votes on proposals.
 {
   "data": [
     {
-      "author": ***,
-      "author_delegate": ***,
+      "author": 1,
+      "author_delegate": null,
       "proposal": 1,
       "priority": 1,
       "score": 1,
@@ -242,8 +242,8 @@ This endpoint gets the votes on proposals.
 {
   "data": [
     {
-      "author": ***,
-      "author_delegate": ***,
+      "author": 1,
+      "author_delegate": null,
       "proposal": 1,
       "vote": 1,
       "score": 1,
@@ -282,7 +282,7 @@ This endpoint updates votes on proposals.
 
 ## Poll Proposal Vote Update
 
-This endpoint updates delegates votes on proposals.***
+This endpoint updates delegates votes on proposals.
 
 ### HTTP Request
 
