@@ -257,6 +257,72 @@ Leaves a group
 `POST <%= config[:endpoint] %>/group/<id>/leave`
 
 
+## Group Invite List 1
+
+This endpoint lists the invites from a group.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "user": 1,
+      "username": "LokeHagberg",
+      "profile_image": "https://example.com/media/image.png",
+      "group": "1",
+      "external": true
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/invites`
+
+### Query Parameters 
+
+| Parameter                             | Notes |
+|---------------------------------------|-------|
+| `user` *int, optional*                |       |
+| `username__icontains` *str, optional* |       |
+| `group` *int, optional*               |       |
+
+
+## Group Invite List 2
+
+This endpoint lists the invites from a group.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "user": 1,
+      "username": "LokeHagberg",
+      "profile_image": "https://example.com/media/image.png",
+      "group": "1",
+      "external": true
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/invites`
+
+### Query Parameters 
+
+| Parameter                             | Notes |
+|---------------------------------------|-------|
+| `user` *int, optional*                |       |
+| `username__icontains` *str, optional* |       |
+| `group` *int, optional*               |       |
+
+
 ## Group user invite
 
 ```shell
