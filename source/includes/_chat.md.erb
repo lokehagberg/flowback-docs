@@ -143,3 +143,83 @@ This endpoint gets the message preview of a direct message chat.
 | `created_at__lt` *str, optional*     |       |
 | `created_at__gt` *str, optional*     |       |
 
+
+## Group Chat Consumer 
+
+This endpoint is a websocket endpoint, the group chat consumer.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "***": ***,
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`*** <%= config[:endpoint] %>/chat/ws/group/<group_id>`
+
+### *** Parameters 
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `***` *type, optional*             |       |
+
+
+## Chat Consumer 
+
+This endpoint is a websocket endpoint, the chat consumer.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "***": ***,
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`*** <%= config[:endpoint] %>/chat/ws`
+
+### *** Parameters 
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `***` *type, optional*             |       |
+
+
+## Direct Chat Consumer
+
+This endpoint is a websocket endpoint, the direct chat consumer.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "***": ***,
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`*** <%= config[:endpoint] %>/chat/ws/direct`
+
+### *** Parameters 
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `***` *type, optional*             |       |
