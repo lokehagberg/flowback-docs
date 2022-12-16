@@ -111,4 +111,62 @@ This endpoint deletes a poll.
 `POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delete`
 
 
+## Poll Proposal List
 
+This endpoint lists the proposals of a poll. 
+
+> The API returns JSON structured like this for normal polls:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "created_by": 1,
+      "poll": 1,
+      "title": "Solution1",
+      "description": "Informationaboutthesolution",
+      "score": 0
+    }, ...
+  ]
+}
+```
+
+> The API returns JSON structured like this for schedule polls:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "created_by": 1,
+      "poll": 1,
+      "score": 0,
+      "start_date": ***,
+      "end_date": ***
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposals`
+
+### Query Parameters 
+
+These are the parameters for normal polls
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `id` *int, optional*               |       |
+| `created_by` *int, optional*       |       |
+| `title` *str, optional*            |       |
+| `title__icontains` *str, optional* |       |
+
+These are the parameters for schedule polls
+
+| Parameter                     | Notes |
+|-------------------------------|-------|
+| `start_date` *str, optional*  |       |
+| `end_date` *str, optional*    |       |
