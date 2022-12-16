@@ -435,6 +435,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#poll" class="toc-h1 toc-link" data-title="Poll">Poll</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#poll-list" class="toc-h2 toc-link" data-title="Poll List">Poll List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-create" class="toc-h2 toc-link" data-title="Poll Create">Poll Create</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/gofven/flowback'>Download Flowback at Github</a></li>
@@ -1431,6 +1442,132 @@ because deleting the tag will affect delegate relations, use this only when ness
 <tr>
 <td><code>id</code> <em>int</em></td>
 <td>The delegate pool id to be deleted</td>
+</tr>
+</tbody></table>
+<h1 id='poll'>Poll</h1><h2 id='poll-list'>Poll List</h2>
+<p>This endpoint generates a list of polls. </p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hide_poll_users"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informationaboutthequestion"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poll_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"defaulttag"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proposal_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"prediction_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegate_vote_end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"finished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"participants"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dynamic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/list</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title__icontains</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_type</code> <em>int</em></td>
+<td>Polls can be either 0 ranking or 1 for-against</td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_name</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_name__icontains</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>finished</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-create'>Poll Create</h2>
+<p>This endpoint creates a poll. </p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/create</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title__icontains</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_type</code> <em>int</em></td>
+<td>Polls can be either 0 ranking or 1 for-against</td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_name</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_name__icontains</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>finished</code> <em>bool</em></td>
+<td></td>
 </tr>
 </tbody></table>
 
