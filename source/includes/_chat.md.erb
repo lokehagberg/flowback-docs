@@ -1,2 +1,76 @@
 # Chat
 
+## Group Message List
+
+This endpoint gets the message list of a group chat.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "user_id": 1,
+      "username": "LokeHagberg",
+      "profile_image": "https://example.com/media/image.png",
+      "message": "hello world",
+      "created_at": "2022-01-01 12:00 GMT+1"
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/chat/group/<group_id>`
+
+### Query Parameters 
+
+| Parameter                             | Notes |
+|---------------------------------------|-------|
+| `id` *int, optional*                  |       |
+| `user` *int, optional*                |       |
+| `username__icontains` *str, optional* |       |
+| `message` *str, optional*             |       |
+| `created_at__lt` *str, optional*      |       |
+| `created_at__gt` *str, optional*      |       |
+| `order_by` *int, optional*            |       |
+
+
+## Group Message Preview
+
+This endpoint gets the message preview of a group chat.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "group_id": 1,
+      "user_id": 1,
+      "username": "LokeHagberg",
+      "profile_image": "https://example.com/media/image.png",
+      "message": "hello world",
+      "created_at": "2022-01-01 12:00 GMT+1"
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/chat/group/preview`
+
+### Query Parameters 
+
+| Parameter                               | Notes |
+|-----------------------------------------|-------|
+| `id` *int, optional*                    |       |
+| `group` *int, optional*                 |       |
+| `group_name__icontains` *str, optional* |       |
+| `message__icontains` *str, optional*    |       |
+| `created_at__lt` *str, optional*        |       |
+| `created_at__gt` *str, optional*        |       |
+
+
