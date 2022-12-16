@@ -112,114 +112,13 @@ This endpoint gets the message list of a direct message chat.
 
 This endpoint gets the message preview of a direct message chat.
 
-> The API returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "username": "LokeHagberg",
-      "target_username": "YuliyaHagberg",
-      "target_id": 2,
-      "profile_image": "https://example.com/media/image.png",
-      "message": "I love you",
-      "created_at": "2022-01-01 12:00 GMT+1"
-    }, ...
-  ]
-}
-```
-
-### HTTP Request
-
-`GET <%= config[:endpoint] %>/chat/direct/preview`
-
-### Query Parameters 
-
-| Parameter                            | Notes |
-|--------------------------------------|-------|
-| `id` *int, optional*                 |       |
-| `target` *int, optional*             |       |
-| `message__icontains` *str, optional* |       |
-| `created_at__lt` *str, optional*     |       |
-| `created_at__gt` *str, optional*     |       |
-
 
 ## Group Chat Consumer 
 
 This endpoint is a websocket endpoint, the group chat consumer.
-
-> The API returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "***": ***,
-    }, ...
-  ]
-}
-```
-
-### HTTP Request
-
-`*** <%= config[:endpoint] %>/chat/ws/group/<group_id>`
-
-### *** Parameters 
-
-| Parameter                          | Notes |
-|------------------------------------|-------|
-| `***` *type, optional*             |       |
 
 
 ## Chat Consumer 
 
 This endpoint is a websocket endpoint, the chat consumer.
 
-> The API returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "***": ***,
-    }, ...
-  ]
-}
-```
-
-### HTTP Request
-
-`*** <%= config[:endpoint] %>/chat/ws`
-
-### *** Parameters 
-
-| Parameter                          | Notes |
-|------------------------------------|-------|
-| `***` *type, optional*             |       |
-
-
-## Direct Chat Consumer
-
-This endpoint is a websocket endpoint, the direct chat consumer.
-
-> The API returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "***": ***,
-    }, ...
-  ]
-}
-```
-
-### HTTP Request
-
-`*** <%= config[:endpoint] %>/chat/ws/direct`
-
-### *** Parameters 
-
-| Parameter                          | Notes |
-|------------------------------------|-------|
-| `***` *type, optional*             |       |
