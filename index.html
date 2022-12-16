@@ -371,7 +371,13 @@
                     <a href="#group-delete" class="toc-h2 toc-link" data-title="Group delete">Group delete</a>
                   </li>
                   <li>
+                    <a href="#group-mail" class="toc-h2 toc-link" data-title="Group Mail">Group Mail</a>
+                  </li>
+                  <li>
                     <a href="#group-users-list" class="toc-h2 toc-link" data-title="Group users list">Group users list</a>
+                  </li>
+                  <li>
+                    <a href="#group-user-update" class="toc-h2 toc-link" data-title="Group User Update">Group User Update</a>
                   </li>
                   <li>
                     <a href="#group-join" class="toc-h2 toc-link" data-title="Group join">Group join</a>
@@ -934,6 +940,26 @@ requiring the user to type their password twice.</aside>
 <p>Deletes a group</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delete</code></p>
+<h2 id='group-mail'>Group Mail</h2>
+<p>This endpoint sends a mail to the members in the group.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/mail</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='group-users-list'>Group users list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/users"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
@@ -955,7 +981,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all users in the group</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/users</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -989,6 +1015,34 @@ requiring the user to type their password twice.</aside>
 <td>The permission ID of the user</td>
 </tr>
 </tbody></table>
+<h2 id='group-user-update'>Group User Update</h2>
+<p>This endpoint updates group user information.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/user/update</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delegate</code> <em>bool, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>permission</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_admin</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='group-join'>Group join</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/join"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
@@ -1000,19 +1054,19 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Join a group, this will return either &quot;join&quot;, or &quot;invite&quot; depending on the group settings</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/join</code></p>
 <h2 id='group-leave'>Group leave</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/leave"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Leaves a group</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/leave</code></p>
 <h2 id='group-user-invite'>Group user invite</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Invites a user</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -1030,13 +1084,13 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User accepts a group invite</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/accept</code></p>
 <h2 id='group-invite-reject'>Group invite reject</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite/reject"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User rejects a group invite</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/reject</code></p>
 <h2 id='group-permission-list'>Group permission list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permissions"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
@@ -1059,7 +1113,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all permissions for the group</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/permissions</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -1091,7 +1145,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
 </code></pre></div>
 <p>Creates a permission for the group</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/create</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -1136,7 +1190,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
 </code></pre></div>
 <p>Updates a permission for the group</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/update</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
@@ -1178,7 +1232,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Deletes a permission for the group, this will set all users associated with the permission to group default</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/delete</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
@@ -1209,7 +1263,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all tags for the group</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/tags</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
@@ -1240,7 +1294,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
 </code></pre></div>
 <p>Creates a tag for the group</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/create</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
@@ -1260,7 +1314,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"active=false"</span>
 </code></pre></div>
 <p>Updates a tag for the group</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/update</code></p>
 <h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
@@ -1284,7 +1338,7 @@ requiring the user to type their password twice.</aside>
 </code></pre></div>
 <p>Deletes a tag for the group, it is recommended to use the update function to disable active status for the tag,
 because deleting the tag will affect delegate relations, use this only when nessesary.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/delete</code></p>
 <h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
@@ -1320,7 +1374,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all delegate pools within the group</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegate/pools</code></p>
 <h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
@@ -1346,13 +1400,13 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Creates a delegate pool for the current user in group</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/create</code></p>
 <h2 id='group-delegate-pool-delete'>Group delegate pool delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/pool/delete"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Delete a delegate pool for the current user in group</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/delete</code></p>
 <h2 id='group-user-delegate-list'>Group user delegate list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegates"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
@@ -1371,7 +1425,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all delegate relations for the current user within the group</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegates</code></p>
 <h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
@@ -1410,7 +1464,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
 </code></pre></div>
 <p>Creates a delegate relation for the current user in group</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/create</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
@@ -1434,7 +1488,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"active=false"</span>
 </code></pre></div>
 <p>Updates a Delegate relation for the current user in group</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/update</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
@@ -1457,7 +1511,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"id=1"</span>
 </code></pre></div>
 <p>Deletes a delegate id for the current user in group</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/delete</code></p>
 <h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
