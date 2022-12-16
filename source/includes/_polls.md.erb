@@ -22,11 +22,11 @@ This endpoint generates a list of polls.
       "public": false,
       "tag": 1,
       "tag_name": "defaulttag",
-      "start_date": ***,
-      "proposal_end_date": ***,
-      "prediction_end_date": ***,
-      "delegate_vote_end_date": ***,
-      "end_date": ***,
+      "start_date": "2022-01-01 12:00 GMT+1",
+      "proposal_end_date": "2022-01-01 13:00 GMT+1",
+      "prediction_end_date": "2022-01-01 14:00 GMT+1",
+      "delegate_vote_end_date": "2022-01-01 15:00 GMT+1",
+      "end_date": "2022-01-01 16:00 GMT+1",
       "finished": false,
       "result": false,
       "participants": 2,
@@ -42,16 +42,16 @@ This endpoint generates a list of polls.
 
 ### Query Parameters
 
-| Parameter                   | Notes                                          |
-|-----------------------------|------------------------------------------------|
-| `id` *int*                  |                                                |
-| `title` *str*               |                                                |
-| `title__icontains` *str*    |                                                |
-| `poll_type` *int*           | Polls can be either 0 ranking or 1 for-against |
-| `tag` *int*                 |                                                |
-| `tag_name` *str*            |                                                |
-| `tag_name__icontains` *str* |                                                |
-| `finished` *bool*           |                                                |
+| Parameter                             | Notes                                          |
+|---------------------------------------|------------------------------------------------|
+| `id` *int, optional*                  |                                                |
+| `title` *str, optional*               |                                                |
+| `title__icontains` *str, optional*    |                                                |
+| `poll_type` *int, optional*           | Polls can be either 0 ranking or 1 for-against |
+| `tag` *int, optional*                 |                                                |
+| `tag_name` *str, optional*            |                                                |
+| `tag_name__icontains` *str, optional* |                                                |
+| `finished` *bool, optional*           |                                                |
 
 
 ## Poll Create
@@ -72,7 +72,43 @@ This endpoint creates a poll.
 
 ### Body Parameters
 
-| Parameter                   | Notes                                          |
-|-----------------------------|------------------------------------------------|
+| Parameter                      | Notes |
+|--------------------------------|-------|
+| `title` *str*                  |       |
+| `description` *str*            |       |
+| `start_date` *str*             |       |
+| `proposal_end_date` *str*      |       |
+| `delegate_vote_end_date` *str* |       |
+| `end_date` *str*               |       |
+| `poll_type` *int*              |       |
+| `public` *bool*                |       |
+| `tag` *int*                    |       |
+| `dynamic` *bool*               |       |
+
+
+## Poll Update
+
+This endpoint updates a poll. 
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/update`
+
+### Body Parameters
+
+| Parameter                      | Notes |
+|--------------------------------|-------|
+| `title` *str, optional*        |       |
+| `description` *str, optional*  |       |
+
+
+## Poll Delete
+
+This endpoint deletes a poll. 
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delete`
+
 
 
