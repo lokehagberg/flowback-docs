@@ -504,6 +504,14 @@
           </li>
           <li>
             <a href="#chat" class="toc-h1 toc-link" data-title="Chat">Chat</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#group-message-list" class="toc-h2 toc-link" data-title="Group Message List">Group Message List</a>
+                  </li>
+                  <li>
+                    <a href="#group-message-preview" class="toc-h2 toc-link" data-title="Group Message Preview">Group Message Preview</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -2184,7 +2192,114 @@ because deleting the tag will affect delegate relations, use this only when ness
 <p>This endpoint deletes a Kanban entry.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/kanban/&lt;kanban_entry_id&gt;/delete</code></p>
-<h1 id='chat'>Chat</h1>
+<h1 id='chat'>Chat</h1><h2 id='group-message-list'>Group Message List</h2>
+<p>This endpoint gets the message list of a group chat.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LokeHagberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello world"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 12:00 GMT+1"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/chat/group/&lt;group_id&gt;</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>username__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__lt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__gt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>order_by</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='group-message-preview'>Group Message Preview</h2>
+<p>This endpoint gets the message preview of a group chat.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LokeHagberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello world"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 12:00 GMT+1"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/chat/group/preview</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>group</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>group_name__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__lt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__gt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
