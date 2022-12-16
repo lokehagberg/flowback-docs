@@ -450,6 +450,9 @@
                   <li>
                     <a href="#poll-delete" class="toc-h2 toc-link" data-title="Poll Delete">Poll Delete</a>
                   </li>
+                  <li>
+                    <a href="#poll-proposal-list" class="toc-h2 toc-link" data-title="Poll Proposal List">Poll Proposal List</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1608,6 +1611,86 @@ because deleting the tag will affect delegate relations, use this only when ness
 <p>This endpoint deletes a poll. </p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delete</code></p>
+<h2 id='poll-proposal-list'>Poll Proposal List</h2>
+<p>This endpoint lists the proposals of a poll. </p>
+
+<blockquote>
+<p>The API returns JSON structured like this for normal polls:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poll"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solution1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informationaboutthesolution"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The API returns JSON structured like this for schedule polls:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"poll"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposals</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<p>These are the parameters for normal polls</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>These are the parameters for schedule polls</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
