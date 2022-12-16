@@ -453,6 +453,24 @@
                   <li>
                     <a href="#poll-proposal-list" class="toc-h2 toc-link" data-title="Poll Proposal List">Poll Proposal List</a>
                   </li>
+                  <li>
+                    <a href="#poll-proposal-create" class="toc-h2 toc-link" data-title="Poll Proposal Create">Poll Proposal Create</a>
+                  </li>
+                  <li>
+                    <a href="#poll-proposal-delete" class="toc-h2 toc-link" data-title="Poll Proposal Delete">Poll Proposal Delete</a>
+                  </li>
+                  <li>
+                    <a href="#poll-proposal-vote-list" class="toc-h2 toc-link" data-title="Poll Proposal Vote List">Poll Proposal Vote List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-proposal-delegate-update" class="toc-h2 toc-link" data-title="Poll Proposal Delegate Update">Poll Proposal Delegate Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-proposal-vote-update" class="toc-h2 toc-link" data-title="Poll Proposal Vote Update">Poll Proposal Vote Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-delegates-list" class="toc-h2 toc-link" data-title="Poll Delegates List">Poll Delegates List</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1454,7 +1472,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h1 id='poll'>Poll</h1><h2 id='poll-list'>Poll List</h2>
-<p>This endpoint generates a list of polls. </p>
+<p>This endpoint gets a list of polls. </p>
 
 <blockquote>
 <p>The API returns JSON structured like this:</p>
@@ -1688,6 +1706,178 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 <tr>
 <td><code>end_date</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-proposal-create'>Poll Proposal Create</h2>
+<p>This endpoint creates a proposal.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/create</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<p>These are the parameters for normal polls</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>These are the parameters for schedule polls</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>str</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-proposal-delete'>Poll Proposal Delete</h2>
+<p>This endpoint deletes a proposal. </p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/&lt;proposal_id&gt;/delete</code></p>
+<h2 id='poll-proposal-vote-list'>Poll Proposal Vote List</h2>
+<p>This endpoint gets the votes on proposals.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this for ranked voting:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The API returns JSON structured like this for for-against voting:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vote"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/votes</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>delegates</code> <em>bool, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delegate_pool_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delegate_user_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-proposal-delegate-update'>Poll Proposal Delegate Update</h2>
+<p>This endpoint updates votes on proposals.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/update</code></p>
+<h3 id='body-parameters-4'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>votes</code> <em>list</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-proposal-vote-update'>Poll Proposal Vote Update</h2>
+<p>This endpoint updates delegates votes on proposals.***</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/delegate/update</code></p>
+<h3 id='body-parameters-5'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>votes</code> <em>list</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-delegates-list'>Poll Delegates List</h2>
+<p>This endpoint gets the possible delegates on this poll.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delegates</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_by</code> <em>int, optional</em></td>
 <td></td>
 </tr>
 </tbody></table>
