@@ -1769,7 +1769,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/&lt;proposal_id&gt;/delete</code></p>
 <h2 id='poll-proposal-vote-list'>Poll Proposal Vote List</h2>
-<p>This endpoint gets the votes on proposals.</p>
+<p>This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively. </p>
 
 <blockquote>
 <p>The API returns JSON structured like this for ranked voting:</p>
@@ -1777,8 +1777,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -1792,8 +1792,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="err">***</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author_delegate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"vote"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -1839,7 +1839,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='poll-proposal-vote-update'>Poll Proposal Vote Update</h2>
-<p>This endpoint updates delegates votes on proposals.***</p>
+<p>This endpoint updates delegates votes on proposals.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/delegate/update</code></p>
 <h3 id='body-parameters-5'>Body Parameters</h3>
