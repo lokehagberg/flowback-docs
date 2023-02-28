@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - users
   - groups
+  - chat
 
 search: true
 
@@ -34,17 +35,17 @@ and you can switch the programming language of the examples with the tabs in the
 
 ```shell
 curl "api_endpoint_here" \
--H "Authorization: your_token_here"
+-H "Authorization: Token your_token_here"
 ```
 
 > Make sure to replace `your_token_here` with your API key.
 
-Flowback uses API keys to allow access to the API. You can get an API key using the [Login API endpoint](#register).
+Flowback uses API keys to allow access to the API. You can get an API key using the [Login API endpoint](#login).
 
 Flowback expects for the API key to be included in all API requests to the server (aside from registration)
 in a header that looks like the following:
 
-`Authorization: your_token_here`
+`Authorization: Token your_token_here`
 
 <aside class="notice">
 You must replace <code>your_token_here</code> with your personal API key.
