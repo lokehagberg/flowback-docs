@@ -1,4 +1,27 @@
 # Group
+## Identity
+[`group`](#group-list)
+## Notification Categories
+| Category   | Path               | Related id location |
+|------------|--------------------|---------------------|
+| `group`    |                    |                     |
+| `members`  |                    |                     |
+| `invite`   |                    |                     |
+| `delegate` |                    |                     |
+| `poll`     | [here](#poll-list) | [here](#poll-list)  |
+| `kanban`   |                    |                     |
+| `schedule` |                    |                     |
+
+## Notification Subscribe
+Subscribes to `group`
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<group_id>/subscribe`
+
+### Input Parameters
+| Parameter                | Notes                    |
+|--------------------------|--------------------------|
+| `categories` *list[str]* | Categories to subscribe  |
 
 ## Group list
 
@@ -156,7 +179,7 @@ This endpoint sends a mail to the members in the group.
 
 `POST <%= config[:endpoint] %>/group/<id>/mail`
 
-### Body Parameters 
+### Body Parameters
 
 | Parameter                          | Notes |
 |------------------------------------|-------|
@@ -213,7 +236,7 @@ This endpoint updates group user information.
 
 `POST <%= config[:endpoint] %>/group/<id>/user/update`
 
-### Body Parameters 
+### Body Parameters
 
 | Parameter                    | Notes |
 |------------------------------|-------|
@@ -281,7 +304,7 @@ This endpoint lists the invites from a group.
 
 `GET <%= config[:endpoint] %>/group/<id>/invites`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                             | Notes |
 |---------------------------------------|-------|
@@ -314,7 +337,7 @@ This endpoint lists the invites from a group.
 
 `GET <%= config[:endpoint] %>/group/invites`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                             | Notes |
 |---------------------------------------|-------|

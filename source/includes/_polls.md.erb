@@ -1,8 +1,28 @@
 # Poll
 
+## Identity
+[`poll`](#poll-list)
+
+## Notification Categories
+| Category   | Path | Related id location |
+|------------|------|---------------------|
+| `poll`     |      |                     |
+| `timeline` |      |                     |
+
+## Notification Subscribe
+Subscribes to `poll`
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/subscribe`
+
+### Input Parameters
+| Parameter                | Notes                    |
+|--------------------------|--------------------------|
+| `categories` *list[str]* | Categories to subscribe  |
+
 ## Poll List
 
-This endpoint gets a list of polls. 
+This endpoint gets a list of polls.
 
 > The API returns JSON structured like this:
 
@@ -56,7 +76,7 @@ This endpoint gets a list of polls.
 
 ## Poll Create
 
-This endpoint creates a poll. 
+This endpoint creates a poll.
 
 > The API returns JSON structured like this:
 
@@ -88,7 +108,7 @@ This endpoint creates a poll.
 
 ## Poll Update
 
-This endpoint updates a poll. 
+This endpoint updates a poll.
 
 ### HTTP Request
 
@@ -104,7 +124,7 @@ This endpoint updates a poll.
 
 ## Poll Delete
 
-This endpoint deletes a poll. 
+This endpoint deletes a poll.
 
 ### HTTP Request
 
@@ -113,7 +133,7 @@ This endpoint deletes a poll.
 
 ## Poll Proposal List
 
-This endpoint lists the proposals of a poll. 
+This endpoint lists the proposals of a poll.
 
 > The API returns JSON structured like this for normal polls:
 
@@ -153,7 +173,7 @@ This endpoint lists the proposals of a poll.
 
 `GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposals`
 
-### Query Parameters 
+### Query Parameters
 
 These are the parameters for normal polls
 
@@ -188,7 +208,7 @@ This endpoint creates a proposal.
 
 `POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/create`
 
-### Body Parameters 
+### Body Parameters
 
 These are the parameters for normal polls
 
@@ -209,7 +229,7 @@ These are the parameters for schedule polls
 
 ## Poll Proposal Delete
 
-This endpoint deletes a proposal. 
+This endpoint deletes a proposal.
 
 ### HTTP Request
 
@@ -218,7 +238,7 @@ This endpoint deletes a proposal.
 
 ## Poll Proposal Vote List
 
-This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively. 
+This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively.
 
 > The API returns JSON structured like this for ranked voting:
 
@@ -256,7 +276,7 @@ This endpoint gets the votes on proposals. Either author or author_delegate can 
 
 `GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/votes`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                          | Notes |
 |------------------------------------|-------|
@@ -273,7 +293,7 @@ This endpoint updates votes on proposals.
 
 `POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/update`
 
-### Body Parameters 
+### Body Parameters
 
 | Parameter            | Notes |
 |----------------------|-------|
@@ -288,7 +308,7 @@ This endpoint updates delegates votes on proposals.
 
 `POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/delegate/update`
 
-### Body Parameters 
+### Body Parameters
 
 | Parameter            | Notes |
 |----------------------|-------|
@@ -315,7 +335,7 @@ This endpoint gets the possible delegates on this poll.
 
 `GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delegates`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                          | Notes |
 |------------------------------------|-------|
