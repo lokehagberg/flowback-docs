@@ -1,0 +1,342 @@
+# Poll
+
+## Identity
+[`poll`](#poll-list)
+
+## Notification Categories
+| Category   | Path | Related id location |
+|------------|------|---------------------|
+| `poll`     |      |                     |
+| `timeline` |      |                     |
+
+## Notification Subscribe
+Subscribes to `poll`
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/subscribe`
+
+### Input Parameters
+| Parameter                | Notes                    |
+|--------------------------|--------------------------|
+| `categories` *list[str]* | Categories to subscribe  |
+
+## Poll List
+
+This endpoint gets a list of polls.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "group_id": 1,
+      "group_name": "Management",
+      "group_image": "https://example.com/media/image.png",
+      "created_by": 1,
+      "hide_poll_users": true,
+      "title": "Question",
+      "description": "Informationaboutthequestion",
+      "poll_type": 0,
+      "public": false,
+      "tag": 1,
+      "tag_name": "defaulttag",
+      "start_date": "2022-01-01 12:00 GMT+1",
+      "proposal_end_date": "2022-01-01 13:00 GMT+1",
+      "prediction_end_date": "2022-01-01 14:00 GMT+1",
+      "delegate_vote_end_date": "2022-01-01 15:00 GMT+1",
+      "end_date": "2022-01-01 16:00 GMT+1",
+      "finished": false,
+      "result": false,
+      "participants": 2,
+      "dynamic": false
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/list`
+
+### Query Parameters
+
+| Parameter                             | Notes                                          |
+|---------------------------------------|------------------------------------------------|
+| `id` *int, optional*                  |                                                |
+| `title` *str, optional*               |                                                |
+| `title__icontains` *str, optional*    |                                                |
+| `poll_type` *int, optional*           | Polls can be either 0 ranking or 1 for-against |
+| `tag` *int, optional*                 |                                                |
+| `tag_name` *str, optional*            |                                                |
+| `tag_name__icontains` *str, optional* |                                                |
+| `finished` *bool, optional*           |                                                |
+
+
+## Poll Create
+
+This endpoint creates a poll.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": 1
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/create`
+
+### Body Parameters
+
+| Parameter                      | Notes |
+|--------------------------------|-------|
+| `title` *str*                  |       |
+| `description` *str*            |       |
+| `start_date` *str*             |       |
+| `proposal_end_date` *str*      |       |
+| `delegate_vote_end_date` *str* |       |
+| `end_date` *str*               |       |
+| `poll_type` *int*              |       |
+| `public` *bool*                |       |
+| `tag` *int*                    |       |
+| `dynamic` *bool*               |       |
+
+
+## Poll Update
+
+This endpoint updates a poll.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/update`
+
+### Body Parameters
+
+| Parameter                      | Notes |
+|--------------------------------|-------|
+| `title` *str, optional*        |       |
+| `description` *str, optional*  |       |
+
+
+## Poll Delete
+
+This endpoint deletes a poll.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delete`
+
+
+## Poll Proposal List
+
+This endpoint lists the proposals of a poll.
+
+> The API returns JSON structured like this for normal polls:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "created_by": 1,
+      "poll": 1,
+      "title": "Solution1",
+      "description": "Informationaboutthesolution",
+      "score": 0
+    }, ...
+  ]
+}
+```
+
+> The API returns JSON structured like this for schedule polls:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "created_by": 1,
+      "poll": 1,
+      "score": 0,
+      "start_date": "2022-01-01 12:00 GMT+1",
+      "end_date": "2022-01-01 13:00 GMT+1"
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposals`
+
+### Query Parameters
+
+These are the parameters for normal polls
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `id` *int, optional*               |       |
+| `created_by` *int, optional*       |       |
+| `title` *str, optional*            |       |
+| `title__icontains` *str, optional* |       |
+
+These are the parameters for schedule polls
+
+| Parameter                     | Notes |
+|-------------------------------|-------|
+| `start_date` *str, optional*  |       |
+| `end_date` *str, optional*    |       |
+
+
+## Poll Proposal Create
+
+This endpoint creates a proposal.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": 1
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/create`
+
+### Body Parameters
+
+These are the parameters for normal polls
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `title` *str*       |       |
+| `description` *str* |       |
+
+These are the parameters for schedule polls
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `title` *str*       |       |
+| `description` *str* |       |
+| `start_date` *str*  |       |
+| `end_date` *str*    |       |
+
+
+## Poll Proposal Delete
+
+This endpoint deletes a proposal.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/<proposal_id>/delete`
+
+
+## Poll Proposal Vote List
+
+This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively.
+
+> The API returns JSON structured like this for ranked voting:
+
+```json
+{
+  "data": [
+    {
+      "author": 1,
+      "author_delegate": null,
+      "proposal": 1,
+      "priority": 1,
+      "score": 1,
+    }, ...
+  ]
+}
+```
+
+> The API returns JSON structured like this for for-against voting:
+
+```json
+{
+  "data": [
+    {
+      "author": 1,
+      "author_delegate": null,
+      "proposal": 1,
+      "vote": 1,
+      "score": 1,
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/votes`
+
+### Query Parameters
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `delegates` *bool, optional*       |       |
+| `delegate_pool_id` *int, optional* |       |
+| `delegate_user_id` *int, optional* |       |
+
+
+## Poll Proposal Delegate Update
+
+This endpoint updates votes on proposals.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/update`
+
+### Body Parameters
+
+| Parameter            | Notes |
+|----------------------|-------|
+| `votes` *list*       |       |
+
+
+## Poll Proposal Vote Update
+
+This endpoint updates delegates votes on proposals.
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/delegate/update`
+
+### Body Parameters
+
+| Parameter            | Notes |
+|----------------------|-------|
+| `votes` *list*       |       |
+
+
+## Poll Delegates List
+
+This endpoint gets the possible delegates on this poll.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "created_by": 1,
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delegates`
+
+### Query Parameters
+
+| Parameter                          | Notes |
+|------------------------------------|-------|
+| `created_by` *int, optional*       |       |
