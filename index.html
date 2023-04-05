@@ -477,6 +477,21 @@
                   <li>
                     <a href="#group-user-delegate-delete" class="toc-h2 toc-link" data-title="Group user delegate delete">Group user delegate delete</a>
                   </li>
+                  <li>
+                    <a href="#group-schedule-event-list" class="toc-h2 toc-link" data-title="Group schedule event list">Group schedule event list</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-event-create" class="toc-h2 toc-link" data-title="Schedule event create">Schedule event create</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-event-create-2" class="toc-h2 toc-link" data-title="Schedule event create">Schedule event create</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-event-delete" class="toc-h2 toc-link" data-title="Schedule event delete">Schedule event delete</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-unsubscribe" class="toc-h2 toc-link" data-title="Schedule unsubscribe">Schedule unsubscribe</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2080,6 +2095,206 @@ because deleting the tag will affect delegate relations, use this only when ness
 <tr>
 <td><code>id</code> <em>int</em></td>
 <td>The delegate pool id to be deleted</td>
+</tr>
+</tbody></table>
+<h2 id='group-schedule-event-list'>Group schedule event list</h2>
+<p>List all schedule events in group</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule</code></p>
+<h3 id='query-parameters-21'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code> <em>datetime, optional</em></td>
+<td>Event starting date</td>
+</tr>
+<tr>
+<td><code>start_date__lt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date__gt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td>Event ending date</td>
+</tr>
+<tr>
+<td><code>end_date__lt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date__gt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_name</code> <em>char, optional</em></td>
+<td>The origin name</td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int, optional</em></td>
+<td>The origin id</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>schedule_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>event_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_name</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schedule_origin_name</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schedule_origin_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='schedule-event-create'>Schedule event create</h2>
+<p>Creates event </p>
+<h3 id='http-request-33'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/create</code></p>
+<h3 id='query-parameters-22'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='schedule-event-create-2'>Schedule event create</h2>
+<p>Updates event </p>
+<h3 id='http-request-34'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/update</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='schedule-event-delete'>Schedule event delete</h2>
+<p>Delete event </p>
+<h3 id='http-request-35'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/delete</code></p>
+<h3 id='body-parameters-4'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>even_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='schedule-unsubscribe'>Schedule unsubscribe</h2>
+<p>Unsubscribe from schedule </p>
+<h3 id='http-request-36'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/subscribe</code></p>
+<h3 id='body-parameters-5'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>target_type</code> <em>char</em></td>
+<td>Origin target type</td>
+</tr>
+<tr>
+<td><code>target_id</code> <em>id</em></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='poll'>Poll</h1><h2 id='identity'>Identity</h2>
