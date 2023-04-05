@@ -481,16 +481,16 @@
                     <a href="#group-schedule-event-list" class="toc-h2 toc-link" data-title="Group schedule event list">Group schedule event list</a>
                   </li>
                   <li>
-                    <a href="#schedule-event-create" class="toc-h2 toc-link" data-title="Schedule event create">Schedule event create</a>
+                    <a href="#group-schedule-event-create" class="toc-h2 toc-link" data-title="Group schedule event create">Group schedule event create</a>
                   </li>
                   <li>
-                    <a href="#schedule-event-create-2" class="toc-h2 toc-link" data-title="Schedule event create">Schedule event create</a>
+                    <a href="#group-schedule-event-update" class="toc-h2 toc-link" data-title="Group schedule event update">Group schedule event update</a>
                   </li>
                   <li>
-                    <a href="#schedule-event-delete" class="toc-h2 toc-link" data-title="Schedule event delete">Schedule event delete</a>
+                    <a href="#group-schedule-event-delete" class="toc-h2 toc-link" data-title="Group schedule event delete">Group schedule event delete</a>
                   </li>
                   <li>
-                    <a href="#schedule-unsubscribe" class="toc-h2 toc-link" data-title="Schedule unsubscribe">Schedule unsubscribe</a>
+                    <a href="#group-schedule-subscribe" class="toc-h2 toc-link" data-title="Group schedule subscribe">Group schedule subscribe</a>
                   </li>
               </ul>
           </li>
@@ -2189,8 +2189,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='schedule-event-create'>Schedule event create</h2>
-<p>Creates event </p>
+<h2 id='group-schedule-event-create'>Group schedule event create</h2>
+<p>Creates group event </p>
 <h3 id='http-request-33'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/create</code></p>
 <h3 id='query-parameters-22'>Query Parameters</h3>
@@ -2229,8 +2229,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='schedule-event-create-2'>Schedule event create</h2>
-<p>Updates event </p>
+<h2 id='group-schedule-event-update'>Group schedule event update</h2>
+<p>Updates group event </p>
 <h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/update</code></p>
 <h3 id='body-parameters-3'>Body Parameters</h3>
@@ -2261,8 +2261,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='schedule-event-delete'>Schedule event delete</h2>
-<p>Delete event </p>
+<h2 id='group-schedule-event-delete'>Group schedule event delete</h2>
+<p>Delete event from group schedule</p>
 <h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/delete</code></p>
 <h3 id='body-parameters-4'>Body Parameters</h3>
@@ -2273,30 +2273,14 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </thead><tbody>
 <tr>
-<td><code>even_id</code> <em>int</em></td>
+<td><code>event_id</code> <em>int</em></td>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='schedule-unsubscribe'>Schedule unsubscribe</h2>
-<p>Unsubscribe from schedule </p>
+<h2 id='group-schedule-subscribe'>Group schedule subscribe</h2>
+<p>Subscribe to group schedule </p>
 <h3 id='http-request-36'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/subscribe</code></p>
-<h3 id='body-parameters-5'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Notes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>target_type</code> <em>char</em></td>
-<td>Origin target type</td>
-</tr>
-<tr>
-<td><code>target_id</code> <em>id</em></td>
-<td></td>
-</tr>
-</tbody></table>
 <h1 id='poll'>Poll</h1><h2 id='identity'>Identity</h2>
 <p><a href="#poll-list"><code>poll</code></a></p>
 <h2 id='notification-categories'>Notification Categories</h2>
