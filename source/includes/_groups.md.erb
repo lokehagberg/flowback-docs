@@ -762,3 +762,104 @@ Deletes a delegate id for the current user in group
 | Parameter  | Notes                              |
 |------------|------------------------------------|
 | `id` *int* | The delegate pool id to be deleted |
+
+
+## Group schedule event list
+
+List all schedule events in group
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/schedule`
+
+### Query Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `start_date` *datetime, optional* | Event starting date |
+| `start_date__lt` *datetime, optional* |                 |
+| `start_date__gt` *datetime, optional* |                 |
+| `end_date` *datetime, optional* | Event ending date     |
+| `end_date__lt` *datetime, optional* |                   |
+| `end_date__gt` *datetime, optional* |                   |
+| `origin_name` *char, optional* | The origin name        |
+| `origin_id` *int, optional* | The origin id             |
+
+### Response Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `schedule_id` *int* |                                   |
+| `event_id` *int* |                                      |
+| `title` *char* |                                        |
+| `description` *char, optional* |                        |
+| `start_date` *datetime* |                               |
+| `end_date` *datetime, optional* |                       |
+| `origin_name` *char* |                                  |
+| `origin_id` *int* |                                     |
+| `schedule_origin_name` *char* |                         |
+| `schedule_origin_id` *int* |                            |
+
+
+## Schedule event create 
+
+Creates event 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/schedule/create`
+
+### Query Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `title` *char* |                                        |
+| `description` *char, optional* |                        |
+| `start_date` *datetime* |                               |
+| `end_date` *datetime, optional* |                       |
+
+### Response Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `id` *int* |                                            |
+
+
+## Schedule event create 
+
+Updates event 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/schedule/update`
+
+### Body Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `event_id` *int* |                                      |
+| `title` *char, optional* |                              |
+| `description` *char, optional* |                        |
+| `start_date` *datetime, optional* |                     |
+| `end_date` *datetime, optional* |                       |
+
+
+## Schedule event delete
+
+Delete event 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/schedule/delete`
+
+### Body Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `even_id` *int* |                                       |
+
+
+## Schedule unsubscribe
+
+Unsubscribe from schedule 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/group/<id>/schedule/subscribe`
+
+### Body Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `target_type` *char* | Origin target type               |
+| `target_id` *id* |                                      |
+
+
