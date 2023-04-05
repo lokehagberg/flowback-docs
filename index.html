@@ -353,6 +353,21 @@
                   <li>
                     <a href="#update-user" class="toc-h2 toc-link" data-title="Update User">Update User</a>
                   </li>
+                  <li>
+                    <a href="#user-schedule-event-list" class="toc-h2 toc-link" data-title="User schedule event list">User schedule event list</a>
+                  </li>
+                  <li>
+                    <a href="#user-schedule-event-create" class="toc-h2 toc-link" data-title="User schedule event create">User schedule event create</a>
+                  </li>
+                  <li>
+                    <a href="#user-schedule-event-update" class="toc-h2 toc-link" data-title="User schedule event update">User schedule event update</a>
+                  </li>
+                  <li>
+                    <a href="#user-schedule-event-delete" class="toc-h2 toc-link" data-title="User schedule event delete">User schedule event delete</a>
+                  </li>
+                  <li>
+                    <a href="#user-schedule-subscribe" class="toc-h2 toc-link" data-title="User schedule subscribe">User schedule subscribe</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -911,6 +926,190 @@ requiring the user to type their password twice.</aside>
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='user-schedule-event-list'>User schedule event list</h2>
+<p>List all schedule events for user</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/schedule</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code> <em>datetime, optional</em></td>
+<td>Event starting date</td>
+</tr>
+<tr>
+<td><code>start_date__lt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date__gt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td>Event ending date</td>
+</tr>
+<tr>
+<td><code>end_date__lt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date__gt</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_name</code> <em>char, optional</em></td>
+<td>The origin name</td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int, optional</em></td>
+<td>The origin id</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>schedule_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>event_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_name</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schedule_origin_name</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schedule_origin_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-schedule-event-create'>User schedule event create</h2>
+<p>Creates user event </p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/schedule/create</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-schedule-event-update'>User schedule event update</h2>
+<p>Updates user event </p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/schedule/update</code></p>
+<h3 id='body-parameters-7'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>char, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-schedule-event-delete'>User schedule event delete</h2>
+<p>Delete event from user schedule</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/schedule/delete</code></p>
+<h3 id='body-parameters-8'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-schedule-subscribe'>User schedule subscribe</h2>
+<p>Subscribe to group schedule </p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/schedule/subscribe</code></p>
 <h1 id='notification'>Notification</h1>
 <p>Notification APIs span across multiple sections, however most notification management is handled within this section.</p>
 <h2 id='common-parameters'>Common Parameters</h2>
