@@ -330,6 +330,9 @@
             <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
                     <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
                   </li>
                   <li>
@@ -353,8 +356,37 @@
               </ul>
           </li>
           <li>
+            <a href="#notification" class="toc-h1 toc-link" data-title="Notification">Notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#common-parameters" class="toc-h2 toc-link" data-title="Common Parameters">Common Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#notification-list" class="toc-h2 toc-link" data-title="Notification List">Notification List</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscription-list" class="toc-h2 toc-link" data-title="Notification Subscription List">Notification Subscription List</a>
+                  </li>
+                  <li>
+                    <a href="#notification-mark-read" class="toc-h2 toc-link" data-title="Notification Mark Read">Notification Mark Read</a>
+                  </li>
+                  <li>
+                    <a href="#notification-unsubscribe" class="toc-h2 toc-link" data-title="Notification Unsubscribe">Notification Unsubscribe</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#group" class="toc-h1 toc-link" data-title="Group">Group</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#identity" class="toc-h2 toc-link" data-title="Identity">Identity</a>
+                  </li>
+                  <li>
+                    <a href="#notification-categories" class="toc-h2 toc-link" data-title="Notification Categories">Notification Categories</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscribe" class="toc-h2 toc-link" data-title="Notification Subscribe">Notification Subscribe</a>
+                  </li>
                   <li>
                     <a href="#group-list" class="toc-h2 toc-link" data-title="Group list">Group list</a>
                   </li>
@@ -451,6 +483,15 @@
             <a href="#poll" class="toc-h1 toc-link" data-title="Poll">Poll</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#identity" class="toc-h2 toc-link" data-title="Identity">Identity</a>
+                  </li>
+                  <li>
+                    <a href="#notification-categories" class="toc-h2 toc-link" data-title="Notification Categories">Notification Categories</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscribe" class="toc-h2 toc-link" data-title="Notification Subscribe">Notification Subscribe</a>
+                  </li>
+                  <li>
                     <a href="#poll-list" class="toc-h2 toc-link" data-title="Poll List">Poll List</a>
                   </li>
                   <li>
@@ -517,11 +558,25 @@
                   <li>
                     <a href="#direct-message-preview" class="toc-h2 toc-link" data-title="Direct Message Preview">Direct Message Preview</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#chat-websocket-connection-ws" class="toc-h1 toc-link" data-title="Chat Websocket Connection (WS)">Chat Websocket Connection (WS)</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#group-chat-consumer" class="toc-h2 toc-link" data-title="Group Chat Consumer">Group Chat Consumer</a>
+                    <a href="#connect" class="toc-h2 toc-link" data-title="Connect">Connect</a>
                   </li>
                   <li>
-                    <a href="#chat-consumer" class="toc-h2 toc-link" data-title="Chat Consumer">Chat Consumer</a>
+                    <a href="#send-direct-message" class="toc-h2 toc-link" data-title="Send Direct Message">Send Direct Message</a>
+                  </li>
+                  <li>
+                    <a href="#send-group-message" class="toc-h2 toc-link" data-title="Send Group Message">Send Group Message</a>
+                  </li>
+                  <li>
+                    <a href="#receive-direct-message" class="toc-h2 toc-link" data-title="Receive Direct Message">Receive Direct Message</a>
+                  </li>
+                  <li>
+                    <a href="#receive-group-message" class="toc-h2 toc-link" data-title="Receive Group Message">Receive Group Message</a>
                   </li>
               </ul>
           </li>
@@ -544,18 +599,18 @@ and you can switch the programming language of the examples with the tabs in the
 <p>To authorize, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Token your_token_here"</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>your_token_here</code> with your API key.</p>
 </blockquote>
 
-<p>Flowback uses API keys to allow access to the API. You can get an API key using the <a href="#register">Login API endpoint</a>.</p>
+<p>Flowback uses API keys to allow access to the API. You can get an API key using the <a href="#login">Login API endpoint</a>.</p>
 
 <p>Flowback expects for the API key to be included in all API requests to the server (aside from registration)
 in a header that looks like the following:</p>
 
-<p><code>Authorization: your_token_here</code></p>
+<p><code>Authorization: Token your_token_here</code></p>
 
 <aside class="notice">
 You must replace <code>your_token_here</code> with your personal API key.
@@ -598,7 +653,39 @@ of the associated API endpoint.</p>
 <td>The offset of the paginator, eg. an offset of 2 means the page starts 2 entries ahead per page.</td>
 </tr>
 </tbody></table>
-<h1 id='user'>User</h1><h2 id='register'>Register</h2>
+<h1 id='user'>User</h1><h2 id='login'>Login</h2>
+<p>Login user using their credentials, returns their auth token</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/login</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username <code>str</code></td>
+<td>The user email</td>
+</tr>
+<tr>
+<td>password <code>str</code></td>
+<td>The user password</td>
+</tr>
+</tbody></table>
+<h3 id='response-json-parameter'>Response JSON Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The user auth token</td>
+</tr>
+</tbody></table>
+<h2 id='register'>Register</h2>
 <p>This endpoint registers an user to the site. An activation email will be sent to the user containing the
 <code>verification_code</code>. If FLOWBACK_URL is specified in the backend .env, a link containing the <code>verification_code</code>
 as a query parameter will be sent instead.
@@ -610,9 +697,9 @@ The code will be needed for the <a href="#verify-register">next step of the regi
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"username=flowback"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"email=flowback@example.com"</span>
-</code></pre></div><h3 id='http-request'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/register</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -633,9 +720,9 @@ The code will be needed for the <a href="#verify-register">next step of the regi
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/register/verify"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"verification_code=your_verification_code"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"password=your_password"</span>
-</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/register/verify</code></p>
-<h3 id='body-parameters-2'>Body Parameters</h3>
+<h3 id='body-parameters-3'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -665,9 +752,9 @@ The code will be needed for the <a href="#verify-forgot-password">next step of t
 <p>If FLOWBACK_URL is specified in the backend&#39;s .env file, the user will instead receive a link:</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/forgot_password"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"email=flowback@example.com"</span>
-</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/forgot_password</code></p>
-<h3 id='body-parameters-3'>Body Parameters</h3>
+<h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -684,9 +771,9 @@ The code will be needed for the <a href="#verify-forgot-password">next step of t
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/forgot_password/verify"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"verification_code=verification_code"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"password=password"</span>
-</code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/forgot_password/verify</code></p>
-<h3 id='body-parameters-4'>Body Parameters</h3>
+<h3 id='body-parameters-5'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -723,7 +810,7 @@ requiring the user to type their password twice.</aside>
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/users</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -756,7 +843,7 @@ requiring the user to type their password twice.</aside>
     </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/user</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -779,9 +866,9 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-F</span> <span class="s2">"banner_image=@banner_image.png"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s2">"bio=Welcome to my profile!"</span>
 <span class="nt">-d</span> <span class="s2">"website=https://example.com/"</span>
-</code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+</code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/user</code></p>
-<h3 id='body-parameters-5'>Body Parameters</h3>
+<h3 id='body-parameters-6'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -809,7 +896,353 @@ requiring the user to type their password twice.</aside>
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='group'>Group</h1><h2 id='group-list'>Group list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/list"</span> <span class="se">\</span>
+<h1 id='notification'>Notification</h1>
+<p>Notification APIs span across multiple sections, however most notification management is handled within this section.</p>
+<h2 id='common-parameters'>Common Parameters</h2>
+<p>Because of the confusion some parameters can give, this section will explain some common parameters.</p>
+<h3 id='channel'>Channel</h3>
+<p>Currently available sender_types: <a href="#poll"><strong>poll</strong></a>, <a href="#group"><strong>group</strong></a></p>
+
+<p>Each available sender_type got a section for <strong>Identity</strong>, <strong>Notification Categories</strong>, and <strong>Notification Subscribe</strong></p>
+
+<p>For users to be able to trace back to the origin of their notification and be able to manage their subscriptions,
+the way this API achieve this is by having each notification object being sent through a channel.
+You can find sender types in the top of certain sections under the name <strong>Identity</strong>, you can also find categories
+under the name <strong>Notification Categories</strong>.</p>
+
+<p>Each channel can be identified using three parameters:</p>
+
+<table><thead>
+<tr>
+<th>Identifier</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sender_type</code> <em>str</em></td>
+<td>Source identifier type of the sender, e.g. <code>group</code>, <code>user</code></td>
+</tr>
+<tr>
+<td><code>sender_id</code> <em>int</em></td>
+<td>ID of the <code>sender_type</code>, e.g. sent from <strong>group</strong> (<code>sender_type</code>) with id <strong>1</strong> (<code>sender_id</code>)</td>
+</tr>
+<tr>
+<td><code>category</code> <em>int</em></td>
+<td>Refers to a subsection for a <code>sender_type</code>, e.g. <code>poll</code>, <code>schedule</code>, <code>delegate</code> are categories within group</td>
+</tr>
+</tbody></table>
+<h3 id='notification-object'>Notification Object</h3>
+<p>The <strong>notification object</strong> is the main content of each notification. Each <strong>notification</strong> that a user receives derives
+from a <strong>notification object</strong>.</p>
+
+<table><thead>
+<tr>
+<th>Common Parameters</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>related_id</code> <em>int, optional</em></td>
+<td>The id related to the category of a channel, e.g. a <code>group</code> with category <code>poll</code> with id <strong>3</strong> (<code>related_id</code>)</td>
+</tr>
+<tr>
+<td><code>action</code> <em>str</em></td>
+<td>The action of a notification, the choices are <code>create</code>, <code>update</code>, <code>delete</code></td>
+</tr>
+<tr>
+<td><code>message</code> <em>str</em></td>
+<td>The message for the notification</td>
+</tr>
+<tr>
+<td><code>timestamp</code> <em>str</em></td>
+<td>The time of the notification</td>
+</tr>
+<tr>
+<td><code>channel</code> <em>int</em></td>
+<td>The notification channel id related to this notification</td>
+</tr>
+</tbody></table>
+<h3 id='notification-2'>Notification</h3>
+<p>The <strong>notification</strong> is what the user receives.</p>
+
+<table><thead>
+<tr>
+<th>Common Parameters</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code> <em>int</em></td>
+<td>The user receiving the notification</td>
+</tr>
+<tr>
+<td><code>notification_object</code> <em>int</em></td>
+<td>The notification object id related to this notification</td>
+</tr>
+<tr>
+<td><code>read</code> <em>bool</em></td>
+<td>Whether the user read the notification or not</td>
+</tr>
+</tbody></table>
+<h2 id='notification-list'>Notification List</h2>
+<p>Lists all notifications for the user</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/notification</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td>The id of this notification</td>
+</tr>
+<tr>
+<td><code>read</code> <em>bool</em></td>
+<td>Whether the user read the notification or not</td>
+</tr>
+<tr>
+<td><code>object_id</code> <em>int</em></td>
+<td>The notification object id</td>
+</tr>
+<tr>
+<td><code>message</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message__icontains</code> <em>char</em></td>
+<td>Message, but not case-sensitive</td>
+</tr>
+<tr>
+<td><code>action</code> <em>char</em></td>
+<td>Notification object action</td>
+</tr>
+<tr>
+<td><code>timestamp</code> <em>char</em></td>
+<td>Notification object timestamp</td>
+</tr>
+<tr>
+<td><code>timestamp__lt</code> <em>char</em></td>
+<td>Timestamp earlier than</td>
+</tr>
+<tr>
+<td><code>timestamp__gt</code> <em>char</em></td>
+<td>Timestamp later than</td>
+</tr>
+<tr>
+<td><code>channel_sender_type</code> <em>char</em></td>
+<td>Notification channel sender type</td>
+</tr>
+<tr>
+<td><code>channel_sender_id</code> <em>int</em></td>
+<td>Notification channel sender id</td>
+</tr>
+<tr>
+<td><code>channel_category</code> <em>char</em></td>
+<td>Notification channel category</td>
+</tr>
+</tbody></table>
+<h3 id='output-parameters'>Output Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td>The id of this notification</td>
+</tr>
+<tr>
+<td><code>read</code> <em>bool</em></td>
+<td>Whether the user read the notification or not</td>
+</tr>
+<tr>
+<td><code>object_id</code> <em>int</em></td>
+<td>The notification object id</td>
+</tr>
+<tr>
+<td><code>message</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>action</code> <em>char</em></td>
+<td>Notification object action</td>
+</tr>
+<tr>
+<td><code>timestamp</code> <em>char</em></td>
+<td>Notification object timestamp</td>
+</tr>
+<tr>
+<td><code>channel_sender_type</code> <em>char</em></td>
+<td>Notification channel sender type</td>
+</tr>
+<tr>
+<td><code>channel_sender_id</code> <em>int</em></td>
+<td>Notification channel sender id</td>
+</tr>
+<tr>
+<td><code>channel_category</code> <em>char</em></td>
+<td>Notification channel category</td>
+</tr>
+</tbody></table>
+<h2 id='notification-subscription-list'>Notification Subscription List</h2>
+<p>Get the user subscriptions</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/notification/subscription</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>action</code> <em>char</em></td>
+<td>Notification object action</td>
+</tr>
+<tr>
+<td><code>channel_sender_type</code> <em>char</em></td>
+<td>Notification channel sender type</td>
+</tr>
+<tr>
+<td><code>channel_sender_id</code> <em>int</em></td>
+<td>Notification channel sender id</td>
+</tr>
+<tr>
+<td><code>channel_category</code> <em>char</em></td>
+<td>Notification channel category</td>
+</tr>
+</tbody></table>
+<h3 id='output-parameters-2'>Output Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>channel_sender_type</code> <em>char</em></td>
+<td>Notification channel sender type</td>
+</tr>
+<tr>
+<td><code>channel_sender_id</code> <em>int</em></td>
+<td>Notification channel sender id</td>
+</tr>
+<tr>
+<td><code>channel_category</code> <em>char</em></td>
+<td>Notification channel category</td>
+</tr>
+</tbody></table>
+<h2 id='notification-mark-read'>Notification Mark Read</h2>
+<p>Mark notifications as read or vice-versa</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/notification/read</code></p>
+<h3 id='input-parameters'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>notification_ids</code> <em>list[int]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>read</code> <em>bool</em></td>
+<td>Whether to mark the notifications as read or not</td>
+</tr>
+</tbody></table>
+<h2 id='notification-unsubscribe'>Notification Unsubscribe</h2>
+<p>Mark notifications as read or vice-versa</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/notification/unsubscribe</code></p>
+<h3 id='input-parameters-2'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>channel_sender_type</code> <em>char</em></td>
+<td>Notification channel sender type</td>
+</tr>
+<tr>
+<td><code>channel_sender_id</code> <em>int</em></td>
+<td>Notification channel sender id</td>
+</tr>
+<tr>
+<td><code>channel_category</code> <em>char</em></td>
+<td>Notification channel category</td>
+</tr>
+</tbody></table>
+<h1 id='group'>Group</h1><h2 id='identity'>Identity</h2>
+<p><a href="#group-list"><code>group</code></a></p>
+<h2 id='notification-categories'>Notification Categories</h2>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Path</th>
+<th>Related id location</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>group</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>members</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invite</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delegate</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll</code></td>
+<td><a href="#poll-list">here</a></td>
+<td><a href="#poll-list">here</a></td>
+</tr>
+<tr>
+<td><code>kanban</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schedule</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='notification-subscribe'>Notification Subscribe</h2>
+<p>Subscribes to <code>group</code></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/subscribe</code></p>
+<h3 id='input-parameters'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>categories</code> <em>list[str]</em></td>
+<td>Categories to subscribe</td>
+</tr>
+</tbody></table>
+<h2 id='group-list'>Group list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/list"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <blockquote>
@@ -832,7 +1265,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all available groups to join or request invite for</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/list</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -885,7 +1318,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all available groups to join or request invite for</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/detail</code></p>
 <h2 id='group-create'>Group create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/create"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span> <span class="se">\</span>
@@ -897,7 +1330,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-F</span> <span class="s2">"public=true"</span>
 </code></pre></div>
 <p>Creates a group</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/create</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -942,7 +1375,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-F</span> <span class="s2">"default_permission=1"</span>
 </code></pre></div>
 <p>Updates a group</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/update</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -984,11 +1417,11 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Deletes a group</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delete</code></p>
 <h2 id='group-mail'>Group Mail</h2>
 <p>This endpoint sends a mail to the members in the group.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/mail</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
@@ -1027,7 +1460,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all users in the group</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/users</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -1063,7 +1496,7 @@ requiring the user to type their password twice.</aside>
 </tbody></table>
 <h2 id='group-user-update'>Group User Update</h2>
 <p>This endpoint updates group user information.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/user/update</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
@@ -1100,13 +1533,13 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Join a group, this will return either &quot;join&quot;, or &quot;invite&quot; depending on the group settings</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/join</code></p>
 <h2 id='group-leave'>Group leave</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/leave"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Leaves a group</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/leave</code></p>
 <h2 id='group-invite-list-1'>Group Invite List 1</h2>
 <p>This endpoint lists the invites from a group.</p>
@@ -1125,7 +1558,7 @@ requiring the user to type their password twice.</aside>
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/invites</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -1164,7 +1597,7 @@ requiring the user to type their password twice.</aside>
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-12'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/invites</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -1190,7 +1623,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Invites a user</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -1208,13 +1641,13 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User accepts a group invite</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/accept</code></p>
 <h2 id='group-invite-reject'>Group invite reject</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/invite/reject"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>User rejects a group invite</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/invite/reject</code></p>
 <h2 id='group-permission-list'>Group permission list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/permissions"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
@@ -1237,7 +1670,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all permissions for the group</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/permissions</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
@@ -1269,7 +1702,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
 </code></pre></div>
 <p>Creates a permission for the group</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/create</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
@@ -1314,7 +1747,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"ban_members=true"</span>
 </code></pre></div>
 <p>Updates a permission for the group</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/update</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
@@ -1356,7 +1789,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Deletes a permission for the group, this will set all users associated with the permission to group default</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/permission/delete</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
@@ -1387,7 +1820,7 @@ requiring the user to type their password twice.</aside>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all tags for the group</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/tags</code></p>
 <h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
@@ -1418,7 +1851,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
 </code></pre></div>
 <p>Creates a tag for the group</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/create</code></p>
 <h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
@@ -1438,7 +1871,7 @@ requiring the user to type their password twice.</aside>
 <span class="nt">-d</span> <span class="s2">"active=false"</span>
 </code></pre></div>
 <p>Updates a tag for the group</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/update</code></p>
 <h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
@@ -1462,7 +1895,7 @@ requiring the user to type their password twice.</aside>
 </code></pre></div>
 <p>Deletes a tag for the group, it is recommended to use the update function to disable active status for the tag,
 because deleting the tag will affect delegate relations, use this only when nessesary.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/tag/delete</code></p>
 <h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
@@ -1498,7 +1931,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all delegate pools within the group</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegate/pools</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
@@ -1524,13 +1957,13 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Creates a delegate pool for the current user in group</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/create</code></p>
 <h2 id='group-delegate-pool-delete'>Group delegate pool delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegate/pool/delete"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
 </code></pre></div>
 <p>Delete a delegate pool for the current user in group</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/pool/delete</code></p>
 <h2 id='group-user-delegate-list'>Group user delegate list</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v2.flowback.org/group/1/delegates"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: your_token_here"</span>
@@ -1549,7 +1982,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Lists all delegate relations for the current user within the group</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;id&gt;/delegates</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
@@ -1588,7 +2021,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"tag_name=Neko"</span>
 </code></pre></div>
 <p>Creates a delegate relation for the current user in group</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/create</code></p>
 <h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
@@ -1612,7 +2045,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"active=false"</span>
 </code></pre></div>
 <p>Updates a Delegate relation for the current user in group</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/update</code></p>
 <h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
@@ -1635,7 +2068,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <span class="nt">-d</span> <span class="s2">"id=1"</span>
 </code></pre></div>
 <p>Deletes a delegate id for the current user in group</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/delegate/delete</code></p>
 <h3 id='query-parameters-20'>Query Parameters</h3>
 <table><thead>
@@ -1649,8 +2082,45 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td>The delegate pool id to be deleted</td>
 </tr>
 </tbody></table>
-<h1 id='poll'>Poll</h1><h2 id='poll-list'>Poll List</h2>
-<p>This endpoint gets a list of polls. </p>
+<h1 id='poll'>Poll</h1><h2 id='identity'>Identity</h2>
+<p><a href="#poll-list"><code>poll</code></a></p>
+<h2 id='notification-categories'>Notification Categories</h2>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Path</th>
+<th>Related id location</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>poll</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>timeline</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='notification-subscribe'>Notification Subscribe</h2>
+<p>Subscribes to <code>poll</code></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/subscribe</code></p>
+<h3 id='input-parameters'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>categories</code> <em>list[str]</em></td>
+<td>Categories to subscribe</td>
+</tr>
+</tbody></table>
+<h2 id='poll-list'>Poll List</h2>
+<p>This endpoint gets a list of polls.</p>
 
 <blockquote>
 <p>The API returns JSON structured like this:</p>
@@ -1682,7 +2152,7 @@ because deleting the tag will affect delegate relations, use this only when ness
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/list</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -1725,7 +2195,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='poll-create'>Poll Create</h2>
-<p>This endpoint creates a poll. </p>
+<p>This endpoint creates a poll.</p>
 
 <blockquote>
 <p>The API returns JSON structured like this:</p>
@@ -1733,7 +2203,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/create</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
@@ -1784,8 +2254,8 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='poll-update'>Poll Update</h2>
-<p>This endpoint updates a poll. </p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<p>This endpoint updates a poll.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/update</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
@@ -1804,11 +2274,11 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='poll-delete'>Poll Delete</h2>
-<p>This endpoint deletes a poll. </p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<p>This endpoint deletes a poll.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delete</code></p>
 <h2 id='poll-proposal-list'>Poll Proposal List</h2>
-<p>This endpoint lists the proposals of a poll. </p>
+<p>This endpoint lists the proposals of a poll.</p>
 
 <blockquote>
 <p>The API returns JSON structured like this for normal polls:</p>
@@ -1841,7 +2311,7 @@ because deleting the tag will affect delegate relations, use this only when ness
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposals</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <p>These are the parameters for normal polls</p>
@@ -1896,7 +2366,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/create</code></p>
 <h3 id='body-parameters-3'>Body Parameters</h3>
 <p>These are the parameters for normal polls</p>
@@ -1943,11 +2413,11 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='poll-proposal-delete'>Poll Proposal Delete</h2>
-<p>This endpoint deletes a proposal. </p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<p>This endpoint deletes a proposal.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/&lt;proposal_id&gt;/delete</code></p>
 <h2 id='poll-proposal-vote-list'>Poll Proposal Vote List</h2>
-<p>This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively. </p>
+<p>This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively.</p>
 
 <blockquote>
 <p>The API returns JSON structured like this for ranked voting:</p>
@@ -1978,7 +2448,7 @@ because deleting the tag will affect delegate relations, use this only when ness
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/votes</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -2002,7 +2472,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-proposal-delegate-update'>Poll Proposal Delegate Update</h2>
 <p>This endpoint updates votes on proposals.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/update</code></p>
 <h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
@@ -2018,7 +2488,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-proposal-vote-update'>Poll Proposal Vote Update</h2>
 <p>This endpoint updates delegates votes on proposals.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/delegate/update</code></p>
 <h3 id='body-parameters-5'>Body Parameters</h3>
 <table><thead>
@@ -2045,7 +2515,7 @@ because deleting the tag will affect delegate relations, use this only when ness
     </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delegates</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -2354,11 +2824,245 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='direct-message-preview'>Direct Message Preview</h2>
-<p>This endpoint gets the message preview of a direct message chat.</p>
-<h2 id='group-chat-consumer'>Group Chat Consumer</h2>
-<p>This endpoint is a websocket endpoint, the group chat consumer.</p>
-<h2 id='chat-consumer'>Chat Consumer</h2>
-<p>This endpoint is a websocket endpoint, the chat consumer.</p>
+<p>This endpoint gets the message preview of a direct chat.</p>
+
+<blockquote>
+<p>The API returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LokeHagberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"target_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LokeHagberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"target_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/media/image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello world"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 12:00 GMT+1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 12:00 GMT+1"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/chat/direct/preview</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__lt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__gt</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='chat-websocket-connection-ws'>Chat Websocket Connection (WS)</h1><div class="highlight"><pre class="highlight plaintext"><code>Don't forget to add target_type inside of
+each outgoing json request under this section!
+</code></pre></div>
+<p>Inside each API (excluding the <a href="#chat-connect">connect</a>), There&#39;ll be <code>target_type</code> under the <code>WS Request Type</code> section.
+This parameter is required in each of these websockets JSON in order to make it function as intended.</p>
+<h2 id='connect'>Connect</h2>
+<p>Connect to the chat websocket, all messages sent and received will depend on target_type.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>WS https://v2.flowback.org/chat/ws</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>token</code> <em>str</em></td>
+<td>The authentication token for the given user, can be found <a href="#authentication">here</a></td>
+</tr>
+</tbody></table>
+<h2 id='send-direct-message'>Send Direct Message</h2>
+<blockquote>
+<p>Example request format</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An elevator"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"target_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Sends a message to target user</p>
+<h3 id='ws-request-type'>WS Request type</h3>
+<p>OUTGOING <code>target_type: direct</code></p>
+<h3 id='json-parameters'>Json Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>target <code>int</code></td>
+<td>The target user id</td>
+</tr>
+</tbody></table>
+<h2 id='send-group-message'>Send Group Message</h2>
+<blockquote>
+<p>Example request format</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A tabletop tennis"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"target_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Sends a message to target group</p>
+<h3 id='ws-request-type-2'>WS Request type</h3>
+<p>OUTGOING <code>target_type: group</code></p>
+<h3 id='json-parameters-2'>Json Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>target <code>int</code></td>
+<td>The target group id</td>
+</tr>
+</tbody></table>
+<h2 id='receive-direct-message'>Receive Direct Message</h2>
+<blockquote>
+<p>Example incoming format</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A towaway truck"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plains"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/path/to/image"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"target_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Receive message from target user</p>
+<h3 id='ws-request-type-3'>WS Request type</h3>
+<p>INCOMING <code>target_type: direct</code></p>
+<h3 id='json-parameters-3'>Json Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>user <code>obj</code></td>
+<td>The user that sent the message</td>
+</tr>
+</tbody></table>
+<h3 id='user-object'>user Object</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <code>int</code></td>
+<td>The user id</td>
+</tr>
+<tr>
+<td>username <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_image <code>str</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='receive-group-message'>Receive Group Message</h2>
+<blockquote>
+<p>Example incoming response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A seaweed pineapple"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plains"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profile_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/path/to/image"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"target_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Receive message from group</p>
+<h3 id='ws-request-type-4'>WS Request type</h3>
+<p>INCOMING <code>target_type: group</code></p>
+<h3 id='json-parameters-4'>Json Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>group <code>int</code></td>
+<td>The group id</td>
+</tr>
+<tr>
+<td>user <code>obj</code></td>
+<td>The user that sent the message</td>
+</tr>
+</tbody></table>
+<h3 id='user-object-2'>user Object</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id <code>int</code></td>
+<td>The user id</td>
+</tr>
+<tr>
+<td>username <code>str</code></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_image <code>str</code></td>
+<td></td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
