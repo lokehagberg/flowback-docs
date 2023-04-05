@@ -1,5 +1,29 @@
 # User
 
+## Login
+
+Login user using their credentials, returns their auth token
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/login`
+
+### Body Parameters
+
+| Parameter      | Notes             |
+|----------------|-------------------|
+| username `str` | The user email    |
+| password `str` | The user password |
+
+
+### Response JSON Parameter
+
+| Parameter | Notes               |
+|-----------|---------------------|
+| token     | The user auth token |
+
+
+
 ## Register
 
 

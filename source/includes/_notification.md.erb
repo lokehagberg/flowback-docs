@@ -1,0 +1,146 @@
+# Notification
+Notification APIs span across multiple sections, however most notification management is handled within this section.
+
+
+
+
+
+## Common Parameters
+
+Because of the confusion some parameters can give, this section will explain some common parameters.
+
+### Channel
+Currently available sender_types: [**poll**](#poll), [**group**](#group)
+
+Each available sender_type got a section for **Identity**, **Notification Categories**, and **Notification Subscribe**
+
+For users to be able to trace back to the origin of their notification and be able to manage their subscriptions,
+the way this API achieve this is by having each notification object being sent through a channel.
+You can find sender types in the top of certain sections under the name **Identity**, you can also find categories
+under the name **Notification Categories**.
+
+Each channel can be identified using three parameters:
+
+| Identifier          | Note                                                                                                        |
+|---------------------|-------------------------------------------------------------------------------------------------------------|
+| `sender_type` *str* | Source identifier type of the sender, e.g. `group`, `user`                                                  |
+| `sender_id` *int*   | ID of the `sender_type`, e.g. sent from **group** (`sender_type`) with id **1** (`sender_id`)               |
+| `category` *int*    | Refers to a subsection for a `sender_type`, e.g. `poll`, `schedule`, `delegate` are categories within group |
+
+### Notification Object
+The **notification object** is the main content of each notification. Each **notification** that a user receives derives
+from a **notification object**.
+
+| Common Parameters            | Note                                                                                                          |
+|------------------------------|---------------------------------------------------------------------------------------------------------------|
+| `related_id` *int, optional* | The id related to the category of a channel, e.g. a `group` with category `poll` with id **3** (`related_id`) |
+| `action` *str*               | The action of a notification, the choices are `create`, `update`, `delete`                                    |
+| `message` *str*              | The message for the notification                                                                              |
+| `timestamp` *str*            | The time of the notification                                                                                  |
+| `channel` *int*              | The notification channel id related to this notification                                                      |
+
+### Notification
+The **notification** is what the user receives.
+
+| Common Parameters           | Note                                                    |
+|-----------------------------|---------------------------------------------------------|
+| `user` *int*                | The user receiving the notification                     |
+| `notification_object` *int* | The notification object id related to this notification |
+| `read` *bool*               | Whether the user read the notification or not           |
+
+
+
+
+
+## Notification List
+Lists all notifications for the user
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/notification`
+
+### Query Parameters
+| Parameter                    | Notes                                         |
+|------------------------------|-----------------------------------------------|
+| `id` *int*                   | The id of this notification                   |
+| `read` *bool*                | Whether the user read the notification or not |
+| `object_id` *int*            | The notification object id                    |
+| `message` *char*             |                                               |
+| `message__icontains` *char*  | Message, but not case-sensitive               |
+| `action` *char*              | Notification object action                    |
+| `timestamp` *char*           | Notification object timestamp                 |
+| `timestamp__lt` *char*       | Timestamp earlier than                        |
+| `timestamp__gt` *char*       | Timestamp later than                          |
+| `channel_sender_type` *char* | Notification channel sender type              |
+| `channel_sender_id` *int*    | Notification channel sender id                |
+| `channel_category` *char*    | Notification channel category                 |
+
+### Output Parameters
+| Parameter                    | Notes                                         |
+|------------------------------|-----------------------------------------------|
+| `id` *int*                   | The id of this notification                   |
+| `read` *bool*                | Whether the user read the notification or not |
+| `object_id` *int*            | The notification object id                    |
+| `message` *char*             |                                               |
+| `action` *char*              | Notification object action                    |
+| `timestamp` *char*           | Notification object timestamp                 |
+| `channel_sender_type` *char* | Notification channel sender type              |
+| `channel_sender_id` *int*    | Notification channel sender id                |
+| `channel_category` *char*    | Notification channel category                 |
+
+
+
+
+
+## Notification Subscription List
+Get the user subscriptions
+
+### HTTP Request
+`GET <%= config[:endpoint] %>/notification/subscription`
+
+### Query Parameters
+| Parameter                    | Notes                                         |
+|------------------------------|-----------------------------------------------|
+| `action` *char*              | Notification object action                    |
+| `channel_sender_type` *char* | Notification channel sender type              |
+| `channel_sender_id` *int*    | Notification channel sender id                |
+| `channel_category` *char*    | Notification channel category                 |
+
+### Output Parameters
+| Parameter                    | Notes                                         |
+|------------------------------|-----------------------------------------------|
+| `channel_sender_type` *char* | Notification channel sender type              |
+| `channel_sender_id` *int*    | Notification channel sender id                |
+| `channel_category` *char*    | Notification channel category                 |
+
+
+
+
+
+## Notification Mark Read
+Mark notifications as read or vice-versa
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/notification/read`
+
+### Input Parameters
+| Parameter                      | Notes                                            |
+|--------------------------------|--------------------------------------------------|
+| `notification_ids` *list[int]* |                                                  |
+| `read` *bool*                  | Whether to mark the notifications as read or not |
+
+
+
+
+
+## Notification Unsubscribe
+Mark notifications as read or vice-versa
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/notification/unsubscribe`
+
+### Input Parameters
+| Parameter                    | Notes                                         |
+|------------------------------|-----------------------------------------------|
+| `channel_sender_type` *char* | Notification channel sender type              |
+| `channel_sender_id` *int*    | Notification channel sender id                |
+| `channel_category` *char*    | Notification channel category                 |

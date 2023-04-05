@@ -24,7 +24,7 @@ This endpoint gets the message list of a group chat.
 
 `GET <%= config[:endpoint] %>/chat/group/<group_id>`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                             | Notes |
 |---------------------------------------|-------|
@@ -62,7 +62,7 @@ This endpoint gets the message preview of a group chat.
 
 `GET <%= config[:endpoint] %>/chat/group/preview`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                               | Notes |
 |-----------------------------------------|-------|
@@ -97,7 +97,7 @@ This endpoint gets the message list of a direct message chat.
 
 `GET <%= config[:endpoint] %>/chat/direct/<target_id>`
 
-### Query Parameters 
+### Query Parameters
 
 | Parameter                        | Notes |
 |----------------------------------|-------|
@@ -110,15 +110,185 @@ This endpoint gets the message list of a direct message chat.
 
 ## Direct Message Preview
 
-This endpoint gets the message preview of a direct message chat.
+This endpoint gets the message preview of a direct chat.
+
+> The API returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "username": "LokeHagberg",
+      "user_id": 1,
+      "target_username": "LokeHagberg",
+      "target_id": 1,
+      "profile_image": "https://example.com/media/image.png",
+      "message": "hello world",
+      "created_at": "2022-01-01 12:00 GMT+1",
+      "timestamp": "2022-01-01 12:00 GMT+1"
+    }, ...
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/chat/direct/preview`
+
+### Query Parameters
+
+| Parameter                               | Notes |
+|-----------------------------------------|-------|
+| `id` *int, optional*                    |       |
+| `target` *int, optional*                |       |
+| `message__icontains` *str, optional*    |       |
+| `created_at__lt` *str, optional*        |       |
+| `created_at__gt` *str, optional*        |       |
 
 
-## Group Chat Consumer 
 
-This endpoint is a websocket endpoint, the group chat consumer.
+# Chat Websocket Connection (WS)
+
+```text
+Don't forget to add target_type inside of
+each outgoing json request under this section!
+```
+
+Inside each API (excluding the [connect](#chat-connect)), There'll be `target_type` under the `WS Request Type` section.
+This parameter is required in each of these websockets JSON in order to make it function as intended.
+
+## Connect
+
+Connect to the chat websocket, all messages sent and received will depend on target_type.
+
+### HTTP Request
+`WS <%= config[:endpoint] %>/chat/ws`
+
+### Query Parameters
+| Parameter     | Notes                                                                             |
+|---------------|-----------------------------------------------------------------------------------|
+| `token` *str* | The authentication token for the given user, can be found [here](#authentication) |
 
 
-## Chat Consumer 
 
-This endpoint is a websocket endpoint, the chat consumer.
+## Send Direct Message
 
+> Example request format
+
+```json
+{
+  "message": "An elevator",
+  "target": 2,
+  "target_type": "direct"
+}
+```
+
+Sends a message to target user
+
+### WS Request type
+OUTGOING `target_type: direct`
+
+### Json Parameters
+| Parameter     | Notes              |
+|---------------|--------------------|
+| message `str` |                    |
+| target `int`  | The target user id |
+
+
+## Send Group Message
+
+> Example request format
+
+```json
+{
+  "message": "A tabletop tennis",
+  "target": 5,
+  "target_type": "group"
+}
+```
+
+Sends a message to target group
+
+### WS Request type
+OUTGOING `target_type: group`
+
+### Json Parameters
+| Parameter     | Notes               |
+|---------------|---------------------|
+| message `str` |                     |
+| target `int`  | The target group id |
+
+
+## Receive Direct Message
+
+> Example incoming format
+
+```json
+{
+  "message": "A towaway truck",
+  "user": {
+    "id": 8,
+    "username": "Plains",
+    "profile_image": "/path/to/image"
+  },
+  "target_type": "direct"
+}
+```
+
+Receive message from target user
+
+### WS Request type
+INCOMING `target_type: direct`
+
+### Json Parameters
+| Parameter     | Notes                          |
+|---------------|--------------------------------|
+| message `str` |                                |
+| user `obj`    | The user that sent the message |
+
+
+### user Object
+| Parameter           | Notes       |
+|---------------------|-------------|
+| id `int`            | The user id |
+| username `str`      |             |
+| profile_image `str` |             |
+
+
+
+## Receive Group Message
+
+> Example incoming response
+
+```json
+{
+  "message": "A seaweed pineapple",
+  "user": {
+    "id": 8,
+    "username": "Plains",
+    "profile_image": "/path/to/image"
+  },
+  "group": 1,
+  "target_type": "group"
+}
+```
+
+Receive message from group
+
+### WS Request type
+INCOMING `target_type: group`
+
+### Json Parameters
+| Parameter     | Notes                          |
+|---------------|--------------------------------|
+| message `str` |                                |
+| group `int`   | The group id                   |
+| user `obj`    | The user that sent the message |
+
+
+### user Object
+| Parameter           | Notes       |
+|---------------------|-------------|
+| id `int`            | The user id |
+| username `str`      |             |
+| profile_image `str` |             |
