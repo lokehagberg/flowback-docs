@@ -227,3 +227,99 @@ curl "<%= config[:endpoint] %>/user/update" \
 | `banner_image` *file, optional*  |       |
 | `bio` *int, optional*            |       |
 | `website` *int, optional*        |       |
+
+
+
+## User schedule event list
+
+List all schedule events for user
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/user/schedule`
+
+### Query Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `start_date` *datetime, optional* | Event starting date |
+| `start_date__lt` *datetime, optional* |                 |
+| `start_date__gt` *datetime, optional* |                 |
+| `end_date` *datetime, optional* | Event ending date     |
+| `end_date__lt` *datetime, optional* |                   |
+| `end_date__gt` *datetime, optional* |                   |
+| `origin_name` *char, optional* | The origin name        |
+| `origin_id` *int, optional* | The origin id             |
+
+### Response Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `schedule_id` *int* |                                   |
+| `event_id` *int* |                                      |
+| `title` *char* |                                        |
+| `description` *char, optional* |                        |
+| `start_date` *datetime* |                               |
+| `end_date` *datetime, optional* |                       |
+| `origin_name` *char* |                                  |
+| `origin_id` *int* |                                     |
+| `schedule_origin_name` *char* |                         |
+| `schedule_origin_id` *int* |                            |
+
+
+## User schedule event create 
+
+Creates user event 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/user/schedule/create`
+
+### Query Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `title` *char* |                                        |
+| `description` *char, optional* |                        |
+| `start_date` *datetime* |                               |
+| `end_date` *datetime, optional* |                       |
+
+### Response Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `id` *int* |                                            |
+
+
+## User schedule event update 
+
+Updates user event 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/user/schedule/update`
+
+### Body Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `event_id` *int* |                                      |
+| `title` *char, optional* |                              |
+| `description` *char, optional* |                        |
+| `start_date` *datetime, optional* |                     |
+| `end_date` *datetime, optional* |                       |
+
+
+## User schedule event delete
+
+Delete event from user schedule
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/user/schedule/delete`
+
+### Body Parameters
+| Parameter  | Notes                                      |
+|------------|--------------------------------------------|
+| `event_id` *int* |                                      |
+
+
+## User schedule subscribe
+
+Subscribe to group schedule 
+
+### HTTP Request
+`POST <%= config[:endpoint] %>/user/schedule/subscribe`
+
+
