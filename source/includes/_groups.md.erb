@@ -798,9 +798,9 @@ List all schedule events in group
 | `schedule_origin_id` *int* |                            |
 
 
-## Schedule event create 
+## Group schedule event create 
 
-Creates event 
+Creates group event 
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/create`
@@ -819,9 +819,9 @@ Creates event
 | `id` *int* |                                            |
 
 
-## Schedule event create 
+## Group schedule event update 
 
-Updates event 
+Updates group event 
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/update`
@@ -836,9 +836,9 @@ Updates event
 | `end_date` *datetime, optional* |                       |
 
 
-## Schedule event delete
+## Group schedule event delete
 
-Delete event 
+Delete event from group schedule
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/delete`
@@ -846,20 +846,14 @@ Delete event
 ### Body Parameters
 | Parameter  | Notes                                      |
 |------------|--------------------------------------------|
-| `even_id` *int* |                                       |
+| `event_id` *int* |                                       |
 
 
-## Schedule unsubscribe
+## Group schedule subscribe
 
-Unsubscribe from schedule 
+Subscribe to group schedule 
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/subscribe`
-
-### Body Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `target_type` *char* | Origin target type               |
-| `target_id` *id* |                                      |
 
 
