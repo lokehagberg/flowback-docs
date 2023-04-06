@@ -235,71 +235,78 @@ curl "<%= config[:endpoint] %>/user/update" \
 List all schedule events for user
 
 ### HTTP Request
+
 `POST <%= config[:endpoint] %>/user/schedule`
 
 ### Query Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `start_date` *datetime, optional* | Event starting date |
-| `start_date__lt` *datetime, optional* |                 |
-| `start_date__gt` *datetime, optional* |                 |
-| `end_date` *datetime, optional* | Event ending date     |
-| `end_date__lt` *datetime, optional* |                   |
-| `end_date__gt` *datetime, optional* |                   |
-| `origin_name` *char, optional* | The origin name        |
-| `origin_id` *int, optional* | The origin id             |
+
+| Parameter                             | Notes               |
+|---------------------------------------|---------------------|
+| `start_date` *datetime, optional*     | Event starting date |
+| `start_date__lt` *datetime, optional* |                     |
+| `start_date__gt` *datetime, optional* |                     |
+| `end_date` *datetime, optional*       | Event ending date   |
+| `end_date__lt` *datetime, optional*   |                     |
+| `end_date__gt` *datetime, optional*   |                     |
+| `origin_name` *char, optional*        | The origin name     |
+| `origin_id` *int, optional*           | The origin id       |
 
 ### Response Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `schedule_id` *int* |                                   |
-| `event_id` *int* |                                      |
-| `title` *char* |                                        |
-| `description` *char, optional* |                        |
-| `start_date` *datetime* |                               |
-| `end_date` *datetime, optional* |                       |
-| `origin_name` *char* |                                  |
-| `origin_id` *int* |                                     |
-| `schedule_origin_name` *char* |                         |
-| `schedule_origin_id` *int* |                            |
+
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `schedule_id` *int*             |       |
+| `event_id` *int*                |       |
+| `title` *char*                  |       |
+| `description` *char, optional*  |       |
+| `start_date` *datetime*         |       |
+| `end_date` *datetime, optional* |       |
+| `origin_name` *char*            |       |
+| `origin_id` *int*               |       |
+| `schedule_origin_name` *char*   |       |
+| `schedule_origin_id` *int*      |       |
 
 
-## User schedule event create 
+## User schedule event create
 
-Creates user event 
+Creates user event
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/user/schedule/create`
 
 ### Query Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `title` *char* |                                        |
-| `description` *char, optional* |                        |
-| `start_date` *datetime* |                               |
-| `end_date` *datetime, optional* |                       |
+
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `title` *char*                  |       |
+| `description` *char, optional*  |       |
+| `start_date` *datetime*         |       |
+| `end_date` *datetime, optional* |       |
 
 ### Response Parameters
+
 | Parameter  | Notes                                      |
 |------------|--------------------------------------------|
 | `id` *int* |                                            |
 
 
-## User schedule event update 
+## User schedule event update
 
 Updates user event 
 
 ### HTTP Request
+
 `POST <%= config[:endpoint] %>/user/schedule/update`
 
 ### Body Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `event_id` *int* |                                      |
-| `title` *char, optional* |                              |
-| `description` *char, optional* |                        |
-| `start_date` *datetime, optional* |                     |
-| `end_date` *datetime, optional* |                       |
+
+| Parameter                         | Notes |
+|-----------------------------------|-------|
+| `event_id` *int*                  |       |
+| `title` *char, optional*          |       |
+| `description` *char, optional*    |       |
+| `start_date` *datetime, optional* |       |
+| `end_date` *datetime, optional*   |       |
 
 
 ## User schedule event delete
@@ -307,19 +314,106 @@ Updates user event
 Delete event from user schedule
 
 ### HTTP Request
+
 `POST <%= config[:endpoint] %>/user/schedule/delete`
 
 ### Body Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `event_id` *int* |                                      |
+| Parameter        | Notes |
+|------------------|-------|
+| `event_id` *int* |       |
 
 
-## User schedule subscribe
 
-Subscribe to group schedule 
+## User kanban entry list
+
+List all kanbans for user
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/user/schedule/subscribe`
+
+`GET <%= config[:endpoint] %>/user/kanban/entry/list`
+
+### Body Parameters
+
+| Parameter                                | Notes |
+|------------------------------------------|-------|
+| `origin_type` *str, optional*            |       |
+| `origin_id` *int, optional*              |       |
+| `created_by` *int, optional*             |       |
+| `assignee` *int, optional*               |       |
+| `title__icontains` *str, optional*       |       |
+| `description__icontains` *str, optional* |       |
+| `tag` *int, optional*                    |       |
+
+### Response Parameters
+
+| Parameter                   | Notes |
+|-----------------------------|-------|
+| `id` *int*                  |       |
+| `created_by` *UserResponse* |       |
+| `assignee` *UserResponse*   |       |
+| `title` *str*               |       |
+| `description` *str*         |       |
+| `tag` *int*                 |       |
+
+### UserResponse Parameters
+
+| Parameter               | Notes |
+|-------------------------|-------|
+| `id` *int*              |       |
+| `profile_image` *image* |       |
+| `username` *str*        |       |
 
 
+
+## User kanban entry create
+
+Creates a user kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/user/kanban/entry/create`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `title` *str*       |       |
+| `description` *str* |       |
+| `tag` *int*         |       |
+| `assignee` *int*    |       |
+
+
+
+## User kanban entry update
+
+Updates a user kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/user/kanban/entry/update`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `entry_id` *int*    |       |
+| `title` *str*       |       |
+| `description` *str* |       |
+| `tag` *int*         |       |
+| `assignee` *int*    |       |
+
+
+
+## User kanban entry delete
+
+Deletes a user kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/user/kanban/entry/delete`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `entry_id` *int*    |       |
