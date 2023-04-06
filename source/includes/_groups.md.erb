@@ -227,6 +227,26 @@ Lists all users in the group
 | `is_admin` *bool, optional*           |                                      |
 | `permission` *int, optional*          | The permission ID of the user        |
 
+### Response Parameters
+
+| Parameter                  | Notes |
+|----------------------------|-------|
+| `id` *int*                 |       |
+| `user` *BasicUserResponse* |       |
+| `is_admin` *bool*          |       |
+| `permission_name` *str*    |       |
+| `permission_id` *int*      |       |
+| `group_name` *str*         |       |
+| `group_id` *int*           |       |
+
+### BasicUserResponse Parameters
+
+| Parameter               | Notes |
+|-------------------------|-------|
+| `id` *int*              |       |
+| `username` *str*        |       |
+| `profile_image` *image* |       |
+| `banner_image` *image*  |       |
 
 ## Group User Update
 
@@ -745,6 +765,7 @@ Updates a Delegate relation for the current user in group
 | `tags` *array(int)* | List of tag id's, this will reset previous values |
 
 
+
 ## Group user delegate delete
 
 ```shell
@@ -764,54 +785,56 @@ Deletes a delegate id for the current user in group
 | `id` *int* | The delegate pool id to be deleted |
 
 
+
 ## Group schedule event list
 
 List all schedule events in group
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/group/<id>/schedule`
+`GET <%= config[:endpoint] %>/group/<id>/schedule`
 
 ### Query Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `start_date` *datetime, optional* | Event starting date |
-| `start_date__lt` *datetime, optional* |                 |
-| `start_date__gt` *datetime, optional* |                 |
-| `end_date` *datetime, optional* | Event ending date     |
-| `end_date__lt` *datetime, optional* |                   |
-| `end_date__gt` *datetime, optional* |                   |
-| `origin_name` *char, optional* | The origin name        |
-| `origin_id` *int, optional* | The origin id             |
+| Parameter                             | Notes               |
+|---------------------------------------|---------------------|
+| `start_date` *datetime, optional*     | Event starting date |
+| `start_date__lt` *datetime, optional* |                     |
+| `start_date__gt` *datetime, optional* |                     |
+| `end_date` *datetime, optional*       | Event ending date   |
+| `end_date__lt` *datetime, optional*   |                     |
+| `end_date__gt` *datetime, optional*   |                     |
+| `origin_name` *char, optional*        | The origin name     |
+| `origin_id` *int, optional*           | The origin id       |
 
 ### Response Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `schedule_id` *int* |                                   |
-| `event_id` *int* |                                      |
-| `title` *char* |                                        |
-| `description` *char, optional* |                        |
-| `start_date` *datetime* |                               |
-| `end_date` *datetime, optional* |                       |
-| `origin_name` *char* |                                  |
-| `origin_id` *int* |                                     |
-| `schedule_origin_name` *char* |                         |
-| `schedule_origin_id` *int* |                            |
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `schedule_id` *int*             |       |
+| `event_id` *int*                |       |
+| `title` *char*                  |       |
+| `description` *char, optional*  |       |
+| `start_date` *datetime*         |       |
+| `end_date` *datetime, optional* |       |
+| `origin_name` *char*            |       |
+| `origin_id` *int*               |       |
+| `schedule_origin_name` *char*   |       |
+| `schedule_origin_id` *int*      |       |
 
 
-## Group schedule event create 
 
-Creates group event 
+## Group schedule event create
+
+Creates group event
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/create`
 
 ### Query Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `title` *char* |                                        |
-| `description` *char, optional* |                        |
-| `start_date` *datetime* |                               |
-| `end_date` *datetime, optional* |                       |
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `title` *char*                  |       |
+| `description` *char, optional*  |       |
+| `start_date` *datetime*         |       |
+| `end_date` *datetime, optional* |       |
 
 ### Response Parameters
 | Parameter  | Notes                                      |
@@ -819,21 +842,23 @@ Creates group event
 | `id` *int* |                                            |
 
 
-## Group schedule event update 
 
-Updates group event 
+## Group schedule event update
+
+Updates group event
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/update`
 
 ### Body Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `event_id` *int* |                                      |
-| `title` *char, optional* |                              |
-| `description` *char, optional* |                        |
-| `start_date` *datetime, optional* |                     |
-| `end_date` *datetime, optional* |                       |
+| Parameter                         | Notes |
+|-----------------------------------|-------|
+| `event_id` *int*                  |       |
+| `title` *char, optional*          |       |
+| `description` *char, optional*    |       |
+| `start_date` *datetime, optional* |       |
+| `end_date` *datetime, optional*   |       |
+
 
 
 ## Group schedule event delete
@@ -844,16 +869,110 @@ Delete event from group schedule
 `POST <%= config[:endpoint] %>/group/<id>/schedule/delete`
 
 ### Body Parameters
-| Parameter  | Notes                                      |
-|------------|--------------------------------------------|
-| `event_id` *int* |                                      |
+| Parameter        | Notes |
+|------------------|-------|
+| `event_id` *int* |       |
+
 
 
 ## Group schedule subscribe
 
-Subscribe to group schedule 
+Subscribe to group schedule
 
 ### HTTP Request
 `POST <%= config[:endpoint] %>/group/<id>/schedule/subscribe`
 
 
+## Group kanban entry list
+
+List all kanbans for group
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/<int>/kanban/entry/list`
+
+### Body Parameters
+
+| Parameter                                | Notes |
+|------------------------------------------|-------|
+| `origin_type` *str, optional*            |       |
+| `origin_id` *int, optional*              |       |
+| `created_by` *int, optional*             |       |
+| `assignee` *int, optional*               |       |
+| `title__icontains` *str, optional*       |       |
+| `description__icontains` *str, optional* |       |
+| `tag` *int, optional*                    |       |
+
+### Response Parameters
+
+| Parameter                   | Notes |
+|-----------------------------|-------|
+| `id` *int*                  |       |
+| `created_by` *UserResponse* |       |
+| `assignee` *UserResponse*   |       |
+| `title` *str*               |       |
+| `description` *str*         |       |
+| `tag` *int*                 |       |
+
+### UserResponse Parameters
+
+| Parameter               | Notes |
+|-------------------------|-------|
+| `id` *int*              |       |
+| `profile_image` *image* |       |
+| `username` *str*        |       |
+
+
+
+## Group kanban entry create
+
+Creates a group kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<int>/kanban/entry/create`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `title` *str*       |       |
+| `description` *str* |       |
+| `tag` *int*         |       |
+| `assignee` *int*    |       |
+
+
+
+## Group kanban entry update
+
+Updates a group kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<int>/kanban/entry/update`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `entry_id` *int*    |       |
+| `title` *str*       |       |
+| `description` *str* |       |
+| `tag` *int*         |       |
+| `assignee` *int*    |       |
+
+
+
+## Group kanban entry delete
+
+Deletes a group kanban
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/group/<int>/kanban/entry/delete`
+
+### Body Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `entry_id` *int*    |       |

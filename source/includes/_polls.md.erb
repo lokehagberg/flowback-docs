@@ -340,3 +340,178 @@ This endpoint gets the possible delegates on this poll.
 | Parameter                          | Notes |
 |------------------------------------|-------|
 | `created_by` *int, optional*       |       |
+
+
+
+## Poll Prediction Statement List
+
+Lists all prediction statements for poll
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/<id>/poll/prediction/statement/list`
+
+### Query Parameters
+
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `id` *int*                      |       |
+| `poll_id` *int*                 |       |
+| `proposals` *list[int]*         |       |
+| `description` *str*             |       |
+| `created_by_id` *int*           |       |
+| `user_prediction_exists` *bool* |       |
+| `user_vote_exists` *bool*       |       |
+
+
+### Response Parameters
+
+| Parameter                        | Notes                                     |
+|----------------------------------|-------------------------------------------|
+| `id` *int*                       |                                           |
+| `poll_id` *int*                  |                                           |
+| `proposals` *list[int]*          |                                           |
+| `description` *str*              |                                           |
+| `created_by` *GroupUserResponse* | See [group users list](#group-users-list) |
+| `user_prediction` *int*          |                                           |
+| `user_vote` *bool*               |                                           |
+
+
+
+## Poll Prediction List
+
+Lists all predictions for poll
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/<id>/poll/prediction/list`
+
+### Query Parameters
+
+| Parameter                       | Notes |
+|---------------------------------|-------|
+| `id` *int*                      |       |
+| `created_by_id` *int*           |       |
+| `prediction_statement_id` *int* |       |
+| `score` *int*                   |       |
+| `score__lt` *int*               |       |
+| `score__gt` *int*               |       |
+| `created_at__lt` *datetime*     |       |
+| `created_at__gt` *datetime*     |       |
+
+### Response Parameters
+
+| Parameter                        | Notes                                     |
+|----------------------------------|-------------------------------------------|
+| `id` *int*                       |                                           |
+| `prediction_statement_id` *int*  |                                           |
+| `created_by` *GroupUserResponse* | See [group users list](#group-users-list) |
+| `user_prediction` *int*          |                                           |
+| `score` *int*                    |                                           |
+
+
+
+## Poll Prediction Statement Create
+
+Creates poll prediction statement
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/<id>/prediction/statement/create`
+
+### Input Parameters
+
+| Parameter                             | Notes |
+|---------------------------------------|-------|
+| `description` *str*                   |       |
+| `end_date` *datetime*                 |       |
+| `segments` *list[Segment Parameters]* |       |
+
+### Segment Parameters
+
+| Parameter           | Notes |
+|---------------------|-------|
+| `proposal_id` *int* |       |
+| `is_true` *bool*    |       |
+
+
+
+## Poll Prediction Statement Delete
+
+Deletes poll prediction statement
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/statement/<id>/delete`
+
+## Poll Prediction Create
+
+Creates user poll prediction
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/<id>/prediction/create`
+
+### Input Parameters
+
+| Parameter     | Notes |
+|---------------|-------|
+| `score` *int* |       |
+
+
+
+## Poll Prediction Update
+
+Updates user poll prediction
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/<id>/update`
+
+### Input Parameters
+
+| Parameter     | Notes |
+|---------------|-------|
+| `score` *int* |       |
+
+
+
+## Poll Prediction Delete
+
+Deletes user poll prediction
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/<id>/delete`
+
+
+
+## Poll Prediction Statement Vote Create
+
+Creates user poll prediction statement vote
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/<id>/statement/vote/create`
+
+### Input Parameters
+
+| Parameter     | Notes |
+|---------------|-------|
+| `vote` *bool* |       |
+
+
+
+## Poll Prediction Statement Vote Update
+
+Updates user poll prediction statement vote
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/statement/vote/<id>/update`
+
+### Input Parameters
+
+| Parameter     | Notes |
+|---------------|-------|
+| `vote` *bool* |       |
+
+
+
+## Poll Prediction Statement Vote Delete
+
+Deletes user poll prediction statement vote
+
+### HTTP Request
+`<%= config[:endpoint] %>/group/poll/prediction/statement/vote/<id>/delete`
