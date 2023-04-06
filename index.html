@@ -366,7 +366,16 @@
                     <a href="#user-schedule-event-delete" class="toc-h2 toc-link" data-title="User schedule event delete">User schedule event delete</a>
                   </li>
                   <li>
-                    <a href="#user-schedule-subscribe" class="toc-h2 toc-link" data-title="User schedule subscribe">User schedule subscribe</a>
+                    <a href="#user-kanban-entry-list" class="toc-h2 toc-link" data-title="User kanban entry list">User kanban entry list</a>
+                  </li>
+                  <li>
+                    <a href="#user-kanban-entry-create" class="toc-h2 toc-link" data-title="User kanban entry create">User kanban entry create</a>
+                  </li>
+                  <li>
+                    <a href="#user-kanban-entry-update" class="toc-h2 toc-link" data-title="User kanban entry update">User kanban entry update</a>
+                  </li>
+                  <li>
+                    <a href="#user-kanban-entry-delete" class="toc-h2 toc-link" data-title="User kanban entry delete">User kanban entry delete</a>
                   </li>
               </ul>
           </li>
@@ -507,6 +516,18 @@
                   <li>
                     <a href="#group-schedule-subscribe" class="toc-h2 toc-link" data-title="Group schedule subscribe">Group schedule subscribe</a>
                   </li>
+                  <li>
+                    <a href="#group-kanban-entry-list" class="toc-h2 toc-link" data-title="Group kanban entry list">Group kanban entry list</a>
+                  </li>
+                  <li>
+                    <a href="#group-kanban-entry-create" class="toc-h2 toc-link" data-title="Group kanban entry create">Group kanban entry create</a>
+                  </li>
+                  <li>
+                    <a href="#group-kanban-entry-update" class="toc-h2 toc-link" data-title="Group kanban entry update">Group kanban entry update</a>
+                  </li>
+                  <li>
+                    <a href="#group-kanban-entry-delete" class="toc-h2 toc-link" data-title="Group kanban entry delete">Group kanban entry delete</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -553,6 +574,36 @@
                   </li>
                   <li>
                     <a href="#poll-delegates-list" class="toc-h2 toc-link" data-title="Poll Delegates List">Poll Delegates List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-list" class="toc-h2 toc-link" data-title="Poll Prediction Statement List">Poll Prediction Statement List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-list" class="toc-h2 toc-link" data-title="Poll Prediction List">Poll Prediction List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-create" class="toc-h2 toc-link" data-title="Poll Prediction Statement Create">Poll Prediction Statement Create</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-delete" class="toc-h2 toc-link" data-title="Poll Prediction Statement Delete">Poll Prediction Statement Delete</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-create" class="toc-h2 toc-link" data-title="Poll Prediction Create">Poll Prediction Create</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-update" class="toc-h2 toc-link" data-title="Poll Prediction Update">Poll Prediction Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-delete" class="toc-h2 toc-link" data-title="Poll Prediction Delete">Poll Prediction Delete</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-vote-create" class="toc-h2 toc-link" data-title="Poll Prediction Statement Vote Create">Poll Prediction Statement Vote Create</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-vote-update" class="toc-h2 toc-link" data-title="Poll Prediction Statement Vote Update">Poll Prediction Statement Vote Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-prediction-statement-vote-delete" class="toc-h2 toc-link" data-title="Poll Prediction Statement Vote Delete">Poll Prediction Statement Vote Delete</a>
                   </li>
               </ul>
           </li>
@@ -1019,7 +1070,7 @@ requiring the user to type their password twice.</aside>
 </tr>
 </tbody></table>
 <h2 id='user-schedule-event-create'>User schedule event create</h2>
-<p>Creates user event </p>
+<p>Creates user event</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/user/schedule/create</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -1106,10 +1157,174 @@ requiring the user to type their password twice.</aside>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='user-schedule-subscribe'>User schedule subscribe</h2>
-<p>Subscribe to group schedule </p>
+<h2 id='user-kanban-entry-list'>User kanban entry list</h2>
+<p>List all kanbans for user</p>
 <h3 id='http-request-13'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/user/schedule/subscribe</code></p>
+<p><code>GET https://v2.flowback.org/user/kanban/entry/list</code></p>
+<h3 id='body-parameters-9'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>origin_type</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>UserResponse</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>UserResponse</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='userresponse-parameters'>UserResponse Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profile_image</code> <em>image</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>username</code> <em>str</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-kanban-entry-create'>User kanban entry create</h2>
+<p>Creates a user kanban</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/kanban/entry/create</code></p>
+<h3 id='body-parameters-10'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-kanban-entry-update'>User kanban entry update</h2>
+<p>Updates a user kanban</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/kanban/entry/update</code></p>
+<h3 id='body-parameters-11'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>entry_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='user-kanban-entry-delete'>User kanban entry delete</h2>
+<p>Deletes a user kanban</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/user/kanban/entry/delete</code></p>
+<h3 id='body-parameters-12'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>entry_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='notification'>Notification</h1>
 <p>Notification APIs span across multiple sections, however most notification management is handled within this section.</p>
 <h2 id='common-parameters'>Common Parameters</h2>
@@ -1708,6 +1923,66 @@ from a <strong>notification object</strong>.</p>
 <td>The permission ID of the user</td>
 </tr>
 </tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user</code> <em>BasicUserResponse</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_admin</code> <em>bool</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>permission_name</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>permission_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>group_name</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>group_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='basicuserresponse-parameters'>BasicUserResponse Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>username</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profile_image</code> <em>image</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>banner_image</code> <em>image</em></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='group-user-update'>Group User Update</h2>
 <p>This endpoint updates group user information.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
@@ -2299,7 +2574,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='group-schedule-event-list'>Group schedule event list</h2>
 <p>List all schedule events in group</p>
 <h3 id='http-request-32'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule</code></p>
+<p><code>GET https://v2.flowback.org/group/&lt;id&gt;/schedule</code></p>
 <h3 id='query-parameters-21'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2340,7 +2615,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td>The origin id</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
+<h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2389,7 +2664,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='group-schedule-event-create'>Group schedule event create</h2>
-<p>Creates group event </p>
+<p>Creates group event</p>
 <h3 id='http-request-33'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/create</code></p>
 <h3 id='query-parameters-22'>Query Parameters</h3>
@@ -2416,7 +2691,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
+<h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2429,7 +2704,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='group-schedule-event-update'>Group schedule event update</h2>
-<p>Updates group event </p>
+<p>Updates group event</p>
 <h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/update</code></p>
 <h3 id='body-parameters-3'>Body Parameters</h3>
@@ -2477,9 +2752,177 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tr>
 </tbody></table>
 <h2 id='group-schedule-subscribe'>Group schedule subscribe</h2>
-<p>Subscribe to group schedule </p>
+<p>Subscribe to group schedule</p>
 <h3 id='http-request-36'>HTTP Request</h3>
 <p><code>POST https://v2.flowback.org/group/&lt;id&gt;/schedule/subscribe</code></p>
+<h2 id='group-kanban-entry-list'>Group kanban entry list</h2>
+<p>List all kanbans for group</p>
+<h3 id='http-request-37'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/&lt;int&gt;/kanban/entry/list</code></p>
+<h3 id='body-parameters-5'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>origin_type</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>origin_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description__icontains</code> <em>str, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-4'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>UserResponse</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>UserResponse</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='userresponse-parameters'>UserResponse Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profile_image</code> <em>image</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>username</code> <em>str</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='group-kanban-entry-create'>Group kanban entry create</h2>
+<p>Creates a group kanban</p>
+<h3 id='http-request-38'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;int&gt;/kanban/entry/create</code></p>
+<h3 id='body-parameters-6'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='group-kanban-entry-update'>Group kanban entry update</h2>
+<p>Updates a group kanban</p>
+<h3 id='http-request-39'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;int&gt;/kanban/entry/update</code></p>
+<h3 id='body-parameters-7'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>entry_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>assignee</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='group-kanban-entry-delete'>Group kanban entry delete</h2>
+<p>Deletes a group kanban</p>
+<h3 id='http-request-40'>HTTP Request</h3>
+<p><code>POST https://v2.flowback.org/group/&lt;int&gt;/kanban/entry/delete</code></p>
+<h3 id='body-parameters-8'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>entry_id</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='poll'>Poll</h1><h2 id='identity'>Identity</h2>
 <p><a href="#poll-list"><code>poll</code></a></p>
 <h2 id='notification-categories'>Notification Categories</h2>
@@ -2927,6 +3370,270 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='poll-prediction-statement-list'>Poll Prediction Statement List</h2>
+<p>Lists all prediction statements for poll</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/&lt;id&gt;/poll/prediction/statement/list</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>proposals</code> <em>list[int]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user_prediction_exists</code> <em>bool</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user_vote_exists</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>proposals</code> <em>list[int]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>GroupUserResponse</em></td>
+<td>See <a href="#group-users-list">group users list</a></td>
+</tr>
+<tr>
+<td><code>user_prediction</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user_vote</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-list'>Poll Prediction List</h2>
+<p>Lists all predictions for poll</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/&lt;id&gt;/poll/prediction/list</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>prediction_statement_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score__lt</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score__gt</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__lt</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_at__gt</code> <em>datetime</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>prediction_statement_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by</code> <em>GroupUserResponse</em></td>
+<td>See <a href="#group-users-list">group users list</a></td>
+</tr>
+<tr>
+<td><code>user_prediction</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-statement-create'>Poll Prediction Statement Create</h2>
+<p>Creates poll prediction statement</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/&lt;id&gt;/prediction/statement/create</code></p>
+<h3 id='input-parameters-2'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code> <em>str</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>datetime</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>segments</code> <em>list[Segment Parameters]</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='segment-parameters'>Segment Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>proposal_id</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_true</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-statement-delete'>Poll Prediction Statement Delete</h2>
+<p>Deletes poll prediction statement</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/statement/&lt;id&gt;/delete</code></p>
+<h2 id='poll-prediction-create'>Poll Prediction Create</h2>
+<p>Creates user poll prediction</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/&lt;id&gt;/prediction/create</code></p>
+<h3 id='input-parameters-3'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>score</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-update'>Poll Prediction Update</h2>
+<p>Updates user poll prediction</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/update</code></p>
+<h3 id='input-parameters-4'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>score</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-delete'>Poll Prediction Delete</h2>
+<p>Deletes user poll prediction</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/delete</code></p>
+<h2 id='poll-prediction-statement-vote-create'>Poll Prediction Statement Vote Create</h2>
+<p>Creates user poll prediction statement vote</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/statement/vote/create</code></p>
+<h3 id='input-parameters-5'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>vote</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-statement-vote-update'>Poll Prediction Statement Vote Update</h2>
+<p>Updates user poll prediction statement vote</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/statement/vote/&lt;id&gt;/update</code></p>
+<h3 id='input-parameters-6'>Input Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>vote</code> <em>bool</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-prediction-statement-vote-delete'>Poll Prediction Statement Vote Delete</h2>
+<p>Deletes user poll prediction statement vote</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>https://v2.flowback.org/group/poll/prediction/statement/vote/&lt;id&gt;/delete</code></p>
 <h1 id='kanban'>Kanban</h1><h2 id='kanban-entry-list'>Kanban Entry List</h2>
 <p>This endpoint displays the Kanban board.</p>
 
