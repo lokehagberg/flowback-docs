@@ -576,6 +576,18 @@
                     <a href="#poll-delegates-list" class="toc-h2 toc-link" data-title="Poll Delegates List">Poll Delegates List</a>
                   </li>
                   <li>
+                    <a href="#poll-comment-list" class="toc-h2 toc-link" data-title="Poll Comment List">Poll Comment List</a>
+                  </li>
+                  <li>
+                    <a href="#poll-comment-create" class="toc-h2 toc-link" data-title="Poll Comment Create">Poll Comment Create</a>
+                  </li>
+                  <li>
+                    <a href="#poll-comment-update" class="toc-h2 toc-link" data-title="Poll Comment Update">Poll Comment Update</a>
+                  </li>
+                  <li>
+                    <a href="#poll-comment-delete" class="toc-h2 toc-link" data-title="Poll Comment Delete">Poll Comment Delete</a>
+                  </li>
+                  <li>
                     <a href="#poll-prediction-statement-list" class="toc-h2 toc-link" data-title="Poll Prediction Statement List">Poll Prediction Statement List</a>
                   </li>
                   <li>
@@ -2947,7 +2959,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='notification-subscribe'>Notification Subscribe</h2>
 <p>Subscribes to <code>poll</code></p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/subscribe</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/subscribe</code></p>
 <h3 id='input-parameters'>Input Parameters</h3>
 <table><thead>
 <tr>
@@ -3097,7 +3109,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='poll-update'>Poll Update</h2>
 <p>This endpoint updates a poll.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/update</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/update</code></p>
 <h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -3117,7 +3129,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='poll-delete'>Poll Delete</h2>
 <p>This endpoint deletes a poll.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delete</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/delete</code></p>
 <h2 id='poll-proposal-list'>Poll Proposal List</h2>
 <p>This endpoint lists the proposals of a poll.</p>
 
@@ -3153,7 +3165,7 @@ because deleting the tag will affect delegate relations, use this only when ness
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposals</code></p>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/proposals</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <p>These are the parameters for normal polls</p>
 
@@ -3208,7 +3220,7 @@ because deleting the tag will affect delegate relations, use this only when ness
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/create</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/proposal/create</code></p>
 <h3 id='body-parameters-3'>Body Parameters</h3>
 <p>These are the parameters for normal polls</p>
 
@@ -3256,7 +3268,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='poll-proposal-delete'>Poll Proposal Delete</h2>
 <p>This endpoint deletes a proposal.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/&lt;proposal_id&gt;/delete</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/proposal/&lt;proposal_id&gt;/delete</code></p>
 <h2 id='poll-proposal-vote-list'>Poll Proposal Vote List</h2>
 <p>This endpoint gets the votes on proposals. Either author or author_delegate can have a non-null value exclusively.</p>
 
@@ -3290,7 +3302,7 @@ because deleting the tag will affect delegate relations, use this only when ness
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/votes</code></p>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/proposal/votes</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3314,7 +3326,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='poll-proposal-delegate-update'>Poll Proposal Delegate Update</h2>
 <p>This endpoint updates votes on proposals.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/update</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/proposal/vote/update</code></p>
 <h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -3330,7 +3342,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <h2 id='poll-proposal-vote-update'>Poll Proposal Vote Update</h2>
 <p>This endpoint updates delegates votes on proposals.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>POST https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/proposal/vote/delegate/update</code></p>
+<p><code>POST https://v2.flowback.org/group/poll/&lt;poll_id&gt;/proposal/vote/delegate/update</code></p>
 <h3 id='body-parameters-5'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -3357,7 +3369,7 @@ because deleting the tag will affect delegate relations, use this only when ness
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET https://v2.flowback.org/group/&lt;group_id&gt;/poll/&lt;poll_id&gt;/delegates</code></p>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/delegates</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3370,11 +3382,117 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='poll-comment-list'>Poll Comment List</h2><h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/comment/list</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>poll_id</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>order_by</code> <em>char, optional</em></td>
+<td>Valid options are: <code>created_at_asc</code>, <code>created_at_desc</code>, <code>score_asc</code>, <code>score_desc</code></td>
+</tr>
+<tr>
+<td><code>author</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>parent</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score__gt</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>author</code> <em>int</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>author_name</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>author_thumbnail</code> <em>image</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>parent</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code> <em>char</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>score</code> <em>int</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-comment-create'>Poll Comment Create</h2>
+<p>Creates a poll comment</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/comment/create</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>parent</code> <em>int, optional</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code> <em>str</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-comment-update'>Poll Comment Update</h2>
+<p>Updates a poll comment</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/comment/&lt;comment_id&gt;/update</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>message</code> <em>char</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='poll-comment-delete'>Poll Comment Delete</h2>
+<p>Deletes a poll comment</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>GET https://v2.flowback.org/group/poll/&lt;poll_id&gt;/comment/&lt;comment_id&gt;/delete</code></p>
 <h2 id='poll-prediction-statement-list'>Poll Prediction Statement List</h2>
 <p>Lists all prediction statements for poll</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/&lt;id&gt;/poll/prediction/statement/list</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3410,7 +3528,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
+<h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3448,9 +3566,9 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-list'>Poll Prediction List</h2>
 <p>Lists all predictions for poll</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/&lt;id&gt;/poll/prediction/list</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3490,7 +3608,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
+<h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3520,7 +3638,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-statement-create'>Poll Prediction Statement Create</h2>
 <p>Creates poll prediction statement</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/&lt;id&gt;/prediction/statement/create</code></p>
 <h3 id='input-parameters-2'>Input Parameters</h3>
 <table><thead>
@@ -3560,11 +3678,11 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-statement-delete'>Poll Prediction Statement Delete</h2>
 <p>Deletes poll prediction statement</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/statement/&lt;id&gt;/delete</code></p>
 <h2 id='poll-prediction-create'>Poll Prediction Create</h2>
 <p>Creates user poll prediction</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/&lt;id&gt;/prediction/create</code></p>
 <h3 id='input-parameters-3'>Input Parameters</h3>
 <table><thead>
@@ -3580,7 +3698,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-update'>Poll Prediction Update</h2>
 <p>Updates user poll prediction</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/update</code></p>
 <h3 id='input-parameters-4'>Input Parameters</h3>
 <table><thead>
@@ -3596,11 +3714,11 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-delete'>Poll Prediction Delete</h2>
 <p>Deletes user poll prediction</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/delete</code></p>
 <h2 id='poll-prediction-statement-vote-create'>Poll Prediction Statement Vote Create</h2>
 <p>Creates user poll prediction statement vote</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/&lt;id&gt;/statement/vote/create</code></p>
 <h3 id='input-parameters-5'>Input Parameters</h3>
 <table><thead>
@@ -3616,7 +3734,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-statement-vote-update'>Poll Prediction Statement Vote Update</h2>
 <p>Updates user poll prediction statement vote</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/statement/vote/&lt;id&gt;/update</code></p>
 <h3 id='input-parameters-6'>Input Parameters</h3>
 <table><thead>
@@ -3632,7 +3750,7 @@ because deleting the tag will affect delegate relations, use this only when ness
 </tbody></table>
 <h2 id='poll-prediction-statement-vote-delete'>Poll Prediction Statement Vote Delete</h2>
 <p>Deletes user poll prediction statement vote</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>https://v2.flowback.org/group/poll/prediction/statement/vote/&lt;id&gt;/delete</code></p>
 <h1 id='kanban'>Kanban</h1><h2 id='kanban-entry-list'>Kanban Entry List</h2>
 <p>This endpoint displays the Kanban board.</p>
