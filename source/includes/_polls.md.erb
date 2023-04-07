@@ -13,7 +13,7 @@
 Subscribes to `poll`
 
 ### HTTP Request
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/subscribe`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/subscribe`
 
 ### Input Parameters
 | Parameter                | Notes                    |
@@ -112,7 +112,7 @@ This endpoint updates a poll.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/update`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/update`
 
 ### Body Parameters
 
@@ -128,7 +128,7 @@ This endpoint deletes a poll.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delete`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/delete`
 
 
 ## Poll Proposal List
@@ -171,7 +171,7 @@ This endpoint lists the proposals of a poll.
 
 ### HTTP Request
 
-`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposals`
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/proposals`
 
 ### Query Parameters
 
@@ -206,7 +206,7 @@ This endpoint creates a proposal.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/create`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/proposal/create`
 
 ### Body Parameters
 
@@ -233,7 +233,7 @@ This endpoint deletes a proposal.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/<proposal_id>/delete`
+`POST <%= config[:endpoint] %>/group/poll/proposal/<proposal_id>/delete`
 
 
 ## Poll Proposal Vote List
@@ -274,7 +274,7 @@ This endpoint gets the votes on proposals. Either author or author_delegate can 
 
 ### HTTP Request
 
-`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/votes`
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/proposal/votes`
 
 ### Query Parameters
 
@@ -291,7 +291,7 @@ This endpoint updates votes on proposals.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/update`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/proposal/vote/update`
 
 ### Body Parameters
 
@@ -306,7 +306,7 @@ This endpoint updates delegates votes on proposals.
 
 ### HTTP Request
 
-`POST <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/proposal/vote/delegate/update`
+`POST <%= config[:endpoint] %>/group/poll/<poll_id>/proposal/vote/delegate/update`
 
 ### Body Parameters
 
@@ -333,13 +333,86 @@ This endpoint gets the possible delegates on this poll.
 
 ### HTTP Request
 
-`GET <%= config[:endpoint] %>/group/<group_id>/poll/<poll_id>/delegates`
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/delegates`
 
 ### Query Parameters
 
 | Parameter                          | Notes |
 |------------------------------------|-------|
 | `created_by` *int, optional*       |       |
+
+
+
+## Poll Comment List
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/comment/list`
+
+### Query Parameters
+
+| Parameter                   | Notes                                                                             |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| `id` *int, optional*        |                                                                                   |
+| `poll_id` *int, optional*   |                                                                                   |
+| `order_by` *char, optional* | Valid options are: `created_at_asc`, `created_at_desc`, `score_asc`, `score_desc` |
+| `author` *int, optional*    |                                                                                   |
+| `parent` *int, optional*    |                                                                                   |
+| `score__gt` *int, optional* |                                                                                   |
+
+### Response Parameters
+
+| Parameter                  | Notes |
+|----------------------------|-------|
+| `author` *int*             |       |
+| `author_name` *char*       |       |
+| `author_thumbnail` *image* |       |
+| `parent` *int, optional*   |       |
+| `message` *char*           |       |
+| `score` *int*              |       |
+
+
+
+## Poll Comment Create
+
+Creates a poll comment
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/comment/create`
+
+### Query Parameters
+
+| Parameter                | Notes |
+|--------------------------|-------|
+| `parent` *int, optional* |       |
+| `message` *str*          |       |
+
+
+
+## Poll Comment Update
+
+Updates a poll comment
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/comment/<comment_id>/update`
+
+### Query Parameters
+
+| Parameter        | Notes |
+|------------------|-------|
+| `message` *char* |       |
+
+
+
+## Poll Comment Delete
+
+Deletes a poll comment
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/group/poll/<poll_id>/comment/<comment_id>/delete`
 
 
 
