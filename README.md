@@ -1,3 +1,5 @@
+This is at least outdated since 2025-03-24
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/slatedocs/img/main/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
